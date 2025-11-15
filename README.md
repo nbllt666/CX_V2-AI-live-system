@@ -148,6 +148,8 @@ python docs/test_context_management.py
 
 ## 许可证
 
+ MIT License
+
 本项目为AI直播助手系统，提供完整的直播互动解决方案。
 
 ## 贡献
