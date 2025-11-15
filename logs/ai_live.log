@@ -1,0 +1,1593 @@
+2025-11-09 11:47:19,077 - root - INFO - Logging setup completed
+2025-11-09 11:47:19,077 - root - INFO - AI Live System initializing...
+2025-11-09 11:47:19,078 - root - INFO - Initializing VDB Manager...
+2025-11-09 11:47:19,078 - root - INFO - VDB Manager with Ollama API initialized successfully
+2025-11-09 11:47:19,078 - root - INFO - Initializing Long Term Memory...
+2025-11-09 11:47:19,078 - root - INFO - Context summarizer initialized
+2025-11-09 11:47:19,078 - root - INFO - Long term memory system initialized
+2025-11-09 11:47:19,079 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-09 11:47:23,161 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024EEF527770>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-09 11:47:23,162 - root - ERROR - Failed to connect to Ollama
+2025-11-09 11:47:23,162 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-09 11:47:23,162 - root - INFO - Initializing Danmu Receiver...
+2025-11-09 11:47:23,162 - root - INFO - Initializing SenseVoice...
+2025-11-09 11:47:23,163 - root - INFO - SenseVoice recognizer initialized
+2025-11-09 11:47:23,163 - root - INFO - Voice trigger initialized
+2025-11-09 11:47:23,163 - root - INFO - Initializing Voice Output...
+2025-11-09 11:47:23,163 - root - INFO - CosyVoice synthesizer initialized
+2025-11-09 11:47:23,163 - root - INFO - Voice output manager initialized
+2025-11-09 11:47:23,163 - root - INFO - Initializing Content Moderation...
+2025-11-09 11:47:23,163 - root - INFO - Content moderation module initialized
+2025-11-09 11:47:23,164 - root - INFO - Content moderation module initialized
+2025-11-09 11:47:23,164 - root - INFO - Initializing Screen Manager...
+2025-11-09 11:47:23,164 - root - INFO - Screen manager initialized
+2025-11-09 11:47:23,165 - root - INFO - Initializing Tool Executor...
+2025-11-09 11:47:23,165 - root - INFO - Tool manager initialized
+2025-11-09 11:47:23,165 - root - INFO - Initializing WebUI Controller...
+2025-11-09 11:47:23,435 - root - INFO - Initializing Audio Recorder...
+2025-11-09 11:47:23,837 - root - INFO - Audio recorder initialized
+2025-11-09 11:47:23,837 - root - INFO - SenseVoice recognizer initialized
+2025-11-09 11:47:23,838 - root - INFO - All modules initialized successfully
+2025-11-09 11:47:23,838 - root - INFO - AI Live System initialized successfully
+2025-11-09 11:47:23,839 - root - INFO - Started listening for speech
+2025-11-09 11:47:23,840 - root - INFO - Starting to receive danmu from ws://localhost:9898 with task IDs: ['123456']
+2025-11-09 11:47:23,914 - root - INFO - AI Live System started
+2025-11-09 11:47:23,914 - webui - INFO - Starting WebUI on 0.0.0.0:5000
+2025-11-09 11:47:23,924 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.3:5000
+2025-11-09 11:47:23,925 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-09 11:47:24,091 - root - INFO - Audio listener started, waiting for speech...
+2025-11-09 11:47:26,142 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:47:26,143 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:47:33,450 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:47:33,450 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:47:40,750 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:47:40,751 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:47:48,065 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:47:48,066 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:47:49,265 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 11:47:49] "GET / HTTP/1.1" 200 -
+2025-11-09 11:47:51,101 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 11:47:51] "GET /socket.io/?EIO=4&transport=polling&t=PfckZQw HTTP/1.1" 200 -
+2025-11-09 11:47:51,150 - webui - INFO - WebUI client connected
+2025-11-09 11:47:51,151 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 11:47:51] "POST /socket.io/?EIO=4&transport=polling&t=PfckZRh&sid=qLeokhoI26EFjcrzAAAA HTTP/1.1" 200 -
+2025-11-09 11:47:51,457 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 11:47:51] "GET /socket.io/?EIO=4&transport=polling&t=PfckZRi&sid=qLeokhoI26EFjcrzAAAA HTTP/1.1" 200 -
+2025-11-09 11:47:51,469 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 11:47:51] "GET /api/config HTTP/1.1" 200 -
+2025-11-09 11:47:51,470 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 11:47:51] "GET /api/status HTTP/1.1" 200 -
+2025-11-09 11:47:51,470 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 11:47:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-09 11:47:55,386 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:47:55,386 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:48:02,688 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:48:02,688 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:48:10,001 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:48:10,001 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:48:17,316 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:48:17,317 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:48:24,608 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:48:24,608 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:48:31,899 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:48:31,899 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:48:39,189 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:48:39,189 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:48:46,493 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:48:46,494 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:48:53,767 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:48:53,768 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:49:00,511 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 11:49:00] "POST /api/config HTTP/1.1" 200 -
+2025-11-09 11:49:01,092 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:49:01,092 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:49:08,381 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:49:08,382 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:49:15,676 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:49:15,676 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:49:22,952 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:49:22,952 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:49:30,240 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:49:30,240 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:49:37,516 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:49:37,517 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:49:44,820 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:49:44,821 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:49:52,122 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:49:52,123 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:49:59,438 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:49:59,438 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 11:50:04,442 - root - INFO - Main model resources cleaned up
+2025-11-09 11:50:04,465 - root - INFO - AI Live System stopped
+2025-11-09 13:50:06,111 - root - INFO - Logging setup completed
+2025-11-09 13:50:06,111 - root - INFO - AI Live System initializing...
+2025-11-09 13:50:06,111 - root - INFO - Initializing VDB Manager...
+2025-11-09 13:50:06,112 - root - INFO - VDB Manager with Ollama API initialized successfully
+2025-11-09 13:50:06,112 - root - INFO - Initializing Long Term Memory...
+2025-11-09 13:50:06,112 - root - INFO - Context summarizer initialized
+2025-11-09 13:50:06,112 - root - INFO - Long term memory system initialized
+2025-11-09 13:50:06,112 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-09 13:50:10,193 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002C879DDB770>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-09 13:50:10,193 - root - ERROR - Failed to connect to Ollama
+2025-11-09 13:50:10,194 - root - ERROR - Error loading context from file: name 'os' is not defined
+2025-11-09 13:50:10,194 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-09 13:50:10,195 - root - INFO - Initializing Danmu Receiver...
+2025-11-09 13:50:10,195 - root - INFO - Initializing SenseVoice...
+2025-11-09 13:50:10,196 - root - INFO - SenseVoice recognizer initialized
+2025-11-09 13:50:10,196 - root - INFO - Voice trigger initialized
+2025-11-09 13:50:10,196 - root - INFO - Initializing Voice Output...
+2025-11-09 13:50:10,196 - root - INFO - CosyVoice synthesizer initialized
+2025-11-09 13:50:10,197 - root - INFO - Voice output manager initialized
+2025-11-09 13:50:10,197 - root - INFO - Initializing Content Moderation...
+2025-11-09 13:50:10,197 - root - INFO - Content moderation module initialized
+2025-11-09 13:50:10,198 - root - INFO - Content moderation module initialized
+2025-11-09 13:50:10,198 - root - INFO - Initializing Screen Manager...
+2025-11-09 13:50:10,198 - root - INFO - Screen manager initialized
+2025-11-09 13:50:10,198 - root - INFO - Initializing Tool Executor...
+2025-11-09 13:50:10,199 - root - INFO - Tool manager initialized
+2025-11-09 13:50:10,199 - root - INFO - Initializing WebUI Controller...
+2025-11-09 13:50:10,406 - root - INFO - Initializing Audio Recorder...
+2025-11-09 13:50:10,816 - root - INFO - Audio recorder initialized
+2025-11-09 13:50:10,816 - root - INFO - SenseVoice recognizer initialized
+2025-11-09 13:50:10,817 - root - INFO - All modules initialized successfully
+2025-11-09 13:50:10,817 - root - INFO - AI Live System initialized successfully
+2025-11-09 13:50:10,818 - root - INFO - Started listening for speech
+2025-11-09 13:50:10,819 - root - INFO - Starting to receive danmu from ws://localhost:9898 with task IDs: ['123456']
+2025-11-09 13:50:10,900 - root - INFO - AI Live System started
+2025-11-09 13:50:10,901 - webui - INFO - Starting WebUI on 0.0.0.0:5000
+2025-11-09 13:50:10,913 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.3:5000
+2025-11-09 13:50:10,913 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-09 13:50:11,043 - root - INFO - Audio listener started, waiting for speech...
+2025-11-09 13:50:13,132 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:50:13,132 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:50:13,757 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:50:13] "GET /socket.io/?EIO=4&transport=polling&t=PfdAZ-o HTTP/1.1" 200 -
+2025-11-09 13:50:14,020 - webui - INFO - WebUI client connected
+2025-11-09 13:50:14,021 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:50:14] "POST /socket.io/?EIO=4&transport=polling&t=PfdAa41&sid=BaLXs2ODyFsSeGtiAAAA HTTP/1.1" 200 -
+2025-11-09 13:50:14,067 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:50:14] "GET /socket.io/?EIO=4&transport=polling&t=PfdAa42&sid=BaLXs2ODyFsSeGtiAAAA HTTP/1.1" 200 -
+2025-11-09 13:50:14,072 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:50:14] "GET /socket.io/?EIO=4&transport=polling&t=PfdAa8s&sid=BaLXs2ODyFsSeGtiAAAA HTTP/1.1" 200 -
+2025-11-09 13:50:16,195 - webui - INFO - WebUI client disconnected
+2025-11-09 13:50:16,195 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:50:16] "GET /socket.io/?EIO=4&transport=websocket&sid=BaLXs2ODyFsSeGtiAAAA HTTP/1.1" 200 -
+2025-11-09 13:50:16,517 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:50:16] "GET / HTTP/1.1" 200 -
+2025-11-09 13:50:16,568 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:50:16] "GET /socket.io/?EIO=4&transport=polling&t=PfdAalq HTTP/1.1" 200 -
+2025-11-09 13:50:16,777 - webui - INFO - WebUI client connected
+2025-11-09 13:50:16,778 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:50:16] "POST /socket.io/?EIO=4&transport=polling&t=PfdAam1&sid=mrCoV6PJnKCkpC4lAAAC HTTP/1.1" 200 -
+2025-11-09 13:50:16,904 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:50:16] "GET /socket.io/?EIO=4&transport=polling&t=PfdAam3&sid=mrCoV6PJnKCkpC4lAAAC HTTP/1.1" 200 -
+2025-11-09 13:50:16,905 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:50:16] "GET /api/config HTTP/1.1" 200 -
+2025-11-09 13:50:16,907 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:50:16] "GET /api/status HTTP/1.1" 200 -
+2025-11-09 13:50:20,438 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:50:20,439 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:50:27,754 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:50:27,754 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:50:31,952 - root - INFO - Context saved to context_history.json
+2025-11-09 13:50:31,953 - root - INFO - Main model resources cleaned up
+2025-11-09 13:50:31,959 - root - INFO - AI Live System stopped
+2025-11-09 13:58:01,586 - root - INFO - Logging setup completed
+2025-11-09 13:58:01,586 - root - INFO - AI Live System initializing...
+2025-11-09 13:58:01,587 - root - INFO - Initializing VDB Manager...
+2025-11-09 13:58:01,587 - root - INFO - VDB Manager with Ollama API initialized successfully
+2025-11-09 13:58:01,587 - root - INFO - Initializing Long Term Memory...
+2025-11-09 13:58:01,588 - root - INFO - Context summarizer initialized
+2025-11-09 13:58:01,588 - root - INFO - Long term memory system initialized
+2025-11-09 13:58:01,588 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-09 13:58:05,663 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020CF6AEB770>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-09 13:58:05,663 - root - ERROR - Failed to connect to Ollama
+2025-11-09 13:58:05,664 - root - ERROR - Error loading context from file: name 'os' is not defined
+2025-11-09 13:58:05,664 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-09 13:58:05,664 - root - INFO - Initializing Danmu Receiver...
+2025-11-09 13:58:05,664 - root - INFO - Initializing SenseVoice...
+2025-11-09 13:58:05,665 - root - INFO - SenseVoice recognizer initialized
+2025-11-09 13:58:05,665 - root - INFO - Voice trigger initialized
+2025-11-09 13:58:05,665 - root - INFO - Initializing Voice Output...
+2025-11-09 13:58:05,666 - root - INFO - CosyVoice synthesizer initialized
+2025-11-09 13:58:05,666 - root - INFO - Voice output manager initialized
+2025-11-09 13:58:05,666 - root - INFO - Initializing Content Moderation...
+2025-11-09 13:58:05,667 - root - INFO - Content moderation module initialized
+2025-11-09 13:58:05,667 - root - INFO - Content moderation module initialized
+2025-11-09 13:58:05,667 - root - INFO - Initializing Screen Manager...
+2025-11-09 13:58:05,667 - root - INFO - Screen manager initialized
+2025-11-09 13:58:05,668 - root - INFO - Initializing Tool Executor...
+2025-11-09 13:58:05,668 - root - INFO - Tool manager initialized
+2025-11-09 13:58:05,668 - root - INFO - Initializing WebUI Controller...
+2025-11-09 13:58:05,855 - root - INFO - Initializing Audio Recorder...
+2025-11-09 13:58:06,233 - root - INFO - Audio recorder initialized
+2025-11-09 13:58:06,234 - root - INFO - SenseVoice recognizer initialized
+2025-11-09 13:58:06,234 - root - INFO - All modules initialized successfully
+2025-11-09 13:58:06,234 - root - INFO - AI Live System initialized successfully
+2025-11-09 13:58:06,235 - root - INFO - Danmu receiver started
+2025-11-09 13:58:06,235 - root - INFO - Started listening for speech
+2025-11-09 13:58:06,236 - root - INFO - Starting to receive danmu from ws://localhost:9898 with task IDs: ['123456']
+2025-11-09 13:58:06,315 - root - INFO - AI Live System started
+2025-11-09 13:58:06,316 - webui - INFO - Starting WebUI on 0.0.0.0:5000
+2025-11-09 13:58:06,328 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.3:5000
+2025-11-09 13:58:06,328 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-09 13:58:06,464 - root - INFO - Audio listener started, waiting for speech...
+2025-11-09 13:58:07,399 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:58:07] "GET /socket.io/?EIO=4&transport=polling&t=PfdCNdi HTTP/1.1" 200 -
+2025-11-09 13:58:07,656 - webui - INFO - WebUI client connected
+2025-11-09 13:58:07,657 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:58:07] "POST /socket.io/?EIO=4&transport=polling&t=PfdCNih&sid=akPGseUAzg-_E6MlAAAA HTTP/1.1" 200 -
+2025-11-09 13:58:07,718 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:58:07] "GET /socket.io/?EIO=4&transport=polling&t=PfdCNii&sid=akPGseUAzg-_E6MlAAAA HTTP/1.1" 200 -
+2025-11-09 13:58:07,724 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:58:07] "GET /socket.io/?EIO=4&transport=polling&t=PfdCNnf&sid=akPGseUAzg-_E6MlAAAA HTTP/1.1" 200 -
+2025-11-09 13:58:08,533 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:58:08,533 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:58:13,293 - webui - INFO - WebUI client disconnected
+2025-11-09 13:58:13,293 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:58:13] "GET /socket.io/?EIO=4&transport=websocket&sid=akPGseUAzg-_E6MlAAAA HTTP/1.1" 200 -
+2025-11-09 13:58:13,620 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:58:13] "GET / HTTP/1.1" 200 -
+2025-11-09 13:58:13,657 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:58:13] "GET /socket.io/?EIO=4&transport=polling&t=PfdCPEL HTTP/1.1" 200 -
+2025-11-09 13:58:13,862 - webui - INFO - WebUI client connected
+2025-11-09 13:58:13,862 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:58:13] "POST /socket.io/?EIO=4&transport=polling&t=PfdCPEW&sid=lqBeitgm-kXDPA3aAAAC HTTP/1.1" 200 -
+2025-11-09 13:58:13,985 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:58:13] "GET /api/config HTTP/1.1" 200 -
+2025-11-09 13:58:13,985 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:58:13] "GET /socket.io/?EIO=4&transport=polling&t=PfdCPEX&sid=lqBeitgm-kXDPA3aAAAC HTTP/1.1" 200 -
+2025-11-09 13:58:13,986 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:58:13] "GET /api/status HTTP/1.1" 200 -
+2025-11-09 13:58:15,824 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:58:15,825 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:58:21,662 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:58:21] "POST /api/config HTTP/1.1" 200 -
+2025-11-09 13:58:23,140 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:58:23,141 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:58:30,448 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:58:30,448 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:58:37,747 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:58:37,747 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:58:39,184 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 13:58:39] "POST /api/control HTTP/1.1" 200 -
+2025-11-09 13:58:45,044 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:58:45,045 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:58:52,348 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:58:52,348 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:58:59,631 - root - ERROR - Error connecting to danmu server: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:58:59,631 - root - ERROR - Error in danmu receiving loop: Cannot connect to host localhost:9898 ssl:default [Ô¶³Ì¼ÆËã»ú¾Ü¾øÍøÂçÁ¬½Ó¡£]
+2025-11-09 13:59:04,638 - root - INFO - Context saved to context_history.json
+2025-11-09 13:59:04,638 - root - INFO - Main model resources cleaned up
+2025-11-09 13:59:04,652 - root - INFO - AI Live System stopped
+2025-11-09 14:03:51,057 - root - INFO - Logging setup completed
+2025-11-09 14:03:51,058 - root - INFO - AI Live System initializing...
+2025-11-09 14:03:51,058 - root - INFO - Initializing VDB Manager...
+2025-11-09 14:03:51,060 - root - INFO - VDB Manager with Ollama API initialized successfully
+2025-11-09 14:03:51,060 - root - INFO - Initializing Long Term Memory...
+2025-11-09 14:03:51,060 - root - INFO - Context summarizer initialized
+2025-11-09 14:03:51,060 - root - INFO - Long term memory system initialized
+2025-11-09 14:03:51,060 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-09 14:03:55,158 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000159F1BB3620>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-09 14:03:55,159 - root - ERROR - Failed to connect to Ollama
+2025-11-09 14:03:55,159 - root - ERROR - Error loading context from file: name 'os' is not defined
+2025-11-09 14:03:55,160 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-09 14:03:55,160 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-09 14:03:55,160 - root - INFO - Initializing SenseVoice...
+2025-11-09 14:03:55,160 - root - INFO - SenseVoice recognizer initialized
+2025-11-09 14:03:55,161 - root - INFO - Voice trigger initialized
+2025-11-09 14:03:55,161 - root - INFO - Initializing Voice Output...
+2025-11-09 14:03:55,161 - root - INFO - CosyVoice synthesizer initialized
+2025-11-09 14:03:55,161 - root - INFO - Voice output manager initialized
+2025-11-09 14:03:55,162 - root - INFO - Initializing Content Moderation...
+2025-11-09 14:03:55,162 - root - INFO - Content moderation module initialized
+2025-11-09 14:03:55,162 - root - INFO - Content moderation module initialized
+2025-11-09 14:03:55,162 - root - INFO - Initializing Screen Manager...
+2025-11-09 14:03:55,163 - root - INFO - Screen manager initialized
+2025-11-09 14:03:55,163 - root - INFO - Initializing Tool Executor...
+2025-11-09 14:03:55,163 - root - INFO - Tool manager initialized
+2025-11-09 14:03:55,163 - root - INFO - Initializing WebUI Controller...
+2025-11-09 14:03:55,392 - root - INFO - Initializing Audio Recorder...
+2025-11-09 14:03:55,781 - root - INFO - Audio recorder initialized
+2025-11-09 14:03:55,782 - root - INFO - SenseVoice recognizer initialized
+2025-11-09 14:03:55,782 - root - INFO - All modules initialized successfully
+2025-11-09 14:03:55,782 - root - INFO - AI Live System initialized successfully
+2025-11-09 14:03:55,783 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-09 14:03:55,783 - root - INFO - Started listening for speech
+2025-11-09 14:03:55,862 - root - INFO - AI Live System started
+2025-11-09 14:03:55,862 - webui - INFO - Starting WebUI on 0.0.0.0:5000
+2025-11-09 14:03:55,874 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.3:5000
+2025-11-09 14:03:55,874 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-09 14:03:55,977 - root - INFO - Audio listener started, waiting for speech...
+2025-11-09 14:03:59,392 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:03:59] "GET /socket.io/?EIO=4&transport=polling&t=PfdDjZe HTTP/1.1" 200 -
+2025-11-09 14:03:59,659 - webui - INFO - WebUI client connected
+2025-11-09 14:03:59,659 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:03:59] "POST /socket.io/?EIO=4&transport=polling&t=PfdDjeb&sid=nJEOuNmvRVNWBfWVAAAA HTTP/1.1" 200 -
+2025-11-09 14:03:59,705 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:03:59] "GET /socket.io/?EIO=4&transport=polling&t=PfdDjec&sid=nJEOuNmvRVNWBfWVAAAA HTTP/1.1" 200 -
+2025-11-09 14:03:59,712 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:03:59] "GET /socket.io/?EIO=4&transport=polling&t=PfdDjjT&sid=nJEOuNmvRVNWBfWVAAAA HTTP/1.1" 200 -
+2025-11-09 14:04:15,001 - webui - INFO - WebUI client disconnected
+2025-11-09 14:04:15,002 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:04:15] "GET /socket.io/?EIO=4&transport=websocket&sid=nJEOuNmvRVNWBfWVAAAA HTTP/1.1" 200 -
+2025-11-09 14:04:15,326 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:04:15] "GET / HTTP/1.1" 200 -
+2025-11-09 14:04:15,367 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:04:15] "GET /socket.io/?EIO=4&transport=polling&t=PfdDnY4 HTTP/1.1" 200 -
+2025-11-09 14:04:15,568 - webui - INFO - WebUI client connected
+2025-11-09 14:04:15,568 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:04:15] "POST /socket.io/?EIO=4&transport=polling&t=PfdDnYC&sid=FuhCeGnyN_8z8P5dAAAC HTTP/1.1" 200 -
+2025-11-09 14:04:15,693 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:04:15] "GET /api/config HTTP/1.1" 200 -
+2025-11-09 14:04:15,693 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:04:15] "GET /socket.io/?EIO=4&transport=polling&t=PfdDnYC.0&sid=FuhCeGnyN_8z8P5dAAAC HTTP/1.1" 200 -
+2025-11-09 14:04:15,695 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:04:15] "GET /api/status HTTP/1.1" 200 -
+2025-11-09 14:04:30,820 - webui - INFO - WebUI client disconnected
+2025-11-09 14:04:30,820 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:04:30] "GET /socket.io/?EIO=4&transport=websocket&sid=FuhCeGnyN_8z8P5dAAAC HTTP/1.1" 200 -
+2025-11-09 14:04:34,176 - root - INFO - Context saved to context_history.json
+2025-11-09 14:04:34,176 - root - INFO - Main model resources cleaned up
+2025-11-09 14:04:34,184 - root - INFO - AI Live System stopped
+2025-11-09 14:09:15,272 - root - INFO - Logging setup completed
+2025-11-09 14:09:15,272 - root - INFO - AI Live System initializing...
+2025-11-09 14:09:15,273 - root - INFO - Initializing VDB Manager...
+2025-11-09 14:09:15,273 - root - INFO - VDB Manager with Ollama API initialized successfully
+2025-11-09 14:09:15,274 - root - INFO - Initializing Long Term Memory...
+2025-11-09 14:09:15,274 - root - INFO - Context summarizer initialized
+2025-11-09 14:09:15,274 - root - INFO - Long term memory system initialized
+2025-11-09 14:09:15,274 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-09 14:09:19,358 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000246EA283620>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-09 14:09:19,359 - root - ERROR - Failed to connect to Ollama
+2025-11-09 14:09:19,359 - root - ERROR - Error loading context from file: name 'os' is not defined
+2025-11-09 14:09:19,360 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-09 14:09:19,360 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-09 14:09:19,360 - root - INFO - Initializing SenseVoice...
+2025-11-09 14:09:19,360 - root - INFO - SenseVoice recognizer initialized
+2025-11-09 14:09:19,361 - root - INFO - Voice trigger initialized
+2025-11-09 14:09:19,361 - root - INFO - Initializing Voice Output...
+2025-11-09 14:09:19,361 - root - INFO - CosyVoice synthesizer initialized
+2025-11-09 14:09:19,362 - root - INFO - Voice output manager initialized
+2025-11-09 14:09:19,362 - root - INFO - Initializing Content Moderation...
+2025-11-09 14:09:19,362 - root - INFO - Content moderation module initialized
+2025-11-09 14:09:19,362 - root - INFO - Content moderation module initialized
+2025-11-09 14:09:19,363 - root - INFO - Initializing Screen Manager...
+2025-11-09 14:09:19,363 - root - INFO - Screen manager initialized
+2025-11-09 14:09:19,363 - root - INFO - Initializing Tool Executor...
+2025-11-09 14:09:19,364 - root - INFO - Tool manager initialized
+2025-11-09 14:09:19,364 - root - INFO - Initializing WebUI Controller...
+2025-11-09 14:09:19,610 - root - INFO - Initializing Audio Recorder...
+2025-11-09 14:09:20,023 - root - INFO - Audio recorder initialized
+2025-11-09 14:09:20,023 - root - INFO - SenseVoice recognizer initialized
+2025-11-09 14:09:20,024 - root - INFO - All modules initialized successfully
+2025-11-09 14:09:20,024 - root - INFO - AI Live System initialized successfully
+2025-11-09 14:09:20,024 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-09 14:09:20,025 - root - INFO - Started listening for speech
+2025-11-09 14:09:20,160 - root - INFO - AI Live System started
+2025-11-09 14:09:20,160 - webui - INFO - Starting WebUI on 0.0.0.0:5000
+2025-11-09 14:09:20,175 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.3:5000
+2025-11-09 14:09:20,175 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-09 14:09:20,236 - root - INFO - Audio listener started, waiting for speech...
+2025-11-09 14:09:26,138 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:26] "GET / HTTP/1.1" 200 -
+2025-11-09 14:09:26,193 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:26] "GET /socket.io/?EIO=4&transport=polling&t=PfdEzQi HTTP/1.1" 200 -
+2025-11-09 14:09:26,396 - webui - INFO - WebUI client connected
+2025-11-09 14:09:26,396 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:26] "POST /socket.io/?EIO=4&transport=polling&t=PfdEzRW&sid=f1nGTN13gfDvoKfZAAAA HTTP/1.1" 200 -
+2025-11-09 14:09:26,553 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:26] "GET /socket.io/?EIO=4&transport=polling&t=PfdEzRX&sid=f1nGTN13gfDvoKfZAAAA HTTP/1.1" 200 -
+2025-11-09 14:09:26,573 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:26] "GET /api/config HTTP/1.1" 200 -
+2025-11-09 14:09:26,573 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:26] "GET /api/status HTTP/1.1" 200 -
+2025-11-09 14:09:26,577 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:26] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-09 14:09:29,430 - webui - INFO - WebUI client disconnected
+2025-11-09 14:09:29,430 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:29] "GET /socket.io/?EIO=4&transport=websocket&sid=f1nGTN13gfDvoKfZAAAA HTTP/1.1" 200 -
+2025-11-09 14:09:29,751 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:29] "GET / HTTP/1.1" 200 -
+2025-11-09 14:09:29,794 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:29] "GET /socket.io/?EIO=4&transport=polling&t=PfdE-Ie HTTP/1.1" 200 -
+2025-11-09 14:09:30,013 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:30] "GET /api/config HTTP/1.1" 200 -
+2025-11-09 14:09:30,108 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:30] "GET /api/status HTTP/1.1" 200 -
+2025-11-09 14:09:30,109 - webui - INFO - WebUI client connected
+2025-11-09 14:09:30,111 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:30] "POST /socket.io/?EIO=4&transport=polling&t=PfdE-J5&sid=Rs5bUVGMIaJuXJ07AAAC HTTP/1.1" 200 -
+2025-11-09 14:09:30,111 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:30] "GET /socket.io/?EIO=4&transport=polling&t=PfdE-J6&sid=Rs5bUVGMIaJuXJ07AAAC HTTP/1.1" 200 -
+2025-11-09 14:09:37,918 - webui - INFO - WebUI client disconnected
+2025-11-09 14:09:37,919 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:37] "GET /socket.io/?EIO=4&transport=websocket&sid=Rs5bUVGMIaJuXJ07AAAC HTTP/1.1" 200 -
+2025-11-09 14:09:38,227 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:38] "GET / HTTP/1.1" 200 -
+2025-11-09 14:09:38,272 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:38] "GET /socket.io/?EIO=4&transport=polling&t=PfdF0N5 HTTP/1.1" 200 -
+2025-11-09 14:09:38,494 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:38] "GET /api/config HTTP/1.1" 200 -
+2025-11-09 14:09:38,587 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:38] "GET /api/status HTTP/1.1" 200 -
+2025-11-09 14:09:38,588 - webui - INFO - WebUI client connected
+2025-11-09 14:09:38,588 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:38] "POST /socket.io/?EIO=4&transport=polling&t=PfdF0Nf&sid=KcBMLnntRkNsht_BAAAE HTTP/1.1" 200 -
+2025-11-09 14:09:38,590 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:38] "GET /socket.io/?EIO=4&transport=polling&t=PfdF0Ng&sid=KcBMLnntRkNsht_BAAAE HTTP/1.1" 200 -
+2025-11-09 14:09:50,164 - webui - INFO - WebUI client disconnected
+2025-11-09 14:09:50,164 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:09:50] "GET /socket.io/?EIO=4&transport=websocket&sid=KcBMLnntRkNsht_BAAAE HTTP/1.1" 200 -
+2025-11-09 14:10:00,369 - root - INFO - Context saved to context_history.json
+2025-11-09 14:10:00,369 - root - INFO - Main model resources cleaned up
+2025-11-09 14:10:00,373 - root - INFO - AI Live System stopped
+2025-11-09 14:12:49,375 - root - INFO - Logging setup completed
+2025-11-09 14:12:49,376 - root - INFO - AI Live System initializing...
+2025-11-09 14:12:49,376 - root - INFO - Initializing VDB Manager...
+2025-11-09 14:12:49,377 - root - INFO - VDB Manager with Ollama API initialized successfully
+2025-11-09 14:12:49,377 - root - INFO - Initializing Long Term Memory...
+2025-11-09 14:12:49,377 - root - INFO - Context summarizer initialized
+2025-11-09 14:12:49,377 - root - INFO - Long term memory system initialized
+2025-11-09 14:12:49,378 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-09 14:12:53,481 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002A758C73620>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-09 14:12:53,482 - root - ERROR - Failed to connect to Ollama
+2025-11-09 14:12:53,482 - root - ERROR - Error loading context from file: name 'os' is not defined
+2025-11-09 14:12:53,482 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-09 14:12:53,483 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-09 14:12:53,483 - root - INFO - Initializing SenseVoice...
+2025-11-09 14:12:53,483 - root - INFO - SenseVoice recognizer initialized
+2025-11-09 14:12:53,483 - root - INFO - Voice trigger initialized
+2025-11-09 14:12:53,484 - root - INFO - Initializing Voice Output...
+2025-11-09 14:12:53,484 - root - INFO - CosyVoice synthesizer initialized
+2025-11-09 14:12:53,485 - root - INFO - Voice output manager initialized
+2025-11-09 14:12:53,485 - root - INFO - Initializing Content Moderation...
+2025-11-09 14:12:53,485 - root - INFO - Content moderation module initialized
+2025-11-09 14:12:53,486 - root - INFO - Content moderation module initialized
+2025-11-09 14:12:53,486 - root - INFO - Initializing Screen Manager...
+2025-11-09 14:12:53,487 - root - INFO - Screen manager initialized
+2025-11-09 14:12:53,487 - root - INFO - Initializing Tool Executor...
+2025-11-09 14:12:53,487 - root - INFO - Tool manager initialized
+2025-11-09 14:12:53,488 - root - INFO - Initializing WebUI Controller...
+2025-11-09 14:12:53,764 - root - INFO - Initializing Audio Recorder...
+2025-11-09 14:12:54,193 - root - INFO - Audio recorder initialized
+2025-11-09 14:12:54,193 - root - INFO - SenseVoice recognizer initialized
+2025-11-09 14:12:54,193 - root - INFO - All modules initialized successfully
+2025-11-09 14:12:54,194 - root - INFO - AI Live System initialized successfully
+2025-11-09 14:12:54,194 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-09 14:12:54,195 - root - INFO - Started listening for speech
+2025-11-09 14:12:54,328 - root - INFO - AI Live System started
+2025-11-09 14:12:54,329 - webui - INFO - Starting WebUI on 0.0.0.0:5000
+2025-11-09 14:12:54,342 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.3:5000
+2025-11-09 14:12:54,342 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-09 14:12:54,390 - root - INFO - Audio listener started, waiting for speech...
+2025-11-09 14:12:59,034 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:12:59] "GET / HTTP/1.1" 200 -
+2025-11-09 14:12:59,095 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:12:59] "GET /socket.io/?EIO=4&transport=polling&t=PfdFnPJ HTTP/1.1" 200 -
+2025-11-09 14:12:59,295 - webui - INFO - WebUI client connected
+2025-11-09 14:12:59,296 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:12:59] "POST /socket.io/?EIO=4&transport=polling&t=PfdFnQA&sid=E3cQB0KcArf_lRi2AAAA HTTP/1.1" 200 -
+2025-11-09 14:12:59,484 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:12:59] "GET /socket.io/?EIO=4&transport=polling&t=PfdFnQB&sid=E3cQB0KcArf_lRi2AAAA HTTP/1.1" 200 -
+2025-11-09 14:12:59,486 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:12:59] "GET /api/config HTTP/1.1" 200 -
+2025-11-09 14:12:59,487 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:12:59] "GET /api/status HTTP/1.1" 200 -
+2025-11-09 14:12:59,491 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:12:59] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-09 14:12:59,810 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:12:59] "GET /socket.io/?EIO=4&transport=polling&t=PfdFnVW&sid=E3cQB0KcArf_lRi2AAAA HTTP/1.1" 200 -
+2025-11-09 14:13:07,074 - webui - INFO - WebUI client disconnected
+2025-11-09 14:13:07,075 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:13:07] "GET /socket.io/?EIO=4&transport=websocket&sid=E3cQB0KcArf_lRi2AAAA HTTP/1.1" 200 -
+2025-11-09 14:13:07,394 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:13:07] "GET / HTTP/1.1" 200 -
+2025-11-09 14:13:07,441 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:13:07] "GET /socket.io/?EIO=4&transport=polling&t=PfdFpRL HTTP/1.1" 200 -
+2025-11-09 14:13:07,643 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:13:07] "GET /api/config HTTP/1.1" 200 -
+2025-11-09 14:13:07,752 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:13:07] "GET /api/status HTTP/1.1" 200 -
+2025-11-09 14:13:07,753 - webui - INFO - WebUI client connected
+2025-11-09 14:13:07,755 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:13:07] "POST /socket.io/?EIO=4&transport=polling&t=PfdFpRs&sid=DcYAsQ3XltAi-bNhAAAC HTTP/1.1" 200 -
+2025-11-09 14:13:07,755 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:13:07] "GET /socket.io/?EIO=4&transport=polling&t=PfdFpRs.0&sid=DcYAsQ3XltAi-bNhAAAC HTTP/1.1" 200 -
+2025-11-09 14:13:19,080 - webui - INFO - WebUI client disconnected
+2025-11-09 14:13:19,080 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:13:19] "GET /socket.io/?EIO=4&transport=websocket&sid=DcYAsQ3XltAi-bNhAAAC HTTP/1.1" 200 -
+2025-11-09 14:13:19,401 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:13:19] "GET / HTTP/1.1" 200 -
+2025-11-09 14:13:19,437 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:13:19] "GET /socket.io/?EIO=4&transport=polling&t=PfdFsMx HTTP/1.1" 200 -
+2025-11-09 14:13:19,669 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:13:19] "GET /api/config HTTP/1.1" 200 -
+2025-11-09 14:13:19,763 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:13:19] "GET /api/status HTTP/1.1" 200 -
+2025-11-09 14:13:19,764 - webui - INFO - WebUI client connected
+2025-11-09 14:13:19,765 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:13:19] "POST /socket.io/?EIO=4&transport=polling&t=PfdFsNJ&sid=70cSoerWz8LkZX91AAAE HTTP/1.1" 200 -
+2025-11-09 14:13:19,766 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:13:19] "GET /socket.io/?EIO=4&transport=polling&t=PfdFsNK&sid=70cSoerWz8LkZX91AAAE HTTP/1.1" 200 -
+2025-11-09 14:13:46,628 - root - INFO - Context saved to context_history.json
+2025-11-09 14:13:46,631 - root - INFO - Main model resources cleaned up
+2025-11-09 14:13:46,638 - root - INFO - AI Live System stopped
+2025-11-09 14:21:19,262 - root - INFO - Logging setup completed
+2025-11-09 14:21:19,263 - root - INFO - AI Live System initializing...
+2025-11-09 14:21:19,263 - root - INFO - Initializing VDB Manager...
+2025-11-09 14:21:19,264 - root - INFO - VDB Manager with Ollama API initialized successfully
+2025-11-09 14:21:19,264 - root - INFO - Initializing Long Term Memory...
+2025-11-09 14:21:19,264 - root - INFO - Context summarizer initialized
+2025-11-09 14:21:19,265 - root - INFO - Long term memory system initialized
+2025-11-09 14:21:19,265 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-09 14:21:23,356 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000022D854A3620>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-09 14:21:23,356 - root - ERROR - Failed to connect to Ollama
+2025-11-09 14:21:23,357 - root - ERROR - Error loading context from file: name 'os' is not defined
+2025-11-09 14:21:23,357 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-09 14:21:23,357 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-09 14:21:23,358 - root - INFO - Initializing SenseVoice...
+2025-11-09 14:21:23,358 - root - INFO - SenseVoice recognizer initialized
+2025-11-09 14:21:23,358 - root - INFO - Voice trigger initialized
+2025-11-09 14:21:23,358 - root - INFO - Initializing Voice Output...
+2025-11-09 14:21:23,359 - root - INFO - CosyVoice synthesizer initialized
+2025-11-09 14:21:23,359 - root - INFO - Voice output manager initialized
+2025-11-09 14:21:23,359 - root - INFO - Initializing Content Moderation...
+2025-11-09 14:21:23,360 - root - INFO - Content moderation module initialized
+2025-11-09 14:21:23,360 - root - INFO - Content moderation module initialized
+2025-11-09 14:21:23,361 - root - INFO - Initializing Screen Manager...
+2025-11-09 14:21:23,361 - root - INFO - Screen manager initialized
+2025-11-09 14:21:23,361 - root - INFO - Initializing Tool Executor...
+2025-11-09 14:21:23,362 - root - INFO - Tool manager initialized
+2025-11-09 14:21:23,362 - root - INFO - Initializing WebUI Controller...
+2025-11-09 14:21:23,580 - root - INFO - Initializing Audio Recorder...
+2025-11-09 14:21:23,989 - root - INFO - Audio recorder initialized
+2025-11-09 14:21:23,989 - root - INFO - SenseVoice recognizer initialized
+2025-11-09 14:21:23,989 - root - INFO - All modules initialized successfully
+2025-11-09 14:21:23,990 - root - INFO - AI Live System initialized successfully
+2025-11-09 14:21:23,990 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-09 14:21:23,991 - root - INFO - Started listening for speech
+2025-11-09 14:21:24,078 - root - INFO - AI Live System started
+2025-11-09 14:21:24,079 - webui - INFO - Starting WebUI on 0.0.0.0:5000
+2025-11-09 14:21:24,091 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.3:5000
+2025-11-09 14:21:24,091 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-09 14:21:24,279 - root - INFO - Audio listener started, waiting for speech...
+2025-11-09 14:21:29,393 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:29] "GET /socket.io/?EIO=4&transport=polling&t=PfdHjvr HTTP/1.1" 200 -
+2025-11-09 14:21:29,659 - webui - INFO - WebUI client connected
+2025-11-09 14:21:29,660 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:29] "POST /socket.io/?EIO=4&transport=polling&t=PfdHj-r&sid=AXS-lX3AdyVnVF-_AAAA HTTP/1.1" 200 -
+2025-11-09 14:21:29,706 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:29] "GET /socket.io/?EIO=4&transport=polling&t=PfdHj-s&sid=AXS-lX3AdyVnVF-_AAAA HTTP/1.1" 200 -
+2025-11-09 14:21:29,711 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:29] "GET /socket.io/?EIO=4&transport=polling&t=PfdHk3j&sid=AXS-lX3AdyVnVF-_AAAA HTTP/1.1" 200 -
+2025-11-09 14:21:36,833 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:36] "POST /api/control HTTP/1.1" 200 -
+2025-11-09 14:21:39,714 - webui - INFO - WebUI client disconnected
+2025-11-09 14:21:39,714 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:39] "GET /socket.io/?EIO=4&transport=websocket&sid=AXS-lX3AdyVnVF-_AAAA HTTP/1.1" 200 -
+2025-11-09 14:21:39,729 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:39] "GET / HTTP/1.1" 200 -
+2025-11-09 14:21:40,035 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:40] "GET /socket.io/?EIO=4&transport=polling&t=PfdHmWx HTTP/1.1" 200 -
+2025-11-09 14:21:40,115 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:40] "GET /api/config HTTP/1.1" 200 -
+2025-11-09 14:21:40,116 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:40] "GET /api/status HTTP/1.1" 200 -
+2025-11-09 14:21:40,347 - webui - INFO - WebUI client connected
+2025-11-09 14:21:40,347 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:40] "POST /socket.io/?EIO=4&transport=polling&t=PfdHmb7&sid=jYgJijeXRZAfshIpAAAC HTTP/1.1" 200 -
+2025-11-09 14:21:40,350 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:40] "GET /socket.io/?EIO=4&transport=polling&t=PfdHmb8&sid=jYgJijeXRZAfshIpAAAC HTTP/1.1" 200 -
+2025-11-09 14:21:47,183 - webui - INFO - WebUI client disconnected
+2025-11-09 14:21:47,183 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:47] "GET /socket.io/?EIO=4&transport=websocket&sid=jYgJijeXRZAfshIpAAAC HTTP/1.1" 200 -
+2025-11-09 14:21:47,504 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:47] "GET / HTTP/1.1" 200 -
+2025-11-09 14:21:47,556 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:47] "GET /socket.io/?EIO=4&transport=polling&t=PfdHoQ2 HTTP/1.1" 200 -
+2025-11-09 14:21:47,752 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:47] "GET /api/config HTTP/1.1" 200 -
+2025-11-09 14:21:47,858 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:47] "GET /api/status HTTP/1.1" 200 -
+2025-11-09 14:21:47,874 - webui - INFO - WebUI client connected
+2025-11-09 14:21:47,875 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:47] "POST /socket.io/?EIO=4&transport=polling&t=PfdHoQf&sid=3DVsuyEfseY0FR-TAAAE HTTP/1.1" 200 -
+2025-11-09 14:21:47,876 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:21:47] "GET /socket.io/?EIO=4&transport=polling&t=PfdHoQh&sid=3DVsuyEfseY0FR-TAAAE HTTP/1.1" 200 -
+2025-11-09 14:22:11,814 - webui - INFO - WebUI client disconnected
+2025-11-09 14:22:11,815 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:22:11] "GET /socket.io/?EIO=4&transport=websocket&sid=3DVsuyEfseY0FR-TAAAE HTTP/1.1" 200 -
+2025-11-09 14:22:12,124 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:22:12] "GET / HTTP/1.1" 200 -
+2025-11-09 14:22:12,170 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:22:12] "GET /socket.io/?EIO=4&transport=polling&t=PfdHuQi HTTP/1.1" 200 -
+2025-11-09 14:22:12,392 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:22:12] "GET /api/config HTTP/1.1" 200 -
+2025-11-09 14:22:12,485 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:22:12] "GET /api/status HTTP/1.1" 200 -
+2025-11-09 14:22:12,486 - webui - INFO - WebUI client connected
+2025-11-09 14:22:12,487 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:22:12] "POST /socket.io/?EIO=4&transport=polling&t=PfdHuRD&sid=28Qm_RZG8nrE-0FkAAAG HTTP/1.1" 200 -
+2025-11-09 14:22:12,488 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 14:22:12] "GET /socket.io/?EIO=4&transport=polling&t=PfdHuRE&sid=28Qm_RZG8nrE-0FkAAAG HTTP/1.1" 200 -
+2025-11-09 14:22:58,761 - root - INFO - Context saved to context_history.json
+2025-11-09 14:22:58,762 - root - INFO - Main model resources cleaned up
+2025-11-09 14:22:58,771 - root - INFO - AI Live System stopped
+2025-11-09 21:39:55,118 - root - INFO - Logging setup completed
+2025-11-09 21:39:55,119 - root - INFO - AI Live System initializing...
+2025-11-09 21:39:55,119 - root - INFO - Initializing VDB Manager...
+2025-11-09 21:39:55,119 - root - INFO - VDB Manager with Ollama API initialized successfully
+2025-11-09 21:39:55,120 - root - INFO - Initializing Long Term Memory...
+2025-11-09 21:39:55,120 - root - INFO - Context summarizer initialized
+2025-11-09 21:39:55,120 - root - INFO - Long term memory system initialized
+2025-11-09 21:39:55,120 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-09 21:39:59,214 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000273F9583620>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-09 21:39:59,215 - root - ERROR - Failed to connect to Ollama
+2025-11-09 21:39:59,215 - root - ERROR - Error loading context from file: name 'os' is not defined
+2025-11-09 21:39:59,216 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-09 21:39:59,216 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-09 21:39:59,216 - root - INFO - Initializing SenseVoice...
+2025-11-09 21:39:59,216 - root - INFO - SenseVoice recognizer initialized
+2025-11-09 21:39:59,217 - root - INFO - Voice trigger initialized
+2025-11-09 21:39:59,217 - root - INFO - Initializing Voice Output...
+2025-11-09 21:39:59,217 - root - INFO - CosyVoice synthesizer initialized
+2025-11-09 21:39:59,218 - root - INFO - Voice output manager initialized
+2025-11-09 21:39:59,218 - root - INFO - Initializing Content Moderation...
+2025-11-09 21:39:59,218 - root - INFO - Content moderation module initialized
+2025-11-09 21:39:59,219 - root - INFO - Content moderation module initialized
+2025-11-09 21:39:59,219 - root - INFO - Initializing Screen Manager...
+2025-11-09 21:39:59,219 - root - INFO - Screen manager initialized
+2025-11-09 21:39:59,219 - root - INFO - Initializing Tool Executor...
+2025-11-09 21:39:59,220 - root - INFO - Tool manager initialized
+2025-11-09 21:39:59,220 - root - INFO - Initializing WebUI Controller...
+2025-11-09 21:39:59,491 - root - INFO - Initializing Audio Recorder...
+2025-11-09 21:39:59,898 - root - INFO - Audio recorder initialized
+2025-11-09 21:39:59,898 - root - INFO - SenseVoice recognizer initialized
+2025-11-09 21:39:59,898 - root - INFO - All modules initialized successfully
+2025-11-09 21:39:59,899 - root - INFO - AI Live System initialized successfully
+2025-11-09 21:39:59,899 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-09 21:39:59,899 - root - INFO - Started listening for speech
+2025-11-09 21:39:59,990 - root - INFO - AI Live System started
+2025-11-09 21:39:59,991 - webui - INFO - Starting WebUI on 0.0.0.0:5000
+2025-11-09 21:40:00,008 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.3:5000
+2025-11-09 21:40:00,009 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-09 21:40:00,177 - root - INFO - Audio listener started, waiting for speech...
+2025-11-09 21:40:09,532 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:09] "GET /socket.io/?EIO=4&transport=polling&t=Pfes7jg HTTP/1.1" 200 -
+2025-11-09 21:40:09,797 - webui - INFO - WebUI client connected
+2025-11-09 21:40:09,798 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:09] "POST /socket.io/?EIO=4&transport=polling&t=Pfes7p0&sid=BUu8OkhvJ1MGkcetAAAA HTTP/1.1" 200 -
+2025-11-09 21:40:09,845 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:09] "GET /socket.io/?EIO=4&transport=polling&t=Pfes7p6&sid=BUu8OkhvJ1MGkcetAAAA HTTP/1.1" 200 -
+2025-11-09 21:40:09,856 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:09] "GET /socket.io/?EIO=4&transport=polling&t=Pfes7ty&sid=BUu8OkhvJ1MGkcetAAAA HTTP/1.1" 200 -
+2025-11-09 21:40:10,685 - webui - INFO - WebUI client disconnected
+2025-11-09 21:40:10,685 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:10] "GET /socket.io/?EIO=4&transport=websocket&sid=BUu8OkhvJ1MGkcetAAAA HTTP/1.1" 200 -
+2025-11-09 21:40:11,008 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:11] "GET / HTTP/1.1" 200 -
+2025-11-09 21:40:11,052 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:11] "GET /socket.io/?EIO=4&transport=polling&t=Pfes8Ae HTTP/1.1" 200 -
+2025-11-09 21:40:11,254 - webui - INFO - WebUI client connected
+2025-11-09 21:40:11,254 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:11] "POST /socket.io/?EIO=4&transport=polling&t=Pfes8Az&sid=VOHwpYPvB1rn46G8AAAC HTTP/1.1" 200 -
+2025-11-09 21:40:11,396 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:11] "GET /socket.io/?EIO=4&transport=polling&t=Pfes8A-&sid=VOHwpYPvB1rn46G8AAAC HTTP/1.1" 200 -
+2025-11-09 21:40:11,397 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:11] "GET /api/config HTTP/1.1" 200 -
+2025-11-09 21:40:11,398 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:11] "GET /api/status HTTP/1.1" 200 -
+2025-11-09 21:40:18,305 - webui - INFO - WebUI client disconnected
+2025-11-09 21:40:18,305 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:18] "GET /socket.io/?EIO=4&transport=websocket&sid=VOHwpYPvB1rn46G8AAAC HTTP/1.1" 200 -
+2025-11-09 21:40:18,627 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:18] "GET / HTTP/1.1" 200 -
+2025-11-09 21:40:18,661 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:18] "GET /socket.io/?EIO=4&transport=polling&t=PfesA1J HTTP/1.1" 200 -
+2025-11-09 21:40:18,877 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:18] "GET /api/config HTTP/1.1" 200 -
+2025-11-09 21:40:18,972 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:18] "GET /api/status HTTP/1.1" 200 -
+2025-11-09 21:40:18,972 - webui - INFO - WebUI client connected
+2025-11-09 21:40:18,973 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:18] "POST /socket.io/?EIO=4&transport=polling&t=PfesA1e&sid=yL5iPrKxcwiDYTF1AAAE HTTP/1.1" 200 -
+2025-11-09 21:40:18,974 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:18] "GET /socket.io/?EIO=4&transport=polling&t=PfesA1f&sid=yL5iPrKxcwiDYTF1AAAE HTTP/1.1" 200 -
+2025-11-09 21:40:19,853 - webui - INFO - WebUI client disconnected
+2025-11-09 21:40:19,853 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:19] "GET /socket.io/?EIO=4&transport=websocket&sid=yL5iPrKxcwiDYTF1AAAE HTTP/1.1" 200 -
+2025-11-09 21:40:20,163 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:20] "GET / HTTP/1.1" 200 -
+2025-11-09 21:40:20,211 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:20] "GET /socket.io/?EIO=4&transport=polling&t=PfesAPJ HTTP/1.1" 200 -
+2025-11-09 21:40:20,425 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:20] "GET /api/config HTTP/1.1" 200 -
+2025-11-09 21:40:20,534 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:20] "GET /api/status HTTP/1.1" 200 -
+2025-11-09 21:40:20,535 - webui - INFO - WebUI client connected
+2025-11-09 21:40:20,536 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:20] "POST /socket.io/?EIO=4&transport=polling&t=PfesAPz&sid=0ANVVvhWgqVVJUYLAAAG HTTP/1.1" 200 -
+2025-11-09 21:40:20,536 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:20] "GET /socket.io/?EIO=4&transport=polling&t=PfesAP-&sid=0ANVVvhWgqVVJUYLAAAG HTTP/1.1" 200 -
+2025-11-09 21:40:25,176 - webui - INFO - WebUI client disconnected
+2025-11-09 21:40:25,176 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2025 21:40:25] "GET /socket.io/?EIO=4&transport=websocket&sid=0ANVVvhWgqVVJUYLAAAG HTTP/1.1" 200 -
+2025-11-09 21:40:28,138 - root - INFO - Context saved to context_history.json
+2025-11-09 21:40:28,138 - root - INFO - Main model resources cleaned up
+2025-11-09 21:40:28,150 - root - INFO - AI Live System stopped
+2025-11-14 22:43:52,549 - root - INFO - Logging setup completed
+2025-11-14 22:43:52,550 - root - INFO - AI Live System initializing...
+2025-11-14 22:43:52,550 - root - INFO - Initializing VDB Manager...
+2025-11-14 22:43:52,550 - root - INFO - VDB Manager with Ollama API initialized successfully
+2025-11-14 22:43:52,551 - root - INFO - Initializing Long Term Memory...
+2025-11-14 22:43:52,551 - root - INFO - Context summarizer initialized
+2025-11-14 22:43:52,551 - root - INFO - Long term memory system initialized
+2025-11-14 22:43:52,551 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-14 22:43:56,637 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020098B17770>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-14 22:43:56,637 - root - ERROR - Failed to connect to Ollama
+2025-11-14 22:43:56,638 - root - ERROR - Error loading context from file: name 'os' is not defined
+2025-11-14 22:43:56,638 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-14 22:43:56,638 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-14 22:43:56,638 - root - INFO - Initializing SenseVoice...
+2025-11-14 22:43:56,638 - root - INFO - SenseVoice recognizer initialized
+2025-11-14 22:43:56,638 - root - INFO - Voice trigger initialized
+2025-11-14 22:43:56,638 - root - INFO - Initializing Voice Output...
+2025-11-14 22:43:56,639 - root - INFO - CosyVoice synthesizer initialized
+2025-11-14 22:43:56,639 - root - INFO - Voice output manager initialized
+2025-11-14 22:43:56,639 - root - INFO - Initializing Content Moderation...
+2025-11-14 22:43:56,639 - root - INFO - Content moderation module initialized
+2025-11-14 22:43:56,640 - root - INFO - Content moderation module initialized
+2025-11-14 22:43:56,640 - root - INFO - Initializing Screen Manager...
+2025-11-14 22:43:56,640 - root - INFO - Screen manager initialized
+2025-11-14 22:43:56,640 - root - INFO - Initializing Tool Executor...
+2025-11-14 22:43:56,640 - root - INFO - Tool manager initialized
+2025-11-14 22:43:56,641 - root - INFO - Initializing WebUI Controller...
+2025-11-14 22:43:56,641 - root - INFO - Initializing Audio Recorder...
+2025-11-14 22:43:57,033 - root - INFO - Audio recorder initialized
+2025-11-14 22:43:57,033 - root - INFO - SenseVoice recognizer initialized
+2025-11-14 22:43:57,033 - root - INFO - All modules initialized successfully
+2025-11-14 22:43:57,033 - root - INFO - AI Live System initialized successfully
+2025-11-14 22:43:57,034 - root - INFO - Context saved to context_history.json
+2025-11-14 22:43:57,034 - root - INFO - Main model resources cleaned up
+2025-11-14 22:43:57,035 - root - INFO - AI Live System stopped
+2025-11-14 22:51:59,767 - root - INFO - Logging setup completed
+2025-11-14 22:51:59,768 - root - INFO - AI Live System initializing...
+2025-11-14 22:51:59,768 - root - INFO - Initializing VDB Manager...
+2025-11-14 22:51:59,768 - root - INFO - VDB Manager with Ollama API initialized successfully
+2025-11-14 22:51:59,768 - root - INFO - Initializing Long Term Memory...
+2025-11-14 22:51:59,768 - root - INFO - Context summarizer initialized
+2025-11-14 22:51:59,768 - root - INFO - Long term memory system initialized
+2025-11-14 22:51:59,768 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-14 22:52:03,820 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001CFBB943770>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-14 22:52:03,820 - root - ERROR - Failed to connect to Ollama
+2025-11-14 22:52:03,820 - root - ERROR - Error loading context from file: name 'os' is not defined
+2025-11-14 22:52:03,820 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-14 22:52:03,820 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-14 22:52:03,820 - root - INFO - Initializing SenseVoice...
+2025-11-14 22:52:03,821 - root - INFO - SenseVoice recognizer initialized
+2025-11-14 22:52:03,821 - root - INFO - Voice trigger initialized
+2025-11-14 22:52:03,821 - root - INFO - Initializing Voice Output...
+2025-11-14 22:52:03,821 - root - INFO - CosyVoice synthesizer initialized
+2025-11-14 22:52:03,821 - root - INFO - Voice output manager initialized
+2025-11-14 22:52:03,821 - root - INFO - Initializing Content Moderation...
+2025-11-14 22:52:03,821 - root - INFO - Content moderation module initialized
+2025-11-14 22:52:03,822 - root - INFO - Content moderation module initialized
+2025-11-14 22:52:03,822 - root - INFO - Initializing Screen Manager...
+2025-11-14 22:52:03,822 - root - INFO - Screen manager initialized
+2025-11-14 22:52:03,822 - root - INFO - Initializing Tool Executor...
+2025-11-14 22:52:03,822 - root - INFO - Tool manager initialized
+2025-11-14 22:52:03,822 - root - INFO - Initializing WebUI Controller...
+2025-11-14 22:52:03,823 - root - INFO - Initializing Audio Recorder...
+2025-11-14 22:52:04,209 - root - INFO - Audio recorder initialized
+2025-11-14 22:52:04,209 - root - INFO - SenseVoice recognizer initialized
+2025-11-14 22:52:04,209 - root - INFO - All modules initialized successfully
+2025-11-14 22:52:04,209 - root - INFO - AI Live System initialized successfully
+2025-11-14 22:52:04,210 - root - INFO - Context saved to context_history.json
+2025-11-14 22:52:04,210 - root - INFO - Main model resources cleaned up
+2025-11-14 22:52:04,211 - root - INFO - AI Live System stopped
+2025-11-14 22:52:48,516 - root - INFO - Logging setup completed
+2025-11-14 22:52:48,516 - root - INFO - AI Live System initializing...
+2025-11-14 22:52:48,516 - root - INFO - Initializing VDB Manager...
+2025-11-14 22:52:48,517 - root - INFO - VDB Manager with Ollama API initialized successfully
+2025-11-14 22:52:48,517 - root - INFO - Initializing Long Term Memory...
+2025-11-14 22:52:48,517 - root - INFO - Context summarizer initialized
+2025-11-14 22:52:48,517 - root - INFO - Long term memory system initialized
+2025-11-14 22:52:48,517 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-14 22:52:52,610 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000167E1C33770>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-14 22:52:52,610 - root - ERROR - Failed to connect to Ollama
+2025-11-14 22:52:52,611 - root - INFO - Context loaded from context_history.json
+2025-11-14 22:52:52,611 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-14 22:52:52,611 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-14 22:52:52,611 - root - INFO - Initializing SenseVoice...
+2025-11-14 22:52:52,611 - root - INFO - SenseVoice recognizer initialized
+2025-11-14 22:52:52,611 - root - INFO - Voice trigger initialized
+2025-11-14 22:52:52,611 - root - INFO - Initializing Voice Output...
+2025-11-14 22:52:52,612 - root - INFO - CosyVoice synthesizer initialized
+2025-11-14 22:52:52,612 - root - INFO - Voice output manager initialized
+2025-11-14 22:52:52,612 - root - INFO - Initializing Content Moderation...
+2025-11-14 22:52:52,612 - root - INFO - Content moderation module initialized
+2025-11-14 22:52:52,612 - root - INFO - Content moderation module initialized
+2025-11-14 22:52:52,612 - root - INFO - Initializing Screen Manager...
+2025-11-14 22:52:52,613 - root - INFO - Screen manager initialized
+2025-11-14 22:52:52,613 - root - INFO - Initializing Tool Executor...
+2025-11-14 22:52:52,613 - root - INFO - Tool manager initialized
+2025-11-14 22:52:52,613 - root - INFO - Initializing WebUI Controller...
+2025-11-14 22:52:52,613 - root - INFO - Initializing Audio Recorder...
+2025-11-14 22:52:52,996 - root - INFO - Audio recorder initialized
+2025-11-14 22:52:52,996 - root - INFO - SenseVoice recognizer initialized
+2025-11-14 22:52:52,996 - root - INFO - All modules initialized successfully
+2025-11-14 22:52:52,996 - root - INFO - AI Live System initialized successfully
+2025-11-14 22:52:52,998 - root - INFO - Context saved to context_history.json
+2025-11-14 22:52:52,998 - root - INFO - Main model resources cleaned up
+2025-11-14 22:52:52,999 - root - INFO - AI Live System stopped
+2025-11-14 23:00:12,786 - root - INFO - Logging setup completed
+2025-11-14 23:00:12,787 - root - INFO - AI Live System initializing...
+2025-11-14 23:00:12,787 - root - INFO - Initializing VDB Manager...
+2025-11-14 23:00:26,101 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-14 23:00:26,101 - root - INFO - Falling back to simulated embedding approach
+2025-11-14 23:00:26,102 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-14 23:00:26,102 - root - INFO - Initializing Long Term Memory...
+2025-11-14 23:00:26,102 - root - INFO - Context summarizer initialized
+2025-11-14 23:00:26,102 - root - INFO - Long term memory system initialized
+2025-11-14 23:00:26,102 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-14 23:00:30,175 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000258DA573E00>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-14 23:00:30,175 - root - ERROR - Failed to connect to Ollama
+2025-11-14 23:00:30,176 - root - INFO - Context loaded from context_history.json
+2025-11-14 23:00:30,176 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-14 23:00:30,176 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-14 23:00:30,176 - root - INFO - Initializing SenseVoice...
+2025-11-14 23:00:30,177 - root - INFO - SenseVoice recognizer initialized
+2025-11-14 23:00:30,177 - root - INFO - Voice trigger initialized
+2025-11-14 23:00:30,177 - root - INFO - Initializing Voice Output...
+2025-11-14 23:00:30,177 - root - INFO - CosyVoice synthesizer initialized
+2025-11-14 23:00:30,177 - root - INFO - Voice output manager initialized
+2025-11-14 23:00:30,177 - root - INFO - Initializing Content Moderation...
+2025-11-14 23:00:30,178 - root - INFO - Content moderation module initialized
+2025-11-14 23:00:30,178 - root - INFO - Content moderation module initialized
+2025-11-14 23:00:30,178 - root - INFO - Initializing Screen Manager...
+2025-11-14 23:00:30,178 - root - INFO - Screen manager initialized
+2025-11-14 23:00:30,178 - root - INFO - Initializing Tool Executor...
+2025-11-14 23:00:30,179 - root - INFO - Tool manager initialized
+2025-11-14 23:00:30,179 - root - INFO - Initializing WebUI Controller...
+2025-11-14 23:00:30,179 - root - INFO - Initializing Audio Recorder...
+2025-11-14 23:00:30,195 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-14 23:00:30,563 - root - INFO - Audio recorder initialized
+2025-11-14 23:00:30,563 - root - INFO - SenseVoice recognizer initialized
+2025-11-14 23:00:30,563 - root - INFO - All modules initialized successfully
+2025-11-14 23:00:30,563 - root - INFO - AI Live System initialized successfully
+2025-11-14 23:00:30,564 - root - INFO - Context saved to context_history.json
+2025-11-14 23:00:30,564 - root - INFO - Main model resources cleaned up
+2025-11-14 23:00:30,565 - root - INFO - AI Live System stopped
+2025-11-14 23:07:01,573 - root - INFO - Logging setup completed
+2025-11-14 23:07:01,573 - root - INFO - AI Live System initializing...
+2025-11-14 23:07:01,573 - root - INFO - Initializing VDB Manager...
+2025-11-14 23:07:14,867 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-14 23:07:14,867 - root - INFO - Falling back to simulated embedding approach
+2025-11-14 23:07:14,868 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-14 23:07:14,868 - root - INFO - Initializing Long Term Memory...
+2025-11-14 23:07:14,868 - root - INFO - Context summarizer initialized
+2025-11-14 23:07:14,868 - root - INFO - Long term memory system initialized
+2025-11-14 23:07:14,868 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-14 23:07:18,920 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001C64A967E00>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-14 23:07:18,920 - root - ERROR - Failed to connect to Ollama
+2025-11-14 23:07:18,921 - root - INFO - Context loaded from context_history.json
+2025-11-14 23:07:18,921 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-14 23:07:18,921 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-14 23:07:18,921 - root - INFO - Initializing SenseVoice...
+2025-11-14 23:07:18,922 - root - INFO - SenseVoice recognizer initialized
+2025-11-14 23:07:18,922 - root - INFO - Voice trigger initialized
+2025-11-14 23:07:18,922 - root - INFO - Initializing Voice Output...
+2025-11-14 23:07:18,922 - root - INFO - CosyVoice synthesizer initialized
+2025-11-14 23:07:18,922 - root - INFO - Voice output manager initialized
+2025-11-14 23:07:18,922 - root - INFO - Initializing Content Moderation...
+2025-11-14 23:07:18,923 - root - INFO - Content moderation module initialized
+2025-11-14 23:07:18,923 - root - INFO - Content moderation module initialized
+2025-11-14 23:07:18,923 - root - INFO - Initializing Screen Manager...
+2025-11-14 23:07:18,923 - root - INFO - Screen manager initialized
+2025-11-14 23:07:18,923 - root - INFO - Initializing Tool Executor...
+2025-11-14 23:07:18,924 - root - INFO - Tool manager initialized
+2025-11-14 23:07:18,924 - root - INFO - Initializing WebUI Controller...
+2025-11-14 23:07:18,924 - root - INFO - Initializing Audio Recorder...
+2025-11-14 23:07:18,936 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-14 23:07:19,306 - root - INFO - Audio recorder initialized
+2025-11-14 23:07:19,307 - root - INFO - SenseVoice recognizer initialized
+2025-11-14 23:07:19,307 - root - INFO - All modules initialized successfully
+2025-11-14 23:07:19,307 - root - INFO - AI Live System initialized successfully
+2025-11-14 23:07:19,308 - root - INFO - Context saved to context_history.json
+2025-11-14 23:07:19,308 - root - INFO - Main model resources cleaned up
+2025-11-14 23:07:19,309 - root - INFO - AI Live System stopped
+2025-11-14 23:09:13,273 - root - INFO - Logging setup completed
+2025-11-14 23:09:13,274 - root - INFO - AI Live System initializing...
+2025-11-14 23:09:13,274 - root - INFO - Initializing VDB Manager...
+2025-11-14 23:09:26,489 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-14 23:09:26,490 - root - INFO - Falling back to simulated embedding approach
+2025-11-14 23:09:26,491 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-14 23:09:26,491 - root - INFO - Initializing Long Term Memory...
+2025-11-14 23:09:26,491 - root - INFO - Context summarizer initialized
+2025-11-14 23:09:26,491 - root - INFO - Long term memory system initialized
+2025-11-14 23:09:26,491 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-14 23:09:30,535 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001FB2B05BCB0>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-14 23:09:30,536 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-14 23:09:30,536 - root - ERROR - Failed to connect to Ollama
+2025-11-14 23:09:30,537 - root - INFO - Context loaded from context_history.json
+2025-11-14 23:09:30,537 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-14 23:09:30,537 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-14 23:09:30,537 - root - INFO - Initializing SenseVoice...
+2025-11-14 23:09:30,537 - root - INFO - SenseVoice recognizer initialized
+2025-11-14 23:09:30,538 - root - INFO - Voice trigger initialized
+2025-11-14 23:09:30,538 - root - INFO - Initializing Voice Output...
+2025-11-14 23:09:30,538 - root - INFO - CosyVoice synthesizer initialized
+2025-11-14 23:09:30,538 - root - INFO - Voice output manager initialized
+2025-11-14 23:09:30,538 - root - INFO - Initializing Content Moderation...
+2025-11-14 23:09:30,539 - root - INFO - Content moderation module initialized
+2025-11-14 23:09:30,539 - root - INFO - Content moderation module initialized
+2025-11-14 23:09:30,539 - root - INFO - Initializing Screen Manager...
+2025-11-14 23:09:30,539 - root - INFO - Screen manager initialized
+2025-11-14 23:09:30,539 - root - INFO - Initializing Tool Executor...
+2025-11-14 23:09:30,540 - root - INFO - Tool manager initialized
+2025-11-14 23:09:30,540 - root - INFO - Initializing WebUI Controller...
+2025-11-14 23:09:30,686 - root - INFO - Initializing Audio Recorder...
+2025-11-14 23:09:31,077 - root - INFO - Audio recorder initialized
+2025-11-14 23:09:31,077 - root - INFO - SenseVoice recognizer initialized
+2025-11-14 23:09:31,077 - root - INFO - All modules initialized successfully
+2025-11-14 23:09:31,077 - root - INFO - AI Live System initialized successfully
+2025-11-14 23:09:31,078 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-14 23:09:31,078 - root - INFO - Started listening for speech
+2025-11-14 23:09:31,216 - root - INFO - AI Live System started
+2025-11-14 23:09:31,217 - webui - INFO - Starting WebUI on 0.0.0.0:5000
+2025-11-14 23:09:31,227 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.3:5000
+2025-11-14 23:09:31,227 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-14 23:09:31,322 - root - INFO - Audio listener started, waiting for speech...
+2025-11-14 23:09:40,505 - werkzeug - INFO - 127.0.0.1 - - [14/Nov/2025 23:09:40] "GET / HTTP/1.1" 200 -
+2025-11-14 23:09:52,544 - werkzeug - INFO - 127.0.0.1 - - [14/Nov/2025 23:09:52] "GET /socket.io/?EIO=4&transport=polling&t=Pg2wcmS HTTP/1.1" 200 -
+2025-11-14 23:09:52,587 - webui - INFO - WebUI client connected
+2025-11-14 23:09:52,588 - werkzeug - INFO - 127.0.0.1 - - [14/Nov/2025 23:09:52] "POST /socket.io/?EIO=4&transport=polling&t=Pg2wcn7&sid=KGCWN80K6EHuxqdvAAAA HTTP/1.1" 200 -
+2025-11-14 23:09:52,591 - werkzeug - INFO - 127.0.0.1 - - [14/Nov/2025 23:09:52] "GET /socket.io/?EIO=4&transport=polling&t=Pg2wcn7.0&sid=KGCWN80K6EHuxqdvAAAA HTTP/1.1" 200 -
+2025-11-14 23:09:52,603 - werkzeug - INFO - 127.0.0.1 - - [14/Nov/2025 23:09:52] "GET /api/config HTTP/1.1" 200 -
+2025-11-14 23:09:52,605 - werkzeug - INFO - 127.0.0.1 - - [14/Nov/2025 23:09:52] "GET /api/status HTTP/1.1" 200 -
+2025-11-14 23:09:52,606 - werkzeug - INFO - 127.0.0.1 - - [14/Nov/2025 23:09:52] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-14 23:10:02,883 - webui - INFO - WebUI client disconnected
+2025-11-14 23:10:02,883 - werkzeug - INFO - 127.0.0.1 - - [14/Nov/2025 23:10:02] "GET /socket.io/?EIO=4&transport=websocket&sid=KGCWN80K6EHuxqdvAAAA HTTP/1.1" 200 -
+2025-11-14 23:10:13,398 - root - INFO - Context saved to context_history.json
+2025-11-14 23:10:13,398 - root - INFO - Main model resources cleaned up
+2025-11-14 23:10:13,409 - root - INFO - AI Live System stopped
+2025-11-14 23:13:21,521 - root - INFO - Logging setup completed
+2025-11-14 23:13:21,522 - root - INFO - AI Live System initializing...
+2025-11-14 23:13:21,522 - root - INFO - Initializing VDB Manager...
+2025-11-14 23:13:34,801 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-14 23:13:34,802 - root - INFO - Falling back to simulated embedding approach
+2025-11-14 23:13:34,803 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-14 23:13:34,803 - root - INFO - Initializing Long Term Memory...
+2025-11-14 23:13:34,803 - root - INFO - Context summarizer initialized
+2025-11-14 23:13:34,805 - root - INFO - Long term memory system initialized
+2025-11-14 23:13:34,805 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-14 23:13:38,828 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000019B4531BCB0>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-14 23:13:38,829 - root - ERROR - Failed to connect to Ollama
+2025-11-14 23:13:38,830 - root - INFO - Context loaded from context_history.json
+2025-11-14 23:13:38,830 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-14 23:13:38,830 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-14 23:13:38,830 - root - INFO - Initializing SenseVoice...
+2025-11-14 23:13:38,831 - root - INFO - SenseVoice recognizer initialized
+2025-11-14 23:13:38,831 - root - INFO - Voice trigger initialized
+2025-11-14 23:13:38,831 - root - INFO - Initializing Voice Output...
+2025-11-14 23:13:38,831 - root - INFO - CosyVoice synthesizer initialized
+2025-11-14 23:13:38,831 - root - INFO - Voice output manager initialized
+2025-11-14 23:13:38,832 - root - INFO - Initializing Content Moderation...
+2025-11-14 23:13:38,832 - root - INFO - Content moderation module initialized
+2025-11-14 23:13:38,832 - root - INFO - Content moderation module initialized
+2025-11-14 23:13:38,832 - root - INFO - Initializing Screen Manager...
+2025-11-14 23:13:38,833 - root - INFO - Screen manager initialized
+2025-11-14 23:13:38,833 - root - INFO - Initializing Tool Executor...
+2025-11-14 23:13:38,833 - root - INFO - Tool manager initialized
+2025-11-14 23:13:38,833 - root - INFO - Initializing WebUI Controller...
+2025-11-14 23:13:38,844 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-14 23:13:38,978 - root - INFO - Initializing Audio Recorder...
+2025-11-14 23:13:39,368 - root - INFO - Audio recorder initialized
+2025-11-14 23:13:39,368 - root - INFO - SenseVoice recognizer initialized
+2025-11-14 23:13:39,368 - root - INFO - All modules initialized successfully
+2025-11-14 23:13:39,368 - root - INFO - AI Live System initialized successfully
+2025-11-14 23:13:39,369 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-14 23:13:39,369 - root - INFO - Started listening for speech
+2025-11-14 23:13:39,499 - root - INFO - AI Live System started
+2025-11-14 23:13:39,500 - webui - INFO - Starting WebUI on 0.0.0.0:5000
+2025-11-14 23:13:39,516 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.3:5000
+2025-11-14 23:13:39,517 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-14 23:13:39,534 - root - INFO - Audio listener started, waiting for speech...
+2025-11-14 23:13:47,430 - root - INFO - Context saved to context_history.json
+2025-11-14 23:13:47,431 - root - INFO - Main model resources cleaned up
+2025-11-14 23:13:47,447 - root - INFO - AI Live System stopped
+2025-11-15 13:08:52,823 - root - INFO - Logging setup completed
+2025-11-15 13:08:52,823 - root - INFO - AI Live System initializing...
+2025-11-15 13:08:52,823 - root - INFO - Initializing VDB Manager...
+2025-11-15 13:09:06,220 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 13:09:06,220 - root - INFO - Falling back to simulated embedding approach
+2025-11-15 13:09:06,221 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-15 13:09:06,222 - root - INFO - Initializing Long Term Memory...
+2025-11-15 13:09:06,222 - root - INFO - Context summarizer initialized
+2025-11-15 13:09:06,222 - root - INFO - Long term memory system initialized
+2025-11-15 13:09:06,222 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-15 13:09:10,287 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000026C2617BCB0>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-15 13:09:10,287 - root - ERROR - Failed to connect to Ollama
+2025-11-15 13:09:10,287 - root - ERROR - Error generating context summary: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 13:09:10,287 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 13:09:10,288 - root - INFO - Context loaded from context_history.json
+2025-11-15 13:09:10,288 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-15 13:09:10,288 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-15 13:09:10,288 - root - INFO - Initializing SenseVoice...
+2025-11-15 13:09:10,288 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 13:09:10,288 - root - INFO - Voice trigger initialized
+2025-11-15 13:09:10,288 - root - INFO - Initializing Voice Output...
+2025-11-15 13:09:10,288 - root - INFO - CosyVoice synthesizer initialized
+2025-11-15 13:09:10,288 - root - INFO - Voice output manager initialized
+2025-11-15 13:09:10,289 - root - INFO - Initializing Content Moderation...
+2025-11-15 13:09:10,289 - root - INFO - Content moderation module initialized
+2025-11-15 13:09:10,289 - root - INFO - Content moderation module initialized
+2025-11-15 13:09:10,289 - root - INFO - Initializing Screen Manager...
+2025-11-15 13:09:10,289 - root - INFO - Screen manager initialized
+2025-11-15 13:09:10,289 - root - INFO - Initializing Tool Executor...
+2025-11-15 13:09:10,289 - root - INFO - Tool manager initialized
+2025-11-15 13:09:10,289 - root - INFO - Initializing WebUI Controller...
+2025-11-15 13:09:10,290 - root - INFO - Initializing Audio Recorder...
+2025-11-15 13:09:10,699 - root - INFO - Audio recorder initialized
+2025-11-15 13:09:10,699 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 13:09:10,699 - root - INFO - All modules initialized successfully
+2025-11-15 13:09:10,699 - root - INFO - AI Live System initialized successfully
+2025-11-15 13:09:10,701 - root - INFO - Context saved to context_history.json
+2025-11-15 13:09:10,701 - root - INFO - Main model resources cleaned up
+2025-11-15 13:09:10,702 - root - INFO - AI Live System stopped
+2025-11-15 13:11:52,644 - root - INFO - Logging setup completed
+2025-11-15 13:11:52,645 - root - INFO - AI Live System initializing...
+2025-11-15 13:11:52,645 - root - INFO - Initializing VDB Manager...
+2025-11-15 13:12:05,890 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 13:12:05,891 - root - INFO - Falling back to simulated embedding approach
+2025-11-15 13:12:05,892 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-15 13:12:05,892 - root - INFO - Initializing Long Term Memory...
+2025-11-15 13:12:05,893 - root - INFO - Context summarizer initialized
+2025-11-15 13:12:05,893 - root - INFO - Long term memory system initialized
+2025-11-15 13:12:05,893 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-15 13:12:09,954 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A77900BCB0>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-15 13:12:09,954 - root - ERROR - Error generating context summary: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 13:12:09,954 - root - ERROR - Failed to connect to Ollama
+2025-11-15 13:12:09,954 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 13:12:09,955 - root - INFO - Context loaded from context_history.json
+2025-11-15 13:12:09,955 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-15 13:12:09,955 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-15 13:12:09,955 - root - INFO - Initializing SenseVoice...
+2025-11-15 13:12:09,956 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 13:12:09,956 - root - INFO - Voice trigger initialized
+2025-11-15 13:12:09,956 - root - INFO - Initializing Voice Output...
+2025-11-15 13:12:09,956 - root - INFO - CosyVoice synthesizer initialized
+2025-11-15 13:12:09,956 - root - INFO - Voice output manager initialized
+2025-11-15 13:12:09,956 - root - INFO - Initializing Content Moderation...
+2025-11-15 13:12:09,957 - root - INFO - Content moderation module initialized
+2025-11-15 13:12:09,957 - root - INFO - Content moderation module initialized
+2025-11-15 13:12:09,957 - root - INFO - Initializing Screen Manager...
+2025-11-15 13:12:09,957 - root - INFO - Screen manager initialized
+2025-11-15 13:12:09,957 - root - INFO - Initializing Tool Executor...
+2025-11-15 13:12:09,958 - root - INFO - Tool manager initialized
+2025-11-15 13:12:09,958 - root - INFO - Initializing WebUI Controller...
+2025-11-15 13:12:09,958 - root - INFO - Initializing Audio Recorder...
+2025-11-15 13:12:10,358 - root - INFO - Audio recorder initialized
+2025-11-15 13:12:10,358 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 13:12:10,358 - root - INFO - All modules initialized successfully
+2025-11-15 13:12:10,358 - root - INFO - AI Live System initialized successfully
+2025-11-15 13:12:10,359 - root - INFO - Context saved to context_history.json
+2025-11-15 13:12:10,360 - root - INFO - Main model resources cleaned up
+2025-11-15 13:12:10,361 - root - INFO - AI Live System stopped
+2025-11-15 13:28:18,561 - root - INFO - Logging setup completed
+2025-11-15 13:28:18,561 - root - INFO - AI Live System initializing...
+2025-11-15 13:28:18,561 - root - INFO - Initializing VDB Manager...
+2025-11-15 13:28:32,315 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 13:28:32,315 - root - INFO - Falling back to simulated embedding approach
+2025-11-15 13:28:32,317 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-15 13:28:32,317 - root - INFO - Initializing Long Term Memory...
+2025-11-15 13:28:32,317 - root - INFO - Context summarizer initialized
+2025-11-15 13:28:32,317 - root - INFO - Long term memory system initialized
+2025-11-15 13:28:32,318 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-15 13:28:36,405 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 13:28:36,406 - root - ERROR - Error generating context summary: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 13:28:36,406 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001CDBEF74050>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-15 13:28:36,406 - root - ERROR - Failed to connect to Ollama
+2025-11-15 13:28:36,407 - root - INFO - Context file context_short_term.json does not exist, returning empty context
+2025-11-15 13:28:36,407 - root - INFO - Context file context_medium_term.json does not exist, returning empty context
+2025-11-15 13:28:36,407 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 13:28:36,407 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-15 13:28:36,407 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-15 13:28:36,407 - root - INFO - Initializing SenseVoice...
+2025-11-15 13:28:36,408 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 13:28:36,408 - root - INFO - Voice trigger initialized
+2025-11-15 13:28:36,408 - root - INFO - Initializing Voice Output...
+2025-11-15 13:28:36,409 - root - INFO - CosyVoice synthesizer initialized
+2025-11-15 13:28:36,410 - root - INFO - Voice output manager initialized
+2025-11-15 13:28:36,410 - root - INFO - Initializing Content Moderation...
+2025-11-15 13:28:36,410 - root - INFO - Content moderation module initialized
+2025-11-15 13:28:36,410 - root - INFO - Content moderation module initialized
+2025-11-15 13:28:36,411 - root - INFO - Initializing Screen Manager...
+2025-11-15 13:28:36,411 - root - INFO - Screen manager initialized
+2025-11-15 13:28:36,411 - root - INFO - Initializing Tool Executor...
+2025-11-15 13:28:36,411 - root - INFO - Tool manager initialized
+2025-11-15 13:28:36,412 - root - INFO - Initializing WebUI Controller...
+2025-11-15 13:28:36,412 - root - INFO - Initializing Audio Recorder...
+2025-11-15 13:28:36,818 - root - INFO - Audio recorder initialized
+2025-11-15 13:28:36,818 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 13:28:36,818 - root - INFO - All modules initialized successfully
+2025-11-15 13:28:36,818 - root - INFO - AI Live System initialized successfully
+2025-11-15 13:28:36,820 - root - INFO - Context saved to context_short_term.json
+2025-11-15 13:28:36,821 - root - INFO - Context saved to context_medium_term.json
+2025-11-15 13:28:36,821 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 13:28:36,822 - root - INFO - Context saved to context_long_term.json
+2025-11-15 13:28:36,822 - root - INFO - Saved multiple context files: short_term (cleared), medium_term (0 items), long_term (0 items)
+2025-11-15 13:28:36,822 - root - INFO - Main model resources cleaned up
+2025-11-15 13:28:36,824 - root - INFO - AI Live System stopped
+2025-11-15 15:45:50,440 - root - INFO - Logging setup completed
+2025-11-15 15:45:50,441 - root - INFO - AI Live System initializing...
+2025-11-15 15:45:50,441 - root - INFO - Initializing VDB Manager...
+2025-11-15 15:46:03,905 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 15:46:03,905 - root - INFO - Falling back to simulated embedding approach
+2025-11-15 15:46:03,907 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-15 15:46:03,907 - root - INFO - Initializing Long Term Memory...
+2025-11-15 15:46:03,907 - root - INFO - Context summarizer initialized
+2025-11-15 15:46:03,907 - root - INFO - Long term memory system initialized
+2025-11-15 15:46:03,907 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-15 15:46:07,999 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001C33DA981A0>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-15 15:46:07,999 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 15:46:08,000 - root - ERROR - Error generating context summary: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 15:46:08,000 - root - ERROR - Failed to connect to Ollama
+2025-11-15 15:46:08,000 - root - INFO - Context file context_short_term.json does not exist, returning empty context
+2025-11-15 15:46:08,000 - root - INFO - Context file context_medium_term.json does not exist, returning empty context
+2025-11-15 15:46:08,001 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 15:46:08,001 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-15 15:46:08,001 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-15 15:46:08,001 - root - INFO - Initializing SenseVoice...
+2025-11-15 15:46:08,001 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 15:46:08,001 - root - INFO - Voice trigger initialized
+2025-11-15 15:46:08,001 - root - INFO - Initializing Voice Output...
+2025-11-15 15:46:08,001 - root - INFO - CosyVoice synthesizer initialized
+2025-11-15 15:46:08,001 - root - INFO - Voice output manager initialized
+2025-11-15 15:46:08,001 - root - INFO - Initializing Content Moderation...
+2025-11-15 15:46:08,002 - root - INFO - Content moderation module initialized
+2025-11-15 15:46:08,002 - root - INFO - Content moderation module initialized
+2025-11-15 15:46:08,002 - root - INFO - Initializing Screen Manager...
+2025-11-15 15:46:08,002 - root - INFO - Screen manager initialized
+2025-11-15 15:46:08,002 - root - INFO - Initializing Tool Executor...
+2025-11-15 15:46:08,003 - root - INFO - Tool manager initialized
+2025-11-15 15:46:08,003 - root - INFO - Initializing WebUI Controller...
+2025-11-15 15:46:08,003 - root - INFO - Initializing Audio Recorder...
+2025-11-15 15:46:08,384 - root - INFO - Audio recorder initialized
+2025-11-15 15:46:08,384 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 15:46:08,384 - root - INFO - All modules initialized successfully
+2025-11-15 15:46:08,384 - root - INFO - AI Live System initialized successfully
+2025-11-15 15:46:08,386 - root - INFO - Context saved to context_short_term.json
+2025-11-15 15:46:08,386 - root - INFO - Context saved to context_medium_term.json
+2025-11-15 15:46:08,387 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 15:46:08,387 - root - INFO - Context saved to context_long_term.json
+2025-11-15 15:46:08,387 - root - INFO - Saved multiple context files: short_term (cleared), medium_term (0 items), long_term (0 items)
+2025-11-15 15:46:08,388 - root - INFO - Main model resources cleaned up
+2025-11-15 15:46:08,389 - root - INFO - AI Live System stopped
+2025-11-15 15:52:15,511 - root - INFO - Logging setup completed
+2025-11-15 15:52:15,511 - root - INFO - AI Live System initializing...
+2025-11-15 15:52:15,511 - root - INFO - Initializing VDB Manager...
+2025-11-15 15:52:28,919 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 15:52:28,919 - root - INFO - Falling back to simulated embedding approach
+2025-11-15 15:52:28,920 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-15 15:52:28,921 - root - INFO - Initializing Long Term Memory...
+2025-11-15 15:52:28,921 - root - INFO - Context summarizer initialized
+2025-11-15 15:52:28,921 - root - INFO - Long term memory system initialized
+2025-11-15 15:52:28,921 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-15 15:52:32,994 - root - ERROR - Error generating context summary: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 15:52:32,994 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001C2F61C41A0>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-15 15:52:32,994 - root - ERROR - Failed to connect to Ollama
+2025-11-15 15:52:32,995 - root - INFO - Context file context_short_term.json does not exist, returning empty context
+2025-11-15 15:52:32,995 - root - INFO - Context file context_medium_term.json does not exist, returning empty context
+2025-11-15 15:52:32,995 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 15:52:32,995 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-15 15:52:32,995 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-15 15:52:32,995 - root - INFO - Initializing SenseVoice...
+2025-11-15 15:52:32,996 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 15:52:32,996 - root - INFO - Voice trigger initialized
+2025-11-15 15:52:32,996 - root - INFO - Initializing Voice Output...
+2025-11-15 15:52:32,996 - root - INFO - CosyVoice synthesizer initialized
+2025-11-15 15:52:32,996 - root - INFO - Voice output manager initialized
+2025-11-15 15:52:32,996 - root - INFO - Initializing Content Moderation...
+2025-11-15 15:52:32,996 - root - INFO - Content moderation module initialized
+2025-11-15 15:52:32,996 - root - INFO - Content moderation module initialized
+2025-11-15 15:52:32,997 - root - INFO - Initializing Screen Manager...
+2025-11-15 15:52:32,997 - root - INFO - Screen manager initialized
+2025-11-15 15:52:32,997 - root - INFO - Initializing Tool Executor...
+2025-11-15 15:52:32,997 - root - INFO - Tool manager initialized
+2025-11-15 15:52:32,997 - root - INFO - Initializing WebUI Controller...
+2025-11-15 15:52:32,998 - root - INFO - Initializing Audio Recorder...
+2025-11-15 15:52:33,009 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 15:52:33,376 - root - INFO - Audio recorder initialized
+2025-11-15 15:52:33,376 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 15:52:33,376 - root - INFO - All modules initialized successfully
+2025-11-15 15:52:33,376 - root - INFO - AI Live System initialized successfully
+2025-11-15 15:52:33,377 - root - INFO - Context saved to context_short_term.json
+2025-11-15 15:52:33,378 - root - INFO - Context saved to context_medium_term.json
+2025-11-15 15:52:33,378 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 15:52:33,378 - root - INFO - Context saved to context_long_term.json
+2025-11-15 15:52:33,379 - root - INFO - Saved multiple context files: short_term (cleared), medium_term (0 items), long_term (0 items)
+2025-11-15 15:52:33,379 - root - INFO - Main model resources cleaned up
+2025-11-15 15:52:33,380 - root - INFO - AI Live System stopped
+2025-11-15 15:52:39,896 - root - INFO - Logging setup completed
+2025-11-15 15:52:39,896 - root - INFO - AI Live System initializing...
+2025-11-15 15:52:39,896 - root - INFO - Initializing VDB Manager...
+2025-11-15 15:52:53,346 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 15:52:53,347 - root - INFO - Falling back to simulated embedding approach
+2025-11-15 15:52:53,348 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-15 15:52:53,348 - root - INFO - Initializing Long Term Memory...
+2025-11-15 15:52:53,348 - root - INFO - Context summarizer initialized
+2025-11-15 15:52:53,348 - root - INFO - Long term memory system initialized
+2025-11-15 15:52:53,348 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-15 15:52:57,435 - root - ERROR - Error generating context summary: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 15:52:57,435 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 15:52:57,435 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002ACF81A41A0>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-15 15:52:57,436 - root - ERROR - Failed to connect to Ollama
+2025-11-15 15:52:57,437 - root - INFO - Context loaded from context_short_term.json
+2025-11-15 15:52:57,437 - root - INFO - Context loaded from context_medium_term.json
+2025-11-15 15:52:57,437 - root - INFO - Context loaded from context_long_term.json
+2025-11-15 15:52:57,437 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-15 15:52:57,437 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-15 15:52:57,437 - root - INFO - Initializing SenseVoice...
+2025-11-15 15:52:57,438 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 15:52:57,438 - root - INFO - Voice trigger initialized
+2025-11-15 15:52:57,438 - root - INFO - Initializing Voice Output...
+2025-11-15 15:52:57,438 - root - INFO - CosyVoice synthesizer initialized
+2025-11-15 15:52:57,438 - root - INFO - Voice output manager initialized
+2025-11-15 15:52:57,438 - root - INFO - Initializing Content Moderation...
+2025-11-15 15:52:57,438 - root - INFO - Content moderation module initialized
+2025-11-15 15:52:57,439 - root - INFO - Content moderation module initialized
+2025-11-15 15:52:57,439 - root - INFO - Initializing Screen Manager...
+2025-11-15 15:52:57,439 - root - INFO - Screen manager initialized
+2025-11-15 15:52:57,439 - root - INFO - Initializing Tool Executor...
+2025-11-15 15:52:57,439 - root - INFO - Tool manager initialized
+2025-11-15 15:52:57,439 - root - INFO - Initializing WebUI Controller...
+2025-11-15 15:52:57,440 - root - INFO - Initializing Audio Recorder...
+2025-11-15 15:52:57,823 - root - INFO - Audio recorder initialized
+2025-11-15 15:52:57,823 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 15:52:57,824 - root - INFO - All modules initialized successfully
+2025-11-15 15:52:57,824 - root - INFO - AI Live System initialized successfully
+2025-11-15 15:52:57,824 - root - INFO - Context saved to context_short_term.json
+2025-11-15 15:52:57,825 - root - INFO - Context saved to context_medium_term.json
+2025-11-15 15:52:57,825 - root - INFO - Context loaded from context_long_term.json
+2025-11-15 15:52:57,826 - root - INFO - Context saved to context_long_term.json
+2025-11-15 15:52:57,826 - root - INFO - Saved multiple context files: short_term (cleared), medium_term (0 items), long_term (0 items)
+2025-11-15 15:52:57,826 - root - INFO - Main model resources cleaned up
+2025-11-15 15:52:57,827 - root - INFO - AI Live System stopped
+2025-11-15 15:56:08,626 - root - INFO - Logging setup completed
+2025-11-15 15:56:08,626 - root - INFO - AI Live System initializing...
+2025-11-15 15:56:08,626 - root - INFO - Initializing VDB Manager...
+2025-11-15 15:56:22,011 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 15:56:22,012 - root - INFO - Falling back to simulated embedding approach
+2025-11-15 15:56:22,013 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-15 15:56:22,013 - root - INFO - Initializing Long Term Memory...
+2025-11-15 15:56:22,013 - root - INFO - Context summarizer initialized
+2025-11-15 15:56:22,014 - root - INFO - Long term memory system initialized
+2025-11-15 15:56:22,014 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-15 15:56:26,110 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 15:56:26,110 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002AA48BE41A0>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-15 15:56:26,111 - root - ERROR - Failed to connect to Ollama
+2025-11-15 15:56:26,111 - root - INFO - Context file context_short_term.json does not exist, returning empty context
+2025-11-15 15:56:26,111 - root - INFO - Context file context_medium_term.json does not exist, returning empty context
+2025-11-15 15:56:26,111 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 15:56:26,111 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-15 15:56:26,112 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-15 15:56:26,112 - root - INFO - Initializing SenseVoice...
+2025-11-15 15:56:26,112 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 15:56:26,112 - root - INFO - Voice trigger initialized
+2025-11-15 15:56:26,112 - root - INFO - Initializing Voice Output...
+2025-11-15 15:56:26,112 - root - INFO - CosyVoice synthesizer initialized
+2025-11-15 15:56:26,113 - root - INFO - Voice output manager initialized
+2025-11-15 15:56:26,113 - root - INFO - Initializing Content Moderation...
+2025-11-15 15:56:26,113 - root - INFO - Content moderation module initialized
+2025-11-15 15:56:26,113 - root - INFO - Content moderation module initialized
+2025-11-15 15:56:26,113 - root - INFO - Initializing Screen Manager...
+2025-11-15 15:56:26,114 - root - INFO - Screen manager initialized
+2025-11-15 15:56:26,114 - root - INFO - Initializing Tool Executor...
+2025-11-15 15:56:26,114 - root - INFO - Tool manager initialized
+2025-11-15 15:56:26,114 - root - INFO - Initializing WebUI Controller...
+2025-11-15 15:56:26,114 - root - INFO - Initializing Audio Recorder...
+2025-11-15 15:56:26,125 - root - ERROR - Error generating context summary: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 15:56:26,493 - root - INFO - Audio recorder initialized
+2025-11-15 15:56:26,494 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 15:56:26,494 - root - INFO - All modules initialized successfully
+2025-11-15 15:56:26,494 - root - INFO - AI Live System initialized successfully
+2025-11-15 15:56:26,495 - root - INFO - Context saved to context_short_term.json
+2025-11-15 15:56:26,495 - root - INFO - Context saved to context_medium_term.json
+2025-11-15 15:56:26,496 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 15:56:26,496 - root - INFO - Context saved to context_long_term.json
+2025-11-15 15:56:26,496 - root - INFO - Saved multiple context files: short_term (cleared), medium_term (0 items), long_term (0 items)
+2025-11-15 15:56:26,498 - root - INFO - Main model resources cleaned up
+2025-11-15 15:56:26,499 - root - INFO - AI Live System stopped
+2025-11-15 16:01:37,995 - root - INFO - Logging setup completed
+2025-11-15 16:01:37,995 - root - INFO - AI Live System initializing...
+2025-11-15 16:01:37,995 - root - INFO - Initializing VDB Manager...
+2025-11-15 16:01:51,389 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 16:01:51,389 - root - INFO - Falling back to simulated embedding approach
+2025-11-15 16:01:51,391 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-15 16:01:51,391 - root - INFO - Initializing Long Term Memory...
+2025-11-15 16:01:51,391 - root - INFO - Context summarizer initialized
+2025-11-15 16:01:51,391 - root - INFO - Long term memory system initialized
+2025-11-15 16:01:51,391 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-15 16:01:55,488 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000022B695181A0>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-15 16:01:55,489 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 16:01:55,489 - root - ERROR - Error generating context summary: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 16:01:55,489 - root - ERROR - Failed to connect to Ollama
+2025-11-15 16:01:55,490 - root - INFO - Context file context_short_term.json does not exist, returning empty context
+2025-11-15 16:01:55,490 - root - INFO - Context file context_medium_term.json does not exist, returning empty context
+2025-11-15 16:01:55,490 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 16:01:55,490 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-15 16:01:55,490 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-15 16:01:55,490 - root - INFO - Initializing SenseVoice...
+2025-11-15 16:01:55,490 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 16:01:55,490 - root - INFO - Voice trigger initialized
+2025-11-15 16:01:55,491 - root - INFO - Initializing Voice Output...
+2025-11-15 16:01:55,491 - root - INFO - CosyVoice synthesizer initialized
+2025-11-15 16:01:55,491 - root - INFO - Voice output manager initialized
+2025-11-15 16:01:55,491 - root - INFO - Initializing Content Moderation...
+2025-11-15 16:01:55,491 - root - INFO - Content moderation module initialized
+2025-11-15 16:01:55,491 - root - INFO - Content moderation module initialized
+2025-11-15 16:01:55,491 - root - INFO - Initializing Screen Manager...
+2025-11-15 16:01:55,492 - root - INFO - Screen manager initialized
+2025-11-15 16:01:55,492 - root - INFO - Initializing Tool Executor...
+2025-11-15 16:01:55,492 - root - INFO - Tool manager initialized
+2025-11-15 16:01:55,492 - root - INFO - Initializing WebUI Controller...
+2025-11-15 16:01:55,493 - root - INFO - Initializing Audio Recorder...
+2025-11-15 16:01:55,874 - root - INFO - Audio recorder initialized
+2025-11-15 16:01:55,874 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 16:01:55,875 - root - INFO - All modules initialized successfully
+2025-11-15 16:01:55,875 - root - INFO - AI Live System initialized successfully
+2025-11-15 16:01:55,876 - root - INFO - Context saved to context_short_term.json
+2025-11-15 16:01:55,877 - root - INFO - Context saved to context_medium_term.json
+2025-11-15 16:01:55,877 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 16:01:55,879 - root - INFO - Context saved to context_long_term.json
+2025-11-15 16:01:55,879 - root - INFO - Saved multiple context files: short_term (cleared), medium_term (0 items), long_term (0 items)
+2025-11-15 16:01:55,879 - root - INFO - Main model resources cleaned up
+2025-11-15 16:01:55,880 - root - INFO - AI Live System stopped
+2025-11-15 16:04:16,701 - root - INFO - Logging setup completed
+2025-11-15 16:04:16,701 - root - INFO - AI Live System initializing...
+2025-11-15 16:04:16,701 - root - INFO - Initializing VDB Manager...
+2025-11-15 16:04:30,280 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 16:04:30,281 - root - INFO - Falling back to simulated embedding approach
+2025-11-15 16:04:30,282 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-15 16:04:30,282 - root - INFO - Initializing Long Term Memory...
+2025-11-15 16:04:30,282 - root - INFO - Context summarizer initialized
+2025-11-15 16:04:30,283 - root - INFO - Long term memory system initialized
+2025-11-15 16:04:30,283 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-15 16:04:34,343 - root - ERROR - Error generating context summary: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 16:04:34,343 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001ADE74041A0>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-15 16:04:34,343 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 16:04:34,344 - root - ERROR - Failed to connect to Ollama
+2025-11-15 16:04:34,345 - root - INFO - Context loaded from context_short_term.json
+2025-11-15 16:04:34,345 - root - INFO - Context loaded from context_medium_term.json
+2025-11-15 16:04:34,345 - root - INFO - Context loaded from context_long_term.json
+2025-11-15 16:04:34,345 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-15 16:04:34,345 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-15 16:04:34,346 - root - INFO - Initializing SenseVoice...
+2025-11-15 16:04:34,346 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 16:04:34,346 - root - INFO - Voice trigger initialized
+2025-11-15 16:04:34,346 - root - INFO - Initializing Voice Output...
+2025-11-15 16:04:34,346 - root - INFO - CosyVoice synthesizer initialized
+2025-11-15 16:04:34,347 - root - INFO - Voice output manager initialized
+2025-11-15 16:04:34,347 - root - INFO - Initializing Content Moderation...
+2025-11-15 16:04:34,347 - root - INFO - Content moderation module initialized
+2025-11-15 16:04:34,347 - root - INFO - Content moderation module initialized
+2025-11-15 16:04:34,347 - root - INFO - Initializing Screen Manager...
+2025-11-15 16:04:34,348 - root - INFO - Screen manager initialized
+2025-11-15 16:04:34,348 - root - INFO - Initializing Tool Executor...
+2025-11-15 16:04:34,348 - root - INFO - Tool manager initialized
+2025-11-15 16:04:34,348 - root - INFO - Initializing WebUI Controller...
+2025-11-15 16:04:34,348 - root - INFO - Initializing Audio Recorder...
+2025-11-15 16:04:34,733 - root - INFO - Audio recorder initialized
+2025-11-15 16:04:34,733 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 16:04:34,733 - root - INFO - All modules initialized successfully
+2025-11-15 16:04:34,733 - root - INFO - AI Live System initialized successfully
+2025-11-15 16:04:34,735 - root - INFO - Context saved to context_short_term.json
+2025-11-15 16:04:34,736 - root - INFO - Context saved to context_medium_term.json
+2025-11-15 16:04:34,736 - root - INFO - Context loaded from context_long_term.json
+2025-11-15 16:04:34,737 - root - INFO - Context saved to context_long_term.json
+2025-11-15 16:04:34,737 - root - INFO - Saved multiple context files: short_term (cleared), medium_term (0 items), long_term (0 items)
+2025-11-15 16:04:34,738 - root - INFO - Main model resources cleaned up
+2025-11-15 16:04:34,739 - root - INFO - AI Live System stopped
+2025-11-15 16:09:51,866 - root - INFO - Logging setup completed
+2025-11-15 16:09:51,866 - root - INFO - AI Live System initializing...
+2025-11-15 16:09:51,866 - root - INFO - Initializing VDB Manager...
+2025-11-15 16:10:05,283 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 16:10:05,283 - root - INFO - Falling back to simulated embedding approach
+2025-11-15 16:10:05,285 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-15 16:10:05,285 - root - INFO - Initializing Long Term Memory...
+2025-11-15 16:10:05,285 - root - INFO - Context summarizer initialized
+2025-11-15 16:10:05,285 - root - INFO - Long term memory system initialized
+2025-11-15 16:10:05,285 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-15 16:10:09,368 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 16:10:09,368 - root - ERROR - Error generating context summary: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 16:10:09,383 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000028C0FC80050>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-15 16:10:09,384 - root - ERROR - Failed to connect to Ollama
+2025-11-15 16:10:09,384 - root - INFO - Context file context_short_term.json does not exist, returning empty context
+2025-11-15 16:10:09,384 - root - INFO - Context file context_medium_term.json does not exist, returning empty context
+2025-11-15 16:10:09,385 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 16:10:09,385 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-15 16:10:09,385 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-15 16:10:09,385 - root - INFO - Initializing SenseVoice...
+2025-11-15 16:10:09,385 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 16:10:09,385 - root - INFO - Voice trigger initialized
+2025-11-15 16:10:09,385 - root - INFO - Initializing Voice Output...
+2025-11-15 16:10:09,386 - root - INFO - CosyVoice synthesizer initialized
+2025-11-15 16:10:09,386 - root - INFO - Voice output manager initialized
+2025-11-15 16:10:09,386 - root - INFO - Initializing Content Moderation...
+2025-11-15 16:10:09,386 - root - INFO - Content moderation module initialized
+2025-11-15 16:10:09,387 - root - INFO - Content moderation module initialized
+2025-11-15 16:10:09,387 - root - INFO - Initializing Screen Manager...
+2025-11-15 16:10:09,387 - root - INFO - Screen manager initialized
+2025-11-15 16:10:09,387 - root - INFO - Initializing Tool Executor...
+2025-11-15 16:10:09,387 - root - INFO - Tool manager initialized
+2025-11-15 16:10:09,388 - root - INFO - Initializing WebUI Controller...
+2025-11-15 16:10:09,574 - root - INFO - Initializing Audio Recorder...
+2025-11-15 16:10:09,944 - root - INFO - Audio recorder initialized
+2025-11-15 16:10:09,944 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 16:10:09,944 - root - INFO - All modules initialized successfully
+2025-11-15 16:10:09,944 - root - INFO - AI Live System initialized successfully
+2025-11-15 16:10:09,945 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-15 16:10:09,945 - root - INFO - Started listening for speech
+2025-11-15 16:10:10,081 - root - INFO - AI Live System started
+2025-11-15 16:10:10,081 - webui - INFO - Starting WebUI on 0.0.0.0:5000
+2025-11-15 16:10:10,098 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.3:5000
+2025-11-15 16:10:10,098 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-15 16:10:10,186 - root - INFO - Audio listener started, waiting for speech...
+2025-11-15 16:10:18,333 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2025 16:10:18] "GET / HTTP/1.1" 200 -
+2025-11-15 16:10:18,385 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2025 16:10:18] "GET /socket.io/?EIO=4&transport=polling&t=Pg6aAUD HTTP/1.1" 200 -
+2025-11-15 16:10:18,589 - webui - INFO - WebUI client connected
+2025-11-15 16:10:18,590 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2025 16:10:18] "POST /socket.io/?EIO=4&transport=polling&t=Pg6aAV5&sid=HNjZYc6mKjSQgT9NAAAA HTTP/1.1" 200 -
+2025-11-15 16:10:18,762 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2025 16:10:18] "GET /api/config HTTP/1.1" 200 -
+2025-11-15 16:10:18,762 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2025 16:10:18] "GET /socket.io/?EIO=4&transport=polling&t=Pg6aAV6&sid=HNjZYc6mKjSQgT9NAAAA HTTP/1.1" 200 -
+2025-11-15 16:10:18,764 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2025 16:10:18] "GET /api/status HTTP/1.1" 200 -
+2025-11-15 16:10:18,765 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2025 16:10:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-15 16:10:46,401 - webui - INFO - WebUI client disconnected
+2025-11-15 16:10:46,401 - werkzeug - INFO - 127.0.0.1 - - [15/Nov/2025 16:10:46] "GET /socket.io/?EIO=4&transport=websocket&sid=HNjZYc6mKjSQgT9NAAAA HTTP/1.1" 200 -
+2025-11-15 16:10:50,285 - root - INFO - Context saved to context_short_term.json
+2025-11-15 16:10:50,286 - root - INFO - Context saved to context_medium_term.json
+2025-11-15 16:10:50,286 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 16:10:50,287 - root - INFO - Context saved to context_long_term.json
+2025-11-15 16:10:50,287 - root - INFO - Saved multiple context files: short_term (cleared), medium_term (1 items), long_term (0 items)
+2025-11-15 16:10:50,288 - root - INFO - Main model resources cleaned up
+2025-11-15 16:10:50,302 - root - INFO - AI Live System stopped
+2025-11-15 16:21:28,785 - root - INFO - Logging setup completed
+2025-11-15 16:21:28,785 - root - INFO - AI Live System initializing...
+2025-11-15 16:21:28,785 - root - INFO - Initializing VDB Manager...
+2025-11-15 16:21:42,311 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 16:21:42,311 - root - INFO - Falling back to simulated embedding approach
+2025-11-15 16:21:42,313 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-15 16:21:42,313 - root - INFO - Initializing Long Term Memory...
+2025-11-15 16:21:42,313 - root - INFO - Context summarizer initialized
+2025-11-15 16:21:42,314 - root - INFO - Long term memory system initialized
+2025-11-15 16:21:42,314 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-15 16:21:46,375 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001F302AA41A0>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-15 16:21:46,376 - root - ERROR - Failed to connect to Ollama
+2025-11-15 16:21:46,376 - root - INFO - Context file context_short_term.json does not exist, returning empty context
+2025-11-15 16:21:46,376 - root - INFO - Context file context_medium_term.json does not exist, returning empty context
+2025-11-15 16:21:46,376 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 16:21:46,377 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-15 16:21:46,377 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-15 16:21:46,377 - root - INFO - Initializing SenseVoice...
+2025-11-15 16:21:46,377 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 16:21:46,377 - root - INFO - Voice trigger initialized
+2025-11-15 16:21:46,377 - root - INFO - Initializing Voice Output...
+2025-11-15 16:21:46,377 - root - INFO - CosyVoice synthesizer initialized
+2025-11-15 16:21:46,378 - root - INFO - Voice output manager initialized
+2025-11-15 16:21:46,378 - root - INFO - Initializing Content Moderation...
+2025-11-15 16:21:46,378 - root - INFO - Content moderation module initialized
+2025-11-15 16:21:46,378 - root - INFO - Content moderation module initialized
+2025-11-15 16:21:46,378 - root - INFO - Initializing Screen Manager...
+2025-11-15 16:21:46,379 - root - INFO - Screen manager initialized
+2025-11-15 16:21:46,379 - root - INFO - Initializing Tool Executor...
+2025-11-15 16:21:46,379 - root - INFO - Tool manager initialized
+2025-11-15 16:21:46,379 - root - INFO - Initializing WebUI Controller...
+2025-11-15 16:21:46,380 - root - INFO - Initializing Audio Recorder...
+2025-11-15 16:21:46,390 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 16:21:46,391 - root - ERROR - Error generating context summary: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 16:21:46,761 - root - INFO - Audio recorder initialized
+2025-11-15 16:21:46,761 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 16:21:46,761 - root - INFO - All modules initialized successfully
+2025-11-15 16:21:46,761 - root - INFO - AI Live System initialized successfully
+2025-11-15 16:21:46,763 - root - INFO - Context saved to context_short_term.json
+2025-11-15 16:21:46,764 - root - INFO - Context saved to context_medium_term.json
+2025-11-15 16:21:46,764 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 16:21:46,765 - root - INFO - Context saved to context_long_term.json
+2025-11-15 16:21:46,765 - root - INFO - Saved multiple context files: short_term (cleared), medium_term (0 items), long_term (0 items)
+2025-11-15 16:21:46,765 - root - INFO - Main model resources cleaned up
+2025-11-15 16:21:46,767 - root - INFO - AI Live System stopped
+2025-11-15 16:59:07,562 - root - INFO - Logging setup completed
+2025-11-15 16:59:07,563 - root - INFO - AI Live System initializing...
+2025-11-15 16:59:07,563 - root - INFO - Initializing VDB Manager...
+2025-11-15 16:59:21,033 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 16:59:21,033 - root - INFO - Falling back to simulated embedding approach
+2025-11-15 16:59:21,035 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-15 16:59:21,035 - root - INFO - Initializing Long Term Memory...
+2025-11-15 16:59:21,035 - root - INFO - Context summarizer initialized
+2025-11-15 16:59:21,035 - root - INFO - Long term memory system initialized
+2025-11-15 16:59:21,036 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-15 16:59:25,131 - root - ERROR - Error generating context summary: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 16:59:25,146 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000018A9E1A41A0>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-15 16:59:25,146 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 16:59:25,147 - root - ERROR - Failed to connect to Ollama
+2025-11-15 16:59:25,147 - root - INFO - Context file context_short_term.json does not exist, returning empty context
+2025-11-15 16:59:25,147 - root - INFO - Context file context_medium_term.json does not exist, returning empty context
+2025-11-15 16:59:25,148 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 16:59:25,148 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-15 16:59:25,148 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-15 16:59:25,148 - root - INFO - Initializing SenseVoice...
+2025-11-15 16:59:25,148 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 16:59:25,148 - root - INFO - Voice trigger initialized
+2025-11-15 16:59:25,148 - root - INFO - Initializing Voice Output...
+2025-11-15 16:59:25,150 - root - INFO - CosyVoice synthesizer initialized
+2025-11-15 16:59:25,150 - root - INFO - Voice output manager initialized
+2025-11-15 16:59:25,150 - root - INFO - Initializing Content Moderation...
+2025-11-15 16:59:25,151 - root - INFO - Content moderation module initialized
+2025-11-15 16:59:25,151 - root - INFO - Content moderation module initialized
+2025-11-15 16:59:25,151 - root - INFO - Initializing Screen Manager...
+2025-11-15 16:59:25,151 - root - INFO - Screen manager initialized
+2025-11-15 16:59:25,151 - root - INFO - Initializing Tool Executor...
+2025-11-15 16:59:25,152 - root - INFO - Tool manager initialized
+2025-11-15 16:59:25,152 - root - INFO - Initializing WebUI Controller...
+2025-11-15 16:59:25,152 - root - INFO - Initializing Audio Recorder...
+2025-11-15 16:59:25,539 - root - INFO - Audio recorder initialized
+2025-11-15 16:59:25,539 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 16:59:25,539 - root - INFO - All modules initialized successfully
+2025-11-15 16:59:25,539 - root - INFO - AI Live System initialized successfully
+2025-11-15 16:59:25,540 - root - INFO - Context saved to context_short_term.json
+2025-11-15 16:59:25,541 - root - INFO - Context saved to context_medium_term.json
+2025-11-15 16:59:25,541 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 16:59:25,542 - root - INFO - Context saved to context_long_term.json
+2025-11-15 16:59:25,542 - root - INFO - Saved multiple context files: short_term (cleared), medium_term (0 items), long_term (0 items)
+2025-11-15 16:59:25,542 - root - INFO - Main model resources cleaned up
+2025-11-15 16:59:25,543 - root - INFO - AI Live System stopped
+2025-11-15 17:04:09,364 - root - INFO - Logging setup completed
+2025-11-15 17:04:09,365 - root - INFO - AI Live System initializing...
+2025-11-15 17:04:09,365 - root - INFO - Initializing VDB Manager...
+2025-11-15 17:04:22,730 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 17:04:22,731 - root - INFO - Falling back to simulated embedding approach
+2025-11-15 17:04:22,732 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-15 17:04:22,733 - root - INFO - Initializing Long Term Memory...
+2025-11-15 17:04:22,733 - root - INFO - Context summarizer initialized
+2025-11-15 17:04:22,733 - root - INFO - Long term memory system initialized
+2025-11-15 17:04:22,733 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-15 17:04:26,822 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001C1610C42F0>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-15 17:04:26,822 - root - ERROR - Error generating context summary: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 17:04:26,822 - root - ERROR - Failed to connect to Ollama
+2025-11-15 17:04:26,823 - root - INFO - Context file context_short_term.json does not exist, returning empty context
+2025-11-15 17:04:26,823 - root - INFO - Context file context_medium_term.json does not exist, returning empty context
+2025-11-15 17:04:26,823 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 17:04:26,823 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-15 17:04:26,823 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-15 17:04:26,823 - root - INFO - Initializing SenseVoice...
+2025-11-15 17:04:26,824 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 17:04:26,824 - root - INFO - Voice trigger initialized
+2025-11-15 17:04:26,824 - root - INFO - Initializing Voice Output...
+2025-11-15 17:04:26,824 - root - INFO - CosyVoice synthesizer initialized
+2025-11-15 17:04:26,824 - root - INFO - Voice output manager initialized
+2025-11-15 17:04:26,824 - root - INFO - Initializing Content Moderation...
+2025-11-15 17:04:26,824 - root - INFO - Content moderation module initialized
+2025-11-15 17:04:26,824 - root - INFO - Content moderation module initialized
+2025-11-15 17:04:26,824 - root - INFO - Initializing Screen Manager...
+2025-11-15 17:04:26,825 - root - INFO - Screen manager initialized
+2025-11-15 17:04:26,825 - root - INFO - Initializing Tool Executor...
+2025-11-15 17:04:26,825 - root - INFO - Tool manager initialized
+2025-11-15 17:04:26,825 - root - INFO - Initializing WebUI Controller...
+2025-11-15 17:04:26,825 - root - INFO - Initializing Audio Recorder...
+2025-11-15 17:04:26,838 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 17:04:27,211 - root - INFO - Audio recorder initialized
+2025-11-15 17:04:27,211 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 17:04:27,211 - root - INFO - All modules initialized successfully
+2025-11-15 17:04:27,211 - root - INFO - AI Live System initialized successfully
+2025-11-15 17:04:27,212 - root - INFO - Context saved to context_short_term.json
+2025-11-15 17:04:27,213 - root - INFO - Context saved to context_medium_term.json
+2025-11-15 17:04:27,213 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 17:04:27,213 - root - INFO - Context saved to context_long_term.json
+2025-11-15 17:04:27,214 - root - INFO - Saved multiple context files: short_term (cleared), medium_term (0 items), long_term (0 items)
+2025-11-15 17:04:27,214 - root - INFO - Main model resources cleaned up
+2025-11-15 17:04:27,215 - root - INFO - AI Live System stopped
+2025-11-15 17:48:17,955 - root - INFO - Logging setup completed
+2025-11-15 17:48:17,955 - root - INFO - AI Live System initializing...
+2025-11-15 17:48:17,956 - root - INFO - Initializing VDB Manager...
+2025-11-15 17:48:31,405 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 17:48:31,406 - root - INFO - Falling back to simulated embedding approach
+2025-11-15 17:48:31,408 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-15 17:48:31,408 - root - INFO - Initializing Long Term Memory...
+2025-11-15 17:48:31,408 - root - INFO - Context summarizer initialized
+2025-11-15 17:48:31,408 - root - INFO - Long term memory system initialized
+2025-11-15 17:48:31,408 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-15 17:48:35,491 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 17:48:35,492 - root - ERROR - Error generating context summary: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 17:48:35,493 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000187C4B24050>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-15 17:48:35,493 - root - ERROR - Failed to connect to Ollama
+2025-11-15 17:48:35,494 - root - INFO - Context file context_short_term.json does not exist, returning empty context
+2025-11-15 17:48:35,494 - root - INFO - Context file context_medium_term.json does not exist, returning empty context
+2025-11-15 17:48:35,494 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 17:48:35,494 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-15 17:48:35,495 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-15 17:48:35,496 - root - INFO - Initializing SenseVoice...
+2025-11-15 17:48:35,496 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 17:48:35,497 - root - INFO - Voice trigger initialized
+2025-11-15 17:48:35,497 - root - INFO - Initializing Voice Output...
+2025-11-15 17:48:35,497 - root - INFO - CosyVoice synthesizer initialized
+2025-11-15 17:48:35,497 - root - INFO - Voice output manager initialized
+2025-11-15 17:48:35,497 - root - INFO - Initializing Content Moderation...
+2025-11-15 17:48:35,498 - root - INFO - Content moderation module initialized
+2025-11-15 17:48:35,498 - root - INFO - Content moderation module initialized
+2025-11-15 17:48:35,498 - root - INFO - Initializing Screen Manager...
+2025-11-15 17:48:35,499 - root - INFO - Screen manager initialized
+2025-11-15 17:48:35,499 - root - INFO - Initializing Tool Executor...
+2025-11-15 17:48:35,499 - root - INFO - Tool manager initialized
+2025-11-15 17:48:35,499 - root - INFO - Initializing WebUI Controller...
+2025-11-15 17:48:35,704 - root - INFO - Initializing Audio Recorder...
+2025-11-15 17:48:36,094 - root - INFO - Audio recorder initialized
+2025-11-15 17:48:36,094 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 17:48:36,095 - root - INFO - All modules initialized successfully
+2025-11-15 17:48:36,096 - root - INFO - AI Live System initialized successfully
+2025-11-15 17:48:36,096 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-15 17:48:36,096 - root - INFO - Started listening for speech
+2025-11-15 17:48:36,236 - root - INFO - AI Live System started
+2025-11-15 17:48:36,236 - webui - INFO - Starting WebUI on 0.0.0.0:5000
+2025-11-15 17:48:36,245 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.3:5000
+2025-11-15 17:48:36,245 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-15 17:48:36,343 - root - INFO - Audio listener started, waiting for speech...
+2025-11-15 17:48:42,166 - root - INFO - Context saved to context_short_term.json
+2025-11-15 17:48:42,167 - root - INFO - Context saved to context_medium_term.json
+2025-11-15 17:48:42,167 - root - INFO - Context file context_long_term.json does not exist, returning empty context
+2025-11-15 17:48:42,168 - root - INFO - Context saved to context_long_term.json
+2025-11-15 17:48:42,168 - root - INFO - Saved multiple context files: short_term (cleared), medium_term (1 items), long_term (0 items)
+2025-11-15 17:48:42,169 - root - INFO - Main model resources cleaned up
+2025-11-15 17:48:42,186 - root - INFO - AI Live System stopped
+2025-11-15 17:48:46,005 - root - INFO - Logging setup completed
+2025-11-15 17:48:46,005 - root - INFO - AI Live System initializing...
+2025-11-15 17:48:46,005 - root - INFO - Initializing VDB Manager...
+2025-11-15 17:48:59,460 - root - ERROR - Error initializing Qdrant client: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 17:48:59,461 - root - INFO - Falling back to simulated embedding approach
+2025-11-15 17:48:59,463 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-15 17:48:59,463 - root - INFO - Initializing Long Term Memory...
+2025-11-15 17:48:59,463 - root - INFO - Context summarizer initialized
+2025-11-15 17:48:59,463 - root - INFO - Long term memory system initialized
+2025-11-15 17:48:59,463 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-15 17:49:03,565 - root - ERROR - Error generating context summary: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 17:49:03,565 - root - ERROR - Error in expiry worker: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+2025-11-15 17:49:03,565 - root - ERROR - Error checking Ollama connection: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002F275954050>: Failed to establish a new connection: [WinError 10061] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£'))
+2025-11-15 17:49:03,566 - root - ERROR - Failed to connect to Ollama
+2025-11-15 17:49:03,566 - root - INFO - Context loaded from context_short_term.json
+2025-11-15 17:49:03,567 - root - INFO - Context loaded from context_medium_term.json
+2025-11-15 17:49:03,567 - root - INFO - Context loaded from context_long_term.json
+2025-11-15 17:49:03,567 - root - INFO - Loaded 1 conversation entries from medium-term context file
+2025-11-15 17:49:03,567 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-15 17:49:03,567 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-15 17:49:03,567 - root - INFO - Initializing SenseVoice...
+2025-11-15 17:49:03,568 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 17:49:03,568 - root - INFO - Voice trigger initialized
+2025-11-15 17:49:03,568 - root - INFO - Initializing Voice Output...
+2025-11-15 17:49:03,568 - root - INFO - CosyVoice synthesizer initialized
+2025-11-15 17:49:03,569 - root - INFO - Voice output manager initialized
+2025-11-15 17:49:03,569 - root - INFO - Initializing Content Moderation...
+2025-11-15 17:49:03,569 - root - INFO - Content moderation module initialized
+2025-11-15 17:49:03,569 - root - INFO - Content moderation module initialized
+2025-11-15 17:49:03,569 - root - INFO - Initializing Screen Manager...
+2025-11-15 17:49:03,570 - root - INFO - Screen manager initialized
+2025-11-15 17:49:03,570 - root - INFO - Initializing Tool Executor...
+2025-11-15 17:49:03,570 - root - INFO - Tool manager initialized
+2025-11-15 17:49:03,570 - root - INFO - Initializing WebUI Controller...
+2025-11-15 17:49:03,712 - root - INFO - Initializing Audio Recorder...
+2025-11-15 17:49:04,084 - root - INFO - Audio recorder initialized
+2025-11-15 17:49:04,084 - root - INFO - SenseVoice recognizer initialized
+2025-11-15 17:49:04,084 - root - INFO - All modules initialized successfully
+2025-11-15 17:49:04,084 - root - INFO - AI Live System initialized successfully
+2025-11-15 17:49:04,085 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-15 17:49:04,085 - root - INFO - Started listening for speech
+2025-11-15 17:49:04,216 - root - INFO - AI Live System started
+2025-11-15 17:49:04,216 - webui - INFO - Starting WebUI on 0.0.0.0:5000
+2025-11-15 17:49:04,224 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.3:5000
+2025-11-15 17:49:04,225 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-15 17:49:04,242 - root - INFO - Audio listener started, waiting for speech...
+2025-11-15 17:49:14,184 - root - INFO - Context saved to context_short_term.json
+2025-11-15 17:49:14,185 - root - INFO - Context saved to context_medium_term.json
+2025-11-15 17:49:14,186 - root - INFO - Context loaded from context_long_term.json
+2025-11-15 17:49:14,186 - root - INFO - Context saved to context_long_term.json
+2025-11-15 17:49:14,186 - root - INFO - Saved multiple context files: short_term (cleared), medium_term (1 items), long_term (1 items)
+2025-11-15 17:49:14,187 - root - INFO - Main model resources cleaned up
+2025-11-15 17:49:14,196 - root - INFO - AI Live System stopped
