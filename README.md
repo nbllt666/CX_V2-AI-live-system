@@ -90,7 +90,7 @@ CX-V2/
 3. 确保以下服务运行：
    - Ollama服务 (默认端口11434)
    - Qdrant向量数据库 (默认端口6333，可选)
-   - 各种API服务（根据配置）
+   - MELO TTS
 
 ## 配置文件
 
@@ -147,6 +147,8 @@ python docs/test_context_management.py
 - ✅ 工具调用支持
 
 ## 许可证
+
+    MIT License
 
 本项目为AI直播助手系统，提供完整的直播互动解决方案。
 
