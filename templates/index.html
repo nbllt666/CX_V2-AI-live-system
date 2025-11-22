@@ -297,6 +297,66 @@
             color: #7f8c8d;
             font-size: 0.9em;
         }
+
+        /* Toggle Switch Styles */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #2196F3;
+        }
+
+        input:focus + .toggle-slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        .form-group.switch {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .form-group.switch label {
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -312,14 +372,12 @@
                 <span id="statusText">已停止</span>
             </div>
             <div class="control-buttons">
-                <button class="btn-start" id="startBtn">启动</button>
-                <button class="btn-stop" id="stopBtn">停止</button>
-                <button class="btn-restart" id="restartBtn">重启</button>
-                <button class="btn-melotts-start" id="melottsStartBtn">启动MeloTTS</button>
-                <button class="btn-melotts-stop" id="melottsStopBtn">停止MeloTTS</button>
-                <button class="btn-melotts-warmup" id="melottsWarmupBtn">预热MeloTTS</button>
-                <button class="btn-save" id="saveBtn">保存配置</button>
-            </div>
+            <button class="btn-start" id="startBtn">启动</button>
+            <button class="btn-stop" id="stopBtn">停止</button>
+            <button class="btn-restart" id="restartBtn">重启</button>
+            <button class="btn-melotts-warmup" id="melottsWarmupBtn">预热</button>
+            <button class="btn-save" id="saveBtn">保存配置</button>
+        </div>
         </div>
 
         <div class="main-content">
@@ -349,36 +407,36 @@
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group">
+                        <div class="form-group switch">
                             <label for="enable_sound_effects">启用音效</label>
-                            <select id="enable_sound_effects" name="enable_sound_effects">
-                                <option value="true">是</option>
-                                <option value="false">否</option>
-                            </select>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="enable_sound_effects" name="enable_sound_effects">
+                                <span class="toggle-slider"></span>
+                            </label>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group switch">
                             <label for="enable_music">启用点歌</label>
-                            <select id="enable_music" name="enable_music">
-                                <option value="true">是</option>
-                                <option value="false">否</option>
-                            </select>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="enable_music" name="enable_music">
+                                <span class="toggle-slider"></span>
+                            </label>
                         </div>
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group">
+                        <div class="form-group switch">
                             <label for="enable_ai_drawing">启用AI绘画</label>
-                            <select id="enable_ai_drawing" name="enable_ai_drawing">
-                                <option value="true">是</option>
-                                <option value="false">否</option>
-                            </select>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="enable_ai_drawing" name="enable_ai_drawing">
+                                <span class="toggle-slider"></span>
+                            </label>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group switch">
                             <label for="enable_continuous_mode">启用连续操作模式</label>
-                            <select id="enable_continuous_mode" name="enable_continuous_mode">
-                                <option value="true">是</option>
-                                <option value="false">否</option>
-                            </select>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="enable_continuous_mode" name="enable_continuous_mode">
+                                <span class="toggle-slider"></span>
+                            </label>
                         </div>
                     </div>
 
@@ -415,12 +473,12 @@
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group">
+                        <div class="form-group switch">
                             <label for="enable_danmu">启用弹幕连接</label>
-                            <select id="enable_danmu" name="enable_danmu">
-                                <option value="true">是</option>
-                                <option value="false">否</option>
-                            </select>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="enable_danmu" name="enable_danmu">
+                                <span class="toggle-slider"></span>
+                            </label>
                         </div>
                         <div class="form-group">
                             <label for="danmu_websocket_uri">弹幕 WebSocket 地址</label>
@@ -434,12 +492,12 @@
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group">
+                        <div class="form-group switch">
                             <label for="auto_restart">启用自动重启</label>
-                            <select id="auto_restart" name="auto_restart">
-                                <option value="true">是</option>
-                                <option value="false">否</option>
-                            </select>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="auto_restart" name="auto_restart">
+                                <span class="toggle-slider"></span>
+                            </label>
                         </div>
                         <div class="form-group">
                             <label for="auto_restart_interval">自动重启间隔（秒）</label>
@@ -448,29 +506,29 @@
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group">
+                        <div class="form-group switch">
                             <label for="enable_voice_recognition">启用语音识别</label>
-                            <select id="enable_voice_recognition" name="enable_voice_recognition">
-                                <option value="true">是</option>
-                                <option value="false">否</option>
-                            </select>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="enable_voice_recognition" name="enable_voice_recognition">
+                                <span class="toggle-slider"></span>
+                            </label>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group switch">
                             <label for="voice_trigger_enabled">启用语音触发</label>
-                            <select id="voice_trigger_enabled" name="voice_trigger_enabled">
-                                <option value="true">是</option>
-                                <option value="false">否</option>
-                            </select>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="voice_trigger_enabled" name="voice_trigger_enabled">
+                                <span class="toggle-slider"></span>
+                            </label>
                         </div>
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group">
+                        <div class="form-group switch">
                             <label for="key_trigger_enabled">启用按键触发</label>
-                            <select id="key_trigger_enabled" name="key_trigger_enabled">
-                                <option value="true">是</option>
-                                <option value="false">否</option>
-                            </select>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="key_trigger_enabled" name="key_trigger_enabled">
+                                <span class="toggle-slider"></span>
+                            </label>
                         </div>
                         <div class="form-group">
                             <label for="volume_threshold">音量阈值</label>
@@ -512,30 +570,30 @@
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group">
+                        <div class="form-group switch">
                             <label for="enable_wake_sleep">启用唤醒/睡眠功能</label>
-                            <select id="enable_wake_sleep" name="enable_wake_sleep">
-                                <option value="true">是</option>
-                                <option value="false">否</option>
-                            </select>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="enable_wake_sleep" name="enable_wake_sleep">
+                                <span class="toggle-slider"></span>
+                            </label>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group switch">
                             <label for="enable_continuous_talk">启用连续对话</label>
-                            <select id="enable_continuous_talk" name="enable_continuous_talk">
-                                <option value="true">是</option>
-                                <option value="false">否</option>
-                            </select>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="enable_continuous_talk" name="enable_continuous_talk">
+                                <span class="toggle-slider"></span>
+                            </label>
                         </div>
                     </div>
 
                     <!-- MeloTTS Configuration -->
                     <div class="form-row">
-                        <div class="form-group">
+                        <div class="form-group switch">
                             <label for="use_molotts">启用MeloTTS</label>
-                            <select id="use_molotts" name="use_molotts">
-                                <option value="true">是</option>
-                                <option value="false">否</option>
-                            </select>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="use_molotts" name="use_molotts">
+                                <span class="toggle-slider"></span>
+                            </label>
                         </div>
                         <div class="form-group">
                             <label for="melotts_api_url">MeloTTS API URL</label>
@@ -584,6 +642,56 @@
                         <div class="form-group">
                             <label for="molotts_speed">语音速度</label>
                             <input type="number" id="molotts_speed" name="molotts_speed" step="0.1" min="0.1" max="3">
+                        </div>
+                    </div>
+
+                    <!-- VDB数据库管理配置 -->
+                    <div class="vdb-management-section">
+                        <h3>VDB数据库管理</h3>
+                        <div class="form-row">
+                            <div class="form-group switch">
+                                <label for="vdb_auto_run">启用自动数据库清理</label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="vdb_auto_run" name="vdb_auto_run">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="form-group switch">
+                                <label for="vdb_startup_run">启动时执行数据库清理</label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="vdb_startup_run" name="vdb_startup_run">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group switch">
+                                <label for="enable_llm_vdb_control">启用LLM控制VDB管理</label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="enable_llm_vdb_control" name="enable_llm_vdb_control">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="vdb_check_interval">数据库检查间隔（分钟）</label>
+                                <input type="number" id="vdb_check_interval" name="vdb_check_interval" min="5" max="10080" value="60">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="qdrant_host">Qdrant主机地址</label>
+                                <input type="text" id="qdrant_host" name="qdrant_host" placeholder="localhost">
+                            </div>
+                            <div class="form-group">
+                                <label for="qdrant_port">Qdrant端口</label>
+                                <input type="number" id="qdrant_port" name="qdrant_port" min="1" max="65535" placeholder="6333">
+                            </div>
+                        </div>
+                        <div class="vdb-actions">
+                            <button class="btn-vdb-save" id="vdbSaveBtn">保存VDB配置</button>
+                            <button class="btn-vdb-clean" id="vdbCleanBtn">立即执行数据库清理</button>
                         </div>
                     </div>
                 </form>
@@ -636,6 +744,13 @@
         const messageInput = document.getElementById('messageInput');
         const sendMessageBtn = document.getElementById('sendMessageBtn');
         const responseDisplay = document.getElementById('responseDisplay');
+        // VDB 相关元素
+        const vdbSaveBtn = document.getElementById('vdbSaveBtn');
+        const vdbCleanBtn = document.getElementById('vdbCleanBtn');
+        const vdbAutoRun = document.getElementById('vdb_auto_run');
+        const vdbStartupRun = document.getElementById('vdb_startup_run');
+        const vdbCheckInterval = document.getElementById('vdb_check_interval');
+        const enableLlmVdbControl = document.getElementById('enable_llm_vdb_control');
 
         // 状态更新处理
         socket.on('status_update', function(data) {
@@ -684,6 +799,33 @@
                     }
                 }
             }
+            
+            // 加载VDB配置
+        fetch('/api/control/vdb', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ action: 'get_status' })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                if (vdbAutoRun) vdbAutoRun.checked = data.vdb_auto_run;
+                if (vdbStartupRun) vdbStartupRun.checked = data.vdb_startup_run;
+                if (vdbCheckInterval) vdbCheckInterval.value = data.vdb_check_interval;
+                if (enableLlmVdbControl) enableLlmVdbControl.checked = data.enable_llm_vdb_control;
+                
+                // 填充Qdrant配置
+                if (data.qdrant_host) {
+                    document.getElementById('qdrant_host').value = data.qdrant_host;
+                }
+                if (data.qdrant_port) {
+                    document.getElementById('qdrant_port').value = data.qdrant_port;
+                }
+            }
+        })
+        .catch(error => console.error('Error loading VDB config:', error));
         }
 
         // 添加日志条目
@@ -764,53 +906,7 @@
             });
         });
 
-        // MeloTTS 控制按钮处理
-        melottsStartBtn.addEventListener('click', function() {
-            fetch('/api/control', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ action: 'control_melotts', melotts_action: 'start' })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    console.log('MeloTTS start command sent successfully');
-                    alert(data.message);
-                } else {
-                    alert('MeloTTS启动失败: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('MeloTTS启动命令发送失败');
-            });
-        });
-
-        melottsStopBtn.addEventListener('click', function() {
-            fetch('/api/control', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ action: 'control_melotts', melotts_action: 'stop' })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    console.log('MeloTTS stop command sent successfully');
-                    alert(data.message);
-                } else {
-                    alert('MeloTTS停止失败: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('MeloTTS停止命令发送失败');
-            });
-        });
-
+        // MeloTTS 预热按钮处理
         melottsWarmupBtn.addEventListener('click', function() {
             fetch('/api/control', {
                 method: 'POST',
@@ -836,28 +932,40 @@
 
         saveBtn.addEventListener('click', function() {
             const formData = new FormData(configForm);
+            // 处理表单数据
             const config = {};
-
-            for (let [key, value] of formData.entries()) {
-                // 特殊处理 danmu_task_ids，将其转换为数组
+            
+            // 获取所有input元素
+            const inputs = configForm.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                const key = input.name;
+                if (!key) return;
+                
+                // 特殊处理 danmu_task_ids
                 if (key === 'danmu_task_ids') {
-                    if (value.trim() !== '') {
+                    const value = input.value.trim();
+                    if (value !== '') {
                         // 分割逗号分隔的值并清理空白
                         const taskIds = value.split(',').map(id => id.trim()).filter(id => id !== '');
-                        // 如果数组为空，使用默认值
                         config[key] = taskIds.length > 0 ? taskIds : ['123456'];
                     } else {
                         config[key] = ['123456']; // 默认值
                     }
-                } else {
-                    // 尝试转换为布尔值或数字
-                    if (value === 'true') value = true;
-                    else if (value === 'false') value = false;
-                    else if (!isNaN(value) && value !== '') value = Number(value);
-
-                    config[key] = value;
+                } 
+                // 处理checkbox
+                else if (input.type === 'checkbox') {
+                    config[key] = input.checked;
                 }
-            }
+                // 处理其他输入类型
+                else {
+                    const value = input.value;
+                    // 尝试转换为布尔值或数字
+                    if (value === 'true') config[key] = true;
+                    else if (value === 'false') config[key] = false;
+                    else if (!isNaN(value) && value !== '') config[key] = Number(value);
+                    else config[key] = value;
+                }
+            });
 
             fetch('/api/config', {
                 method: 'POST',
@@ -878,6 +986,71 @@
                 console.error('Error:', error);
                 alert('配置保存失败');
             });
+        });
+        
+        // 保存VDB配置
+        vdbSaveBtn.addEventListener('click', function() {
+            const vdbConfig = {
+                vdb_auto_run: vdbAutoRun.checked,
+                vdb_startup_run: vdbStartupRun.checked,
+                vdb_check_interval: Number(vdbCheckInterval.value),
+                enable_llm_vdb_control: enableLlmVdbControl.checked,
+                qdrant_host: document.getElementById('qdrant_host').value || 'localhost',
+                qdrant_port: Number(document.getElementById('qdrant_port').value) || 6333
+            };
+            
+            fetch('/api/control/vdb', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    action: 'set_config',
+                    config: vdbConfig
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('VDB配置已保存');
+                } else {
+                    alert('VDB配置保存失败: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('VDB配置保存失败');
+            });
+        });
+        
+        // 执行数据库手动清理
+        vdbCleanBtn.addEventListener('click', function() {
+            if (confirm('确定要立即执行数据库清理吗？这可能会删除过期的记录。')) {
+                responseDisplay.textContent = '正在执行数据库清理...';
+                
+                fetch('/api/control/vdb', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ action: 'manual_clean' })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        responseDisplay.textContent = '数据库清理完成！';
+                        alert('数据库清理成功完成');
+                    } else {
+                        responseDisplay.textContent = `清理失败: ${data.message}`;
+                        alert('数据库清理失败: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    responseDisplay.textContent = '数据库清理失败';
+                    alert('数据库清理请求发送失败');
+                });
+            }
         });
 
         // 发送消息按钮处理

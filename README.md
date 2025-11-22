@@ -27,11 +27,20 @@
 - 通过Ollama chat API实现
 - 工具调用的记忆作为永久记忆不删除
 
-### 3. WebUI控制面板
+### 3. 工具调用功能
+- **播放音效**：支持播放指定的音效文件
+- **播放音乐**：支持播放指定的音乐文件
+- **AI绘画**：支持文本生成图像功能，生成的图像会经过内容审核
+- **屏幕点击**：支持指定坐标点击屏幕，实现人机交互
+- **连续操作模式**：支持自动化的连续操作流程，可实现复杂的自动化任务
+
+### 4. WebUI控制面板
 - 配置管理（保存/加载）
 - 系统控制（启动/停止/重启）
 - 直接消息发送功能（绕过ASR）
 - 实时日志显示
+- 数据库管理设置控制（自动运行开关、启动时运行开关、检查间隔调整）
+- 手动触发数据库管理操作功能
 
 ### 4. 智能语音合成
 - 按标点符号分割文本（每3句一段）
@@ -51,6 +60,7 @@
 - **专用工具集**：提供delete_memory、merge_memories、modify_memory、update_metadata等工具
 - **持久性保护**：重要的持久性记忆受到保护，防止误删
 - **自动化管理**：副模型自动分析并管理记忆库
+- **数据库管理设置控制**：支持通过API或WebUI控制自动清理、摘要生成和定期维护任务的启用与间隔设置
 
 ## 系统架构
 
@@ -90,11 +100,41 @@ CX-V2/
 3. 确保以下服务运行：
    - Ollama服务 (默认端口11434)
    - Qdrant向量数据库 (默认端口6333，可选)
-   - 各种API服务（根据配置）
+   - 让弹幕飞
 
 ## 配置文件
 
-主要配置文件：`config/config.json`
+主要配置文件：`config/config.json`，包含以下关键配置项：
+
+### 模型配置
+- `ollama_api_url`: Ollama API地址
+- `ollama_model`: 文本模型名称（默认qwen2.5:0.5b）
+- `ollama_vision_model`: 视觉模型名称（默认qwen2.5vl）
+- `ollama_temperature`: 生成温度参数
+- `ollama_max_tokens`: 最大生成令牌数
+
+### 功能开关
+- `enable_sound_effects`: 启用音效播放
+- `enable_music`: 启用音乐播放
+- `enable_ai_drawing`: 启用AI绘画
+- `enable_continuous_mode`: 启用连续操作模式
+- `enable_danmu`: 启用弹幕功能
+- `enable_voice_recognition`: 启用语音识别
+- `enable_wake_sleep`: 启用唤醒/睡眠功能
+
+### 语音交互配置
+- `voice_trigger_enabled`: 启用语音触发
+- `key_trigger_enabled`: 启用按键触发
+- `trigger_key`: 触发按键（默认F11）
+- `stop_trigger_key`: 停止触发按键（默认F12）
+- `wake_word`: 唤醒词
+- `sleep_word`: 睡眠词
+
+### 向量数据库配置
+- `vdb_auto_run`: 启用向量数据库自动运行
+- `vdb_startup_run`: 启动时运行向量数据库管理
+- `vdb_check_interval`: 检查间隔（秒）
+- `enable_llm_vdb_control`: 启用LLM向量数据库控制
 
 ## 使用方法
 
@@ -111,26 +151,14 @@ python main.py
 - **重启系统**：通过WebUI一键重启
 - **配置管理**：通过WebUI实时修改配置
 - **查看日志**：实时查看系统日志
+- **数据库管理**：控制向量数据库的自动运行和检查间隔
 
-## 运行测试
-
-要运行所有测试：
-```bash
-python run_tests.py
-```
-
-或单独运行测试：
-```bash
-python docs/test_features.py
-python docs/test_context_management.py
-```
-
-## 项目文档
-
-项目文档位于 `docs/` 目录中：
-- `CHANGES_AND_FEATURES.md` - 功能变更说明
-- `FULL_PROJECT_REVIEW.md` - 项目全面检查总结
-- `README.md` - 项目文档说明
+### 交互方式
+- **弹幕交互**：需启用弹幕功能，配置WebSocket地址和任务ID
+- **语音交互**：
+  - 按键模式：按F11开始录音，F12停止
+  - 语音触发模式：说唤醒词激活系统
+- **WebUI交互**：通过Web界面手动输入消息
 
 ## 依赖库
 
@@ -145,6 +173,8 @@ python docs/test_context_management.py
 - ✅ 向量数据库集成
 - ✅ 流式TTS功能
 - ✅ 工具调用支持
+- ✅ 屏幕点击功能
+- ✅ 连续操作模式
 
 ## 许可证
 

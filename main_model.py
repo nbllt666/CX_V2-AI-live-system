@@ -109,7 +109,18 @@ class MainModel:
         # 尝试从文件加载上下文
         self.load_context_from_file()
         
+        # 工具管理器
+        self.tool_manager = None
+        
         logging.info("Main model (Ollama) initialized successfully")
+    
+    def set_tool_manager(self, tool_manager):
+        """设置工具管理器实例"""
+        self.tool_manager = tool_manager
+        # 如果工具管理器有VDB管理器实例，设置到工具管理器中
+        if hasattr(tool_manager, 'set_vdb_manager'):
+            tool_manager.set_vdb_manager(self.vdb_manager)
+        logging.info("Tool manager set in main model")
     
     @retry_on_failure(max_retries=2, delay=1, backoff=1)
     def _check_ollama_connection(self) -> bool:
@@ -167,6 +178,21 @@ class MainModel:
             
             # 解析工具调用
             tool_calls = self._parse_tool_calls(response)
+            
+            # 执行工具调用
+            if tool_calls and self.tool_manager:
+                for tool_call in tool_calls:
+                    tool_name = tool_call.get('name')
+                    tool_args = tool_call.get('arguments', {})
+                    
+                    # 调用工具管理器执行工具
+                    if hasattr(self.tool_manager, tool_name):
+                        method = getattr(self.tool_manager, tool_name)
+                        try:
+                            result = method(config=self.config)
+                            logging.info(f"Tool {tool_name} executed with result: {result}")
+                        except Exception as e:
+                            logging.error(f"Error executing tool {tool_name}: {e}")
             
             # 添加对话记录到历史
             self.add_conversation_entry(message, response)
@@ -231,6 +257,8 @@ class MainModel:
             disabled_features.append("连续操作模式已关闭")
         if not self.config.get('enable_voice_recognition', True):
             disabled_features.append("语音识别功能已关闭")
+        if not self.config.get('enable_llm_vdb_control', True):
+            disabled_features.append("LLM控制VDB管理功能已关闭")
 
         if disabled_features:
             system_prompt += f"\n\n已禁用功能: {', '.join(disabled_features)}"
@@ -277,6 +305,12 @@ class MainModel:
                 "示例：停止，退出连续操作模式"
             )
 
+        if self.config.get('enable_llm_vdb_control', True):
+            detailed_tool_descriptions.append(
+                "start_vdb_management: 启动VDB管理功能，用于自动管理对话记忆和上下文。"
+                "示例：启动VDB管理"
+            )
+
         # 添加连续对话和唤醒/睡眠功能说明
         if self.config.get('enable_voice_recognition', True):
             wake_word = self.config.get('wake_word', '唤醒')
@@ -301,6 +335,8 @@ class MainModel:
         if self.config.get('enable_continuous_mode', True):
             available_tools_names.add('start_continuous_mode')
             available_tools_names.add('stop_continuous_mode')
+        if self.config.get('enable_llm_vdb_control', True):
+            available_tools_names.add('start_vdb_management')
 
         # 只保留在功能开关中启用的工具
         enabled_tools = [tool for tool in tools if tool['name'] in available_tools_names]
@@ -547,6 +583,12 @@ class MainModel:
             if "STOP" in response.upper() and self.continuous_mode:
                 tool_calls.append({
                     'name': 'stop_continuous_mode',
+                    'arguments': {}
+                })
+            
+            if "VDB管理" in response or "启动VDB" in response:
+                tool_calls.append({
+                    'name': 'start_vdb_management',
                     'arguments': {}
                 })
             

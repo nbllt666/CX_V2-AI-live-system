@@ -1,4 +1,5 @@
 import asyncio
+import json
 import logging
 import sys
 import threading
@@ -73,6 +74,9 @@ class AILiveSystem:
         self.danmu_thread = threading.Thread(target=self._run_danmu_receiver, daemon=True)
         
         logging.info("AI Live System initialized successfully")
+        
+        # 执行系统预热
+        self._warmup_system()
 
     def _init_modules(self):
         """初始化所有模块"""
@@ -125,9 +129,12 @@ class AILiveSystem:
             logging.info("Initializing WebUI Controller...")
             try:
                 from webui import WebUIController
-                self.webui_controller = WebUIController(ai_system=self)
-            except ImportError:
-                logging.warning("WebUI module not found. Run 'pip install Flask python-socketio' to enable WebUI.")
+                self.webui_controller = WebUIController(vdb_manager=self.vdb_manager)
+            except ImportError as e:
+                logging.warning(f"WebUI module not found: {e}. Run 'pip install Flask python-socketio' to enable WebUI.")
+                self.webui_controller = None
+            except Exception as e:
+                logging.error(f"Error initializing WebUI Controller: {e}")
                 self.webui_controller = None
             
             # 11. 初始化音频录制器
@@ -140,6 +147,90 @@ class AILiveSystem:
             logging.error(f"Error initializing modules: {e}")
             raise
 
+    def _warmup_system(self):
+        """
+        系统预热功能，用于加载和初始化必要的模型和资源
+        包括：Ollama模型加载、SenseVoice预热等
+        """
+        logging.info("Starting system warmup...")
+        
+        # 预热Ollama模型
+        try:
+            logging.info("Warming up Ollama models...")
+            if self.main_model:
+                # 使用现有的连接检查方法进行预热，确保模型已加载
+                self.main_model._check_ollama_connection()
+                
+                # 发送一个简单的预热提示来确保模型完全加载
+                logging.info("Loading text model: %s", self.main_model.ollama_model)
+                if hasattr(self.main_model, 'ollama_api_url'):
+                    import requests
+                    response = requests.post(
+                        self.main_model.ollama_api_url.replace('/chat', '/generate'),
+                        json={
+                            "model": self.main_model.ollama_model,
+                            "prompt": "系统预热",
+                            "stream": False,
+                            "options": {"num_predict": 1}
+                        },
+                        timeout=20
+                    )
+                    if response.status_code == 200:
+                        logging.info("Text model loaded successfully")
+                    else:
+                        logging.warning(f"Text model load response: {response.status_code}")
+                
+                # 预热视觉模型（如果有）
+                if hasattr(self.main_model, 'ollama_vision_model') and self.main_model.ollama_vision_model:
+                    logging.info("Loading vision model: %s", self.main_model.ollama_vision_model)
+                    try:
+                        response = requests.post(
+                            self.main_model.ollama_api_url.replace('/chat', '/generate'),
+                            json={
+                                "model": self.main_model.ollama_vision_model,
+                                "prompt": "系统预热",
+                                "stream": False,
+                                "options": {"num_predict": 1}
+                            },
+                            timeout=20
+                        )
+                        if response.status_code == 200:
+                            logging.info("Vision model loaded successfully")
+                        else:
+                            logging.warning(f"Vision model load response: {response.status_code}")
+                    except Exception as e:
+                        logging.warning(f"Vision model warmup failed (this may be normal if no vision model is used): {e}")
+        except Exception as e:
+            logging.error(f"Ollama model warmup failed: {e}")
+        
+        # 预热SenseVoice
+        try:
+            logging.info("Warming up SenseVoice...")
+            if self.sense_voice:
+                # 检查SenseVoice API服务是否可用
+                api_url = self.sense_voice.api_url
+                logging.info(f"Checking SenseVoice API at: {api_url}")
+                
+                # 发送一个简单的请求来验证API是否响应
+                try:
+                    import requests
+                    # 我们可以发送一个HEAD请求来检查服务是否在线
+                    response = requests.head(api_url, timeout=10)
+                    if response.status_code in [200, 405]:  # 200=成功, 405=方法不允许但服务在线
+                        logging.info("SenseVoice API service is online")
+                    else:
+                        logging.warning(f"SenseVoice API returned status: {response.status_code}")
+                except requests.exceptions.RequestException as e:
+                    logging.error(f"SenseVoice API service check failed: {e}")
+                    logging.warning("Starting SenseVoice service may be required")
+                
+                # 记录初始化状态
+                logging.info("SenseVoice initialized and ready for use")
+        except Exception as e:
+            logging.error(f"SenseVoice warmup failed: {e}")
+        
+        logging.info("System warmup completed")
+    
     def handle_message(self, message: str):
         """
         处理接收到的消息（弹幕、语音识别结果等）
@@ -475,6 +566,22 @@ def main():
     # 创建AI直播系统
     ai_system = AILiveSystem(config)
     
+    # 用于控制程序退出的标志
+    exit_event = threading.Event()
+    
+    # 信号处理函数
+    def signal_handler(signum, frame):
+        print("\nReceived interrupt signal. Shutting down AI Live System...")
+        exit_event.set()
+    
+    # 注册信号处理器
+    try:
+        import signal
+        signal.signal(signal.SIGINT, signal_handler)
+        signal.signal(signal.SIGTERM, signal_handler)
+    except Exception as e:
+        logging.warning(f"Could not register signal handlers: {e}")
+    
     webui_thread = None
     try:
         # 启动系统
@@ -482,7 +589,6 @@ def main():
         
         # 启动 WebUI (如果可用)
         if ai_system.webui_controller:
-            import threading
             def start_webui():
                 try:
                     from webui import run_webui
@@ -499,16 +605,17 @@ def main():
         print("AI Live System is running. Press Ctrl+C to stop.")
         
         # 保持主程序运行
-        while True:
+        while not exit_event.is_set():
             try:
-                time.sleep(1)
+                # 使用较短的超时时间以便能及时响应退出信号
+                exit_event.wait(timeout=1)
                 
                 # 可以在这里添加其他主循环逻辑
                 # 例如：处理GUI事件、检查配置更新等
                 
             except KeyboardInterrupt:
                 print("\nShutting down AI Live System...")
-                break
+                exit_event.set()
             
     except Exception as e:
         logging.error(f"Error in main: {e}")

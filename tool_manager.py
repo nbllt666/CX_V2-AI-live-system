@@ -18,6 +18,9 @@ class ToolManager:
         self.songs_dir = config.get('songs_dir', './songs')
         self.images_dir = config.get('images_dir', './images')
         
+        # VDB管理器实例
+        self.vdb_manager = None
+        
         # 任务队列
         self.task_queue = queue.Queue()
         
@@ -26,6 +29,11 @@ class ToolManager:
         self.processing_thread.start()
         
         logging.info("Tool manager initialized")
+    
+    def set_vdb_manager(self, vdb_manager):
+        """设置VDB管理器实例"""
+        self.vdb_manager = vdb_manager
+        logging.info("VDB manager set in tool manager")
 
     def _process_tool_tasks(self):
         """处理工具任务的后台线程"""
@@ -67,6 +75,8 @@ class ToolManager:
                     return {'error': '屏幕点击功能已关闭', 'success': False}
                 elif tool_name in ['start_continuous_mode', 'stop_continuous_mode'] and not config.get('enable_continuous_mode', True):
                     return {'error': '连续操作模式已关闭', 'success': False}
+                elif tool_name == 'start_vdb_management' and not config.get('enable_llm_vdb_control', True):
+                    return {'error': 'LLM控制VDB管理功能已关闭', 'success': False}
             
             if tool_name == 'play_sound':
                 return self._play_sound(arguments.get('sound_file', ''))
@@ -80,6 +90,8 @@ class ToolManager:
                 return self._start_continuous_mode()
             elif tool_name == 'stop_continuous_mode':
                 return self._stop_continuous_mode()
+            elif tool_name == 'start_vdb_management':
+                return self._start_vdb_management()
             else:
                 return {'error': f'Unknown tool: {tool_name}', 'success': False}
                 
@@ -151,6 +163,27 @@ class ToolManager:
             return True
         except Exception as e:
             logging.error(f"Error adding image draw task: {e}")
+            return False
+
+    def start_vdb_management(self, config: Dict[str, Any] = None, callback: Optional[callable] = None) -> bool:
+        """
+        启动VDB管理
+        :param config: 配置字典
+        :param callback: 执行完成后的回调函数
+        :return: 是否成功添加到任务队列
+        """
+        try:
+            task = {
+                'tool_name': 'start_vdb_management',
+                'arguments': {},
+                'config': config,
+                'callback': callback
+            }
+            self.task_queue.put(task)
+            logging.info("Added VDB management start task")
+            return True
+        except Exception as e:
+            logging.error(f"Error adding VDB management start task: {e}")
             return False
 
     def _play_sound(self, sound_file: str) -> Dict[str, Any]:
@@ -251,6 +284,20 @@ class ToolManager:
             
         except Exception as e:
             logging.error(f"Error drawing image: {e}")
+            return {'error': str(e), 'success': False}
+
+    def _start_vdb_management(self) -> Dict[str, Any]:
+        """实际执行启动VDB管理"""
+        try:
+            if not self.vdb_manager:
+                return {'error': 'VDB管理器未初始化', 'success': False}
+            
+            result = self.vdb_manager.start_vdb_management()
+            logging.info(f"VDB management start result: {result}")
+            return result
+            
+        except Exception as e:
+            logging.error(f"Error starting VDB management: {e}")
             return {'error': str(e), 'success': False}
 
 class AudioPlayer:

@@ -1,0 +1,28 @@
+2025-11-22 14:58:19,991 - __main__ - INFO - Configuration loaded successfully
+2025-11-22 14:58:33,603 - root - ERROR - Error initializing Qdrant client: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2025-11-22 14:58:33,603 - root - INFO - Falling back to simulated embedding approach
+2025-11-22 14:58:33,604 - root - INFO - 启动了自动数据库清理线程
+2025-11-22 14:58:33,605 - root - INFO - 启动时执行数据库清理
+2025-11-22 14:58:33,606 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-22 14:58:33,606 - __main__ - INFO - VDB Manager initialized successfully
+2025-11-22 14:58:34,907 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-11-22 14:58:37,645 - root - ERROR - Error in cleaning expired memories: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2025-11-22 14:58:37,646 - root - ERROR - Error generating context summary: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2025-11-22 14:58:37,646 - root - ERROR - Error in cleaning expired memories: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2025-11-22 14:58:37,646 - root - INFO - 上下文摘要生成完成，将在 1440 分钟后再次执行
+2025-11-22 14:58:37,646 - root - INFO - 数据库清理完成，将在 60 分钟后再次执行
+2025-11-22 14:59:20,308 - __main__ - INFO - Configuration loaded successfully
+2025-11-22 14:59:34,013 - root - ERROR - Error initializing Qdrant client: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2025-11-22 14:59:34,014 - root - INFO - Falling back to simulated embedding approach
+2025-11-22 14:59:34,015 - root - INFO - 启动了自动数据库清理线程
+2025-11-22 14:59:34,015 - root - INFO - 启动时执行数据库清理
+2025-11-22 14:59:34,016 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-22 14:59:34,016 - __main__ - INFO - VDB Manager initialized successfully
+2025-11-22 14:59:35,377 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-11-22 14:59:36,877 - httpx - INFO - HTTP Request: GET http://localhost:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-11-22 14:59:38,061 - root - ERROR - Error in cleaning expired memories: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2025-11-22 14:59:38,061 - root - ERROR - Error in cleaning expired memories: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2025-11-22 14:59:38,062 - root - INFO - 数据库清理完成，将在 60 分钟后再次执行
+2025-11-22 14:59:38,076 - root - ERROR - Error generating context summary: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2025-11-22 14:59:38,076 - root - INFO - 上下文摘要生成完成，将在 1440 分钟后再次执行
+2025-11-22 14:59:38,914 - httpx - INFO - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
