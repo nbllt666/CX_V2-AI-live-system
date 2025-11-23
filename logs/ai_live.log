@@ -909,3 +909,308 @@ UnboundLocalError: cannot access local variable 'threading' where it is not asso
 2025-11-22 17:52:07,169 - root - INFO - System warmup completed
 2025-11-22 17:52:07,169 - root - INFO - Running in chat-only mode (danmu disabled)
 2025-11-22 17:52:07,308 - root - INFO - Audio listener started, waiting for speech...
+2025-11-22 20:56:16,009 - root - INFO - Logging setup completed
+2025-11-22 20:56:16,010 - root - INFO - AI Live System initializing...
+2025-11-22 20:56:16,010 - root - INFO - Initializing VDB Manager...
+2025-11-22 20:56:17,565 - httpx - INFO - HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2025-11-22 20:56:17,583 - httpx - INFO - HTTP Request: GET http://localhost:6333/collections/memory_collection "HTTP/1.1 200 OK"
+2025-11-22 20:56:17,585 - root - INFO - Connected to existing Qdrant collection: memory_collection
+2025-11-22 20:56:17,585 - root - INFO - 上下文摘要功能已禁用
+2025-11-22 20:56:17,585 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-22 20:56:17,585 - root - INFO - Initializing Long Term Memory...
+2025-11-22 20:56:17,585 - root - INFO - Context summarizer initialized
+2025-11-22 20:56:17,585 - root - INFO - Long term memory system initialized
+2025-11-22 20:56:17,586 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-22 20:56:17,609 - root - ERROR - Failed to connect to Ollama
+2025-11-22 20:56:17,610 - root - INFO - Context loaded from context_short_term.json
+2025-11-22 20:56:17,610 - root - INFO - Context loaded from context_medium_term.json
+2025-11-22 20:56:17,610 - root - INFO - Context loaded from context_long_term.json
+2025-11-22 20:56:17,611 - root - INFO - Loaded 1 conversation entries from medium-term context file
+2025-11-22 20:56:17,611 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-22 20:56:17,611 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-22 20:56:17,611 - root - INFO - Initializing SenseVoice...
+2025-11-22 20:56:17,611 - root - INFO - SenseVoice recognizer initialized
+2025-11-22 20:56:17,611 - root - INFO - Voice trigger initialized
+2025-11-22 20:56:17,612 - root - INFO - Initializing Voice Output...
+2025-11-22 20:56:17,612 - root - INFO - CosyVoice synthesizer initialized
+2025-11-22 20:56:17,612 - root - INFO - Voice output manager initialized
+2025-11-22 20:56:17,612 - root - INFO - Initializing Content Moderation...
+2025-11-22 20:56:17,612 - root - INFO - Content moderation module initialized
+2025-11-22 20:56:17,613 - root - INFO - Content moderation module initialized
+2025-11-22 20:56:17,613 - root - INFO - Initializing Screen Manager...
+2025-11-22 20:56:17,613 - root - INFO - Screen manager initialized
+2025-11-22 20:56:17,613 - root - INFO - Initializing Tool Executor...
+2025-11-22 20:56:17,613 - root - INFO - Tool manager initialized
+2025-11-22 20:56:17,614 - root - INFO - Initializing WebUI Controller...
+2025-11-22 20:56:17,633 - webui - INFO - 配置加载成功: config/config.json
+2025-11-22 20:56:19,218 - httpx - INFO - HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2025-11-22 20:56:19,234 - httpx - INFO - HTTP Request: GET http://localhost:6333/collections/memory_collection "HTTP/1.1 200 OK"
+2025-11-22 20:56:19,235 - root - INFO - Connected to existing Qdrant collection: memory_collection
+2025-11-22 20:56:19,236 - root - INFO - 上下文摘要功能已禁用
+2025-11-22 20:56:19,236 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-22 20:56:19,236 - webui - INFO - 配置加载成功: config/config.json
+2025-11-22 20:56:19,244 - webui - INFO - 配置加载成功: config/config.json
+2025-11-22 20:56:19,244 - root - INFO - Initializing Audio Recorder...
+2025-11-22 20:56:19,667 - root - INFO - Audio recorder initialized
+2025-11-22 20:56:19,667 - root - INFO - All modules initialized successfully
+2025-11-22 20:56:19,667 - root - INFO - AI Live System initialized successfully
+2025-11-22 20:56:19,668 - root - INFO - Starting system warmup...
+2025-11-22 20:56:19,668 - root - INFO - Warming up Ollama models...
+2025-11-22 20:56:19,670 - root - INFO - SenseVoice recognizer initialized
+2025-11-22 20:56:19,692 - root - INFO - Loading text model: qwen2.5:0.5b
+2025-11-22 20:56:19,723 - root - WARNING - Text model load response: 404
+2025-11-22 20:56:19,723 - root - INFO - Loading vision model: qwen2.5vl
+2025-11-22 20:56:23,236 - root - INFO - Vision model loaded successfully
+2025-11-22 20:56:23,236 - root - INFO - Warming up SenseVoice...
+2025-11-22 20:56:23,237 - root - INFO - Checking SenseVoice API at: http://127.0.0.1:8877/api/v1/asr
+2025-11-22 20:56:25,271 - root - ERROR - SenseVoice API service check failed: HTTPConnectionPool(host='127.0.0.1', port=8877): Max retries exceeded with url: /api/v1/asr (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000267DA998770>: Failed to establish a new connection: [Errno 10061] WSAECONNREFUSED'))
+2025-11-22 20:56:25,271 - root - WARNING - Starting SenseVoice service may be required
+2025-11-22 20:56:25,271 - root - INFO - SenseVoice initialized and ready for use
+2025-11-22 20:56:25,271 - root - INFO - System warmup completed
+2025-11-22 20:56:25,272 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-22 20:56:25,423 - root - INFO - Audio listener started, waiting for speech...
+2025-11-22 20:57:51,264 - __main__ - INFO - 配置保存成功: config/config.json
+2025-11-22 20:57:51,266 - root - INFO - Started listening for speech
+2025-11-22 20:57:51,345 - __main__ - INFO - 系统重启中...
+2025-11-22 20:57:51,345 - __main__ - INFO - 系统停止中...
+2025-11-22 20:57:51,346 - __main__ - INFO - 系统重启中...
+2025-11-22 20:57:51,346 - __main__ - INFO - 系统停止中...
+2025-11-22 20:57:51,346 - __main__ - INFO - 系统停止成功
+2025-11-22 20:57:51,346 - __main__ - INFO - 系统重启中...
+2025-11-22 20:57:51,347 - __main__ - INFO - 系统停止中...
+2025-11-22 20:57:51,347 - __main__ - INFO - 系统停止成功
+2025-11-22 20:57:51,348 - __main__ - INFO - 配置保存成功: config/config.json
+2025-11-22 21:00:44,045 - root - INFO - Logging setup completed
+2025-11-22 21:00:44,045 - root - INFO - AI Live System initializing...
+2025-11-22 21:00:44,045 - root - INFO - Initializing VDB Manager...
+2025-11-22 21:00:57,427 - root - ERROR - Error initializing Qdrant client: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2025-11-22 21:00:57,428 - root - INFO - Falling back to simulated embedding approach
+2025-11-22 21:00:57,428 - root - INFO - 上下文摘要功能已禁用
+2025-11-22 21:00:57,428 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-22 21:00:57,428 - root - INFO - Initializing Long Term Memory...
+2025-11-22 21:00:57,428 - root - INFO - Context summarizer initialized
+2025-11-22 21:00:57,428 - root - INFO - Long term memory system initialized
+2025-11-22 21:00:57,428 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-22 21:00:57,447 - root - ERROR - Failed to connect to Ollama
+2025-11-22 21:00:57,448 - root - INFO - Context loaded from context_short_term.json
+2025-11-22 21:00:57,448 - root - INFO - Context loaded from context_medium_term.json
+2025-11-22 21:00:57,449 - root - INFO - Context loaded from context_long_term.json
+2025-11-22 21:00:57,449 - root - INFO - Loaded 1 conversation entries from medium-term context file
+2025-11-22 21:00:57,449 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-22 21:00:57,449 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-22 21:00:57,449 - root - INFO - Initializing SenseVoice...
+2025-11-22 21:00:57,450 - root - INFO - SenseVoice recognizer initialized
+2025-11-22 21:00:57,450 - root - INFO - Voice trigger initialized
+2025-11-22 21:00:57,450 - root - INFO - Initializing Voice Output...
+2025-11-22 21:00:57,451 - root - INFO - CosyVoice synthesizer initialized
+2025-11-22 21:00:57,451 - root - INFO - Voice output manager initialized
+2025-11-22 21:00:57,451 - root - INFO - Initializing Content Moderation...
+2025-11-22 21:00:57,451 - root - INFO - Content moderation module initialized
+2025-11-22 21:00:57,452 - root - INFO - Content moderation module initialized
+2025-11-22 21:00:57,452 - root - INFO - Initializing Screen Manager...
+2025-11-22 21:00:57,452 - root - INFO - Screen manager initialized
+2025-11-22 21:00:57,452 - root - INFO - Initializing Tool Executor...
+2025-11-22 21:00:57,453 - root - INFO - Tool manager initialized
+2025-11-22 21:00:57,453 - root - INFO - Initializing WebUI Controller...
+2025-11-22 21:00:58,324 - webui - INFO - 配置加载成功: config/config.json
+2025-11-22 21:01:05,606 - root - ERROR - Error initializing Qdrant client: [Errno 10061] WSAECONNREFUSED
+2025-11-22 21:01:05,606 - root - INFO - Falling back to simulated embedding approach
+2025-11-22 21:01:05,606 - root - INFO - 上下文摘要功能已禁用
+2025-11-22 21:01:05,606 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-22 21:01:05,607 - webui - INFO - 配置加载成功: config/config.json
+2025-11-22 21:01:05,610 - webui - INFO - 配置加载成功: config/config.json
+2025-11-22 21:01:05,610 - root - INFO - Initializing Audio Recorder...
+2025-11-22 21:01:05,985 - root - INFO - Audio recorder initialized
+2025-11-22 21:01:05,985 - root - INFO - All modules initialized successfully
+2025-11-22 21:01:05,985 - root - INFO - AI Live System initialized successfully
+2025-11-22 21:01:05,985 - root - INFO - Starting system warmup...
+2025-11-22 21:01:05,985 - root - INFO - Warming up Ollama models...
+2025-11-22 21:01:05,987 - root - INFO - SenseVoice recognizer initialized
+2025-11-22 21:01:06,005 - root - INFO - Loading text model: qwen2.5:0.5b
+2025-11-22 21:01:06,024 - root - WARNING - Text model load response: 404
+2025-11-22 21:01:06,025 - root - INFO - Loading vision model: qwen2.5vl
+2025-11-22 21:01:06,205 - root - INFO - Vision model loaded successfully
+2025-11-22 21:01:06,206 - root - INFO - Warming up SenseVoice...
+2025-11-22 21:01:06,206 - root - INFO - Checking SenseVoice API at: http://127.0.0.1:8877/api/v1/asr
+2025-11-22 21:01:08,250 - root - ERROR - SenseVoice API service check failed: HTTPConnectionPool(host='127.0.0.1', port=8877): Max retries exceeded with url: /api/v1/asr (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020608736C40>: Failed to establish a new connection: [Errno 10061] WSAECONNREFUSED'))
+2025-11-22 21:01:08,251 - root - WARNING - Starting SenseVoice service may be required
+2025-11-22 21:01:08,251 - root - INFO - SenseVoice initialized and ready for use
+2025-11-22 21:01:08,251 - root - INFO - System warmup completed
+2025-11-22 21:01:08,251 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-22 21:01:08,404 - root - INFO - Audio listener started, waiting for speech...
+2025-11-22 21:04:59,358 - root - INFO - Logging setup completed
+2025-11-22 21:04:59,358 - root - INFO - AI Live System initializing...
+2025-11-22 21:04:59,359 - root - INFO - Initializing VDB Manager...
+2025-11-22 21:05:07,082 - root - ERROR - Error initializing Qdrant client: [Errno 10061] WSAECONNREFUSED
+2025-11-22 21:05:07,082 - root - INFO - Falling back to simulated embedding approach
+2025-11-22 21:05:07,082 - root - INFO - 上下文摘要功能已禁用
+2025-11-22 21:05:07,082 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-22 21:05:07,083 - root - INFO - Initializing Long Term Memory...
+2025-11-22 21:05:07,083 - root - INFO - Context summarizer initialized
+2025-11-22 21:05:07,083 - root - INFO - Long term memory system initialized
+2025-11-22 21:05:07,083 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-22 21:05:07,104 - root - ERROR - Failed to connect to Ollama
+2025-11-22 21:05:07,105 - root - INFO - Context loaded from context_short_term.json
+2025-11-22 21:05:07,106 - root - INFO - Context loaded from context_medium_term.json
+2025-11-22 21:05:07,106 - root - INFO - Context loaded from context_long_term.json
+2025-11-22 21:05:07,106 - root - INFO - Loaded 1 conversation entries from medium-term context file
+2025-11-22 21:05:07,106 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-22 21:05:07,106 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-22 21:05:07,107 - root - INFO - Initializing SenseVoice...
+2025-11-22 21:05:07,107 - root - INFO - SenseVoice recognizer initialized
+2025-11-22 21:05:07,107 - root - INFO - Voice trigger initialized
+2025-11-22 21:05:07,107 - root - INFO - Initializing Voice Output...
+2025-11-22 21:05:07,108 - root - INFO - CosyVoice synthesizer initialized
+2025-11-22 21:05:07,108 - root - INFO - Voice output manager initialized
+2025-11-22 21:05:07,108 - root - INFO - Initializing Content Moderation...
+2025-11-22 21:05:07,108 - root - INFO - Content moderation module initialized
+2025-11-22 21:05:07,109 - root - INFO - Content moderation module initialized
+2025-11-22 21:05:07,109 - root - INFO - Initializing Screen Manager...
+2025-11-22 21:05:07,109 - root - INFO - Screen manager initialized
+2025-11-22 21:05:07,110 - root - INFO - Initializing Tool Executor...
+2025-11-22 21:05:07,110 - root - INFO - Tool manager initialized
+2025-11-22 21:05:07,110 - root - INFO - Initializing WebUI Controller...
+2025-11-22 21:05:07,112 - webui - INFO - 配置加载成功: config/config.json
+2025-11-22 21:05:14,441 - root - ERROR - Error initializing Qdrant client: [Errno 10061] WSAECONNREFUSED
+2025-11-22 21:05:14,441 - root - INFO - Falling back to simulated embedding approach
+2025-11-22 21:05:14,441 - root - INFO - 上下文摘要功能已禁用
+2025-11-22 21:05:14,442 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-22 21:05:14,442 - webui - INFO - 配置加载成功: config/config.json
+2025-11-22 21:05:14,447 - webui - INFO - 配置加载成功: config/config.json
+2025-11-22 21:05:14,448 - root - INFO - Initializing Audio Recorder...
+2025-11-22 21:05:14,862 - root - INFO - Audio recorder initialized
+2025-11-22 21:05:14,862 - root - INFO - All modules initialized successfully
+2025-11-22 21:05:14,863 - root - INFO - AI Live System initialized successfully
+2025-11-22 21:05:14,863 - root - INFO - Starting system warmup...
+2025-11-22 21:05:14,863 - root - INFO - Warming up Ollama models...
+2025-11-22 21:05:14,866 - root - INFO - SenseVoice recognizer initialized
+2025-11-22 21:05:14,882 - root - INFO - Loading text model: qwen2.5:0.5b
+2025-11-22 21:05:14,900 - root - WARNING - Text model load response: 404
+2025-11-22 21:05:14,900 - root - INFO - Loading vision model: qwen2.5vl
+2025-11-22 21:05:15,075 - root - INFO - Vision model loaded successfully
+2025-11-22 21:05:15,075 - root - INFO - Warming up SenseVoice...
+2025-11-22 21:05:15,075 - root - INFO - Checking SenseVoice API at: http://127.0.0.1:8877/api/v1/asr
+2025-11-22 21:05:17,118 - root - ERROR - SenseVoice API service check failed: HTTPConnectionPool(host='127.0.0.1', port=8877): Max retries exceeded with url: /api/v1/asr (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025DE1356450>: Failed to establish a new connection: [Errno 10061] WSAECONNREFUSED'))
+2025-11-22 21:05:17,119 - root - WARNING - Starting SenseVoice service may be required
+2025-11-22 21:05:17,119 - root - INFO - SenseVoice initialized and ready for use
+2025-11-22 21:05:17,119 - root - INFO - System warmup completed
+2025-11-22 21:05:17,119 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-22 21:05:17,260 - root - INFO - Audio listener started, waiting for speech...
+2025-11-22 21:07:30,055 - root - INFO - Started listening for speech
+2025-11-22 21:07:30,143 - __main__ - INFO - 发送消息: 你好
+2025-11-22 21:45:52,374 - root - INFO - Logging setup completed
+2025-11-22 21:45:52,375 - root - INFO - AI Live System initializing...
+2025-11-22 21:45:52,375 - root - INFO - Initializing VDB Manager...
+2025-11-22 21:46:05,813 - root - ERROR - Error initializing Qdrant client: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2025-11-22 21:46:05,814 - root - INFO - Falling back to simulated embedding approach
+2025-11-22 21:46:05,814 - root - INFO - 上下文摘要功能已禁用
+2025-11-22 21:46:05,814 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-22 21:46:05,814 - root - INFO - Initializing Long Term Memory...
+2025-11-22 21:46:05,814 - root - INFO - Context summarizer initialized
+2025-11-22 21:46:05,814 - root - INFO - Long term memory system initialized
+2025-11-22 21:46:05,814 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-22 21:46:05,832 - root - ERROR - Failed to connect to Ollama
+2025-11-22 21:46:05,833 - root - INFO - Context loaded from context_short_term.json
+2025-11-22 21:46:05,834 - root - INFO - Context loaded from context_medium_term.json
+2025-11-22 21:46:05,834 - root - INFO - Context loaded from context_long_term.json
+2025-11-22 21:46:05,834 - root - INFO - Loaded 1 conversation entries from medium-term context file
+2025-11-22 21:46:05,834 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-22 21:46:05,835 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-22 21:46:05,835 - root - INFO - Initializing SenseVoice...
+2025-11-22 21:46:05,835 - root - INFO - SenseVoice recognizer initialized
+2025-11-22 21:46:05,835 - root - INFO - Voice trigger initialized
+2025-11-22 21:46:05,835 - root - INFO - Initializing Voice Output...
+2025-11-22 21:46:05,836 - root - INFO - CosyVoice synthesizer initialized
+2025-11-22 21:46:05,836 - root - INFO - Voice output manager initialized
+2025-11-22 21:46:05,836 - root - INFO - Initializing Content Moderation...
+2025-11-22 21:46:05,837 - root - INFO - Content moderation module initialized
+2025-11-22 21:46:05,837 - root - INFO - Content moderation module initialized
+2025-11-22 21:46:05,837 - root - INFO - Initializing Screen Manager...
+2025-11-22 21:46:05,837 - root - INFO - Screen manager initialized
+2025-11-22 21:46:05,837 - root - INFO - Initializing Tool Executor...
+2025-11-22 21:46:05,838 - root - INFO - Tool manager initialized
+2025-11-22 21:46:05,838 - root - INFO - Initializing WebUI Controller...
+2025-11-22 21:46:06,612 - webui - INFO - 配置加载成功: config/config.json
+2025-11-22 21:46:13,877 - root - ERROR - Error initializing Qdrant client: [Errno 10061] WSAECONNREFUSED
+2025-11-22 21:46:13,877 - root - INFO - Falling back to simulated embedding approach
+2025-11-22 21:46:13,878 - root - INFO - 上下文摘要功能已禁用
+2025-11-22 21:46:13,878 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-22 21:46:13,878 - webui - INFO - 配置加载成功: config/config.json
+2025-11-22 21:46:13,881 - webui - INFO - 配置加载成功: config/config.json
+2025-11-22 21:46:13,881 - root - INFO - Initializing Audio Recorder...
+2025-11-22 21:46:14,257 - root - INFO - Audio recorder initialized
+2025-11-22 21:46:14,258 - root - INFO - All modules initialized successfully
+2025-11-22 21:46:14,258 - root - INFO - AI Live System initialized successfully
+2025-11-22 21:46:14,258 - root - INFO - Starting system warmup...
+2025-11-22 21:46:14,258 - root - INFO - Warming up Ollama models...
+2025-11-22 21:46:14,260 - root - INFO - SenseVoice recognizer initialized
+2025-11-22 21:46:14,281 - root - INFO - Loading text model: qwen2.5:0.5b
+2025-11-22 21:46:14,324 - root - WARNING - Text model load response: 404
+2025-11-22 21:46:14,325 - root - INFO - Loading vision model: qwen2.5vl
+2025-11-22 21:46:17,379 - root - INFO - Vision model loaded successfully
+2025-11-22 21:46:17,379 - root - INFO - Warming up SenseVoice...
+2025-11-22 21:46:17,380 - root - INFO - Checking SenseVoice API at: http://127.0.0.1:8877/api/v1/asr
+2025-11-22 21:46:19,423 - root - ERROR - SenseVoice API service check failed: HTTPConnectionPool(host='127.0.0.1', port=8877): Max retries exceeded with url: /api/v1/asr (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000234CC9F6B10>: Failed to establish a new connection: [Errno 10061] WSAECONNREFUSED'))
+2025-11-22 21:46:19,424 - root - WARNING - Starting SenseVoice service may be required
+2025-11-22 21:46:19,424 - root - INFO - SenseVoice initialized and ready for use
+2025-11-22 21:46:19,424 - root - INFO - System warmup completed
+2025-11-22 21:46:19,424 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-22 21:46:19,548 - root - INFO - Audio listener started, waiting for speech...
+2025-11-22 21:52:42,553 - root - INFO - Logging setup completed
+2025-11-22 21:52:42,554 - root - INFO - AI Live System initializing...
+2025-11-22 21:52:42,554 - root - INFO - Initializing VDB Manager...
+2025-11-22 21:52:56,024 - root - ERROR - Error initializing Qdrant client: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2025-11-22 21:52:56,025 - root - INFO - Falling back to simulated embedding approach
+2025-11-22 21:52:56,025 - root - INFO - 上下文摘要功能已禁用
+2025-11-22 21:52:56,025 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-22 21:52:56,025 - root - INFO - Initializing Long Term Memory...
+2025-11-22 21:52:56,025 - root - INFO - Context summarizer initialized
+2025-11-22 21:52:56,025 - root - INFO - Long term memory system initialized
+2025-11-22 21:52:56,026 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-22 21:52:56,032 - root - ERROR - Failed to connect to Ollama
+2025-11-22 21:52:56,033 - root - INFO - Context loaded from context_short_term.json
+2025-11-22 21:52:56,034 - root - INFO - Context loaded from context_medium_term.json
+2025-11-22 21:52:56,034 - root - INFO - Context loaded from context_long_term.json
+2025-11-22 21:52:56,034 - root - INFO - Loaded 1 conversation entries from medium-term context file
+2025-11-22 21:52:56,034 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-22 21:52:56,034 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-22 21:52:56,034 - root - INFO - Initializing SenseVoice...
+2025-11-22 21:52:56,035 - root - INFO - SenseVoice recognizer initialized
+2025-11-22 21:52:56,035 - root - INFO - Voice trigger initialized
+2025-11-22 21:52:56,035 - root - INFO - Initializing Voice Output...
+2025-11-22 21:52:56,035 - root - INFO - CosyVoice synthesizer initialized
+2025-11-22 21:52:56,036 - root - INFO - Voice output manager initialized
+2025-11-22 21:52:56,036 - root - INFO - Initializing Content Moderation...
+2025-11-22 21:52:56,036 - root - INFO - Content moderation module initialized
+2025-11-22 21:52:56,036 - root - INFO - Content moderation module initialized
+2025-11-22 21:52:56,036 - root - INFO - Initializing Screen Manager...
+2025-11-22 21:52:56,037 - root - INFO - Screen manager initialized
+2025-11-22 21:52:56,037 - root - INFO - Initializing Tool Executor...
+2025-11-22 21:52:56,037 - root - INFO - Tool manager initialized
+2025-11-22 21:52:56,037 - root - INFO - Initializing WebUI Controller...
+2025-11-22 21:52:56,802 - webui - INFO - 配置加载成功: config/config.json
+2025-11-22 21:53:04,157 - root - ERROR - Error initializing Qdrant client: [Errno 10061] WSAECONNREFUSED
+2025-11-22 21:53:04,157 - root - INFO - Falling back to simulated embedding approach
+2025-11-22 21:53:04,157 - root - INFO - 上下文摘要功能已禁用
+2025-11-22 21:53:04,157 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-22 21:53:04,158 - webui - INFO - 配置加载成功: config/config.json
+2025-11-22 21:53:04,162 - webui - INFO - 配置加载成功: config/config.json
+2025-11-22 21:53:04,162 - root - INFO - Initializing Audio Recorder...
+2025-11-22 21:53:04,557 - root - INFO - Audio recorder initialized
+2025-11-22 21:53:04,557 - root - INFO - All modules initialized successfully
+2025-11-22 21:53:04,557 - root - INFO - AI Live System initialized successfully
+2025-11-22 21:53:04,557 - root - INFO - Starting system warmup...
+2025-11-22 21:53:04,557 - root - INFO - Warming up Ollama models...
+2025-11-22 21:53:04,559 - root - INFO - SenseVoice recognizer initialized
+2025-11-22 21:53:04,575 - root - INFO - Loading text model: qwen2.5:0.5b
+2025-11-22 21:53:04,595 - root - WARNING - Text model load response: 404
+2025-11-22 21:53:04,595 - root - INFO - Loading vision model: qwen2.5vl
+2025-11-22 21:53:07,664 - root - INFO - Vision model loaded successfully
+2025-11-22 21:53:07,664 - root - INFO - Warming up SenseVoice...
+2025-11-22 21:53:07,664 - root - INFO - Checking SenseVoice API at: http://127.0.0.1:8877/api/v1/asr
+2025-11-22 21:53:09,711 - root - ERROR - SenseVoice API service check failed: HTTPConnectionPool(host='127.0.0.1', port=8877): Max retries exceeded with url: /api/v1/asr (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000022230CE28B0>: Failed to establish a new connection: [Errno 10061] WSAECONNREFUSED'))
+2025-11-22 21:53:09,711 - root - WARNING - Starting SenseVoice service may be required
+2025-11-22 21:53:09,711 - root - INFO - SenseVoice initialized and ready for use
+2025-11-22 21:53:09,711 - root - INFO - System warmup completed
+2025-11-22 21:53:09,711 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-22 21:53:09,862 - root - INFO - Audio listener started, waiting for speech...

@@ -1,180 +1,160 @@
 import logging
 import requests
-import subprocess
-import os
 import threading
 import queue
+import os
+import subprocess
+import tempfile
+import re
 from typing import Dict, Any, Optional
 import time
-import re
 
 class CosyVoiceSynthesizer:
     """
     CosyVoice 语音合成模块
     """
-
+    
     def __init__(self, config: Dict[str, Any]):
         self.config = config
-        self.api_url = config.get('cosy_voice_api_url', 'http://127.0.0.1:8888/api/tts')
-        self.api_key = config.get('cosy_voice_api_key', '')
-        self.use_molotts = config.get('use_molotts', False)  # 是否在低配置设备上使用MoloTTS
-
+        self.cosyvoice_api_url = config.get('cosyvoice_api_url', 'http://127.0.0.1:50000/voice')
+        self.melotts_api_url = config.get('melotts_api_url', 'http://127.0.0.1:8888/tts')
+        self.api_key = config.get('cosyvoice_api_key', '')
+        self.enable_melotts = config.get('enable_melotts', False)
+        
         # 任务队列
         self.task_queue = queue.Queue()
         self.result_queue = queue.Queue()
-
+        
         # 启动处理线程
-        self.processing_thread = threading.Thread(target=self._process_synthesis_requests, daemon=True)
+        self.processing_thread = threading.Thread(target=self._process_tasks, daemon=True)
         self.processing_thread.start()
-
+        
         logging.info("CosyVoice synthesizer initialized")
 
-    def _process_synthesis_requests(self):
-        """处理合成请求的后台线程"""
+    def _process_tasks(self):
+        """处理任务的后台线程"""
         while True:
             try:
                 task = self.task_queue.get(timeout=1)
                 if task is None:  # 结束信号
                     break
-
-                if self.use_molotts:
-                    result = self._synthesize_with_molotts(task['text'], task.get('instruct', ''))
-                else:
-                    result = self._synthesize_with_cosyvoice(task['text'], task.get('instruct', ''))
-
+                    
+                audio_path = self._synthesize_text(task['text'], task.get('instruct', ''))
                 self.result_queue.put({
                     'task_id': task['task_id'],
-                    'audio_path': result,
+                    'audio_path': audio_path,
                     'timestamp': time.time()
                 })
                 self.task_queue.task_done()
-
+                
             except queue.Empty:
                 continue
             except Exception as e:
-                logging.error(f"Error processing synthesis: {e}")
+                logging.error(f"Error processing synthesis task: {e}")
                 continue
 
+    def _synthesize_text(self, text: str, instruct: str = "") -> Optional[str]:
+        """合成语音文本"""
+        # 优先使用CosyVoice
+        if not self.enable_melotts:
+            return self._synthesize_with_cosyvoice(text, instruct)
+        
+        # 如果启用了MeloTTS，尝试使用MeloTTS
+        melotts_result = self._synthesize_with_melotts(text)
+        if melotts_result:
+            return melotts_result
+        
+        # 如果MeloTTS失败，回退到CosyVoice
+        return self._synthesize_with_cosyvoice(text, instruct)
+
     def _synthesize_with_cosyvoice(self, text: str, instruct: str = "") -> Optional[str]:
-        """使用CosyVoice合成语音"""
+        """使用CosyVoice API合成语音"""
         try:
+            # 生成唯一的音频文件名
+            timestamp = int(time.time() * 1000)
+            audio_path = os.path.join("uploads", f"cosyvoice_{timestamp}.wav")
+            
+            # 确保上传目录存在
+            os.makedirs("uploads", exist_ok=True)
+            
             # 设置请求头
             headers = {
-                "accept": "audio/wav",
+                "accept": "application/json",
             }
-
+            
             # 添加API密钥（如果有的话）
             if self.api_key:
                 headers["Authorization"] = f"Bearer {self.api_key}"
-
-            # 准备数据
+            
+            # 准备请求数据
             data = {
                 "text": text,
                 "instruct": instruct
             }
 
             # 发送请求
-            response = requests.post(self.api_url, headers=headers, json=data)
+            response = requests.post(self.cosyvoice_api_url, headers=headers, json=data)
 
             # 检查响应
-            if response.status_code == 200 and response.content:
+            if response.status_code == 200:
                 # 保存音频文件
-                audio_filename = f"output_{int(time.time())}.wav"
-                audio_path = os.path.join(self.config.get('output_audio_dir', '.'), audio_filename)
-
-                with open(audio_path, 'wb') as audio_file:
-                    audio_file.write(response.content)
-
-                logging.info(f"Audio synthesized and saved to {audio_path}")
+                with open(audio_path, 'wb') as f:
+                    f.write(response.content)
+                logging.info(f"Audio synthesized with CosyVoice API and saved to {audio_path}")
                 return audio_path
             else:
-                logging.error(f"Synthesis failed with status code: {response.status_code}")
+                logging.error(f"CosyVoice API request failed with status code: {response.status_code}")
                 logging.error(f"Response: {response.text}")
-                return None
-
+                return self._fallback_synthesize(text, audio_path)
+                
         except Exception as e:
-            logging.error(f"Error synthesizing audio with CosyVoice: {e}")
-            return None
+            logging.error(f"Error synthesizing audio with CosyVoice API: {e}")
+            return self._fallback_synthesize(text, f"uploads/cosyvoice_fallback_{int(time.time() * 1000)}.wav")
 
-    def _synthesize_with_molotts(self, text: str, instruct: str = "") -> Optional[str]:
-        """使用MeloTTS API合成语音（用于低配置设备）"""
+    def _synthesize_with_melotts(self, text: str) -> Optional[str]:
+        """使用MeloTTS API合成语音（同步方式）"""
         try:
-            import aiohttp
-            import asyncio
-            import threading
-            from urllib.parse import urljoin
-            import logging
-
-            # 创建临时音频文件
-            audio_filename = f"output_{int(time.time())}.wav"
-            audio_path = os.path.join(self.config.get('output_audio_dir', '.'), audio_filename)
-
-            # MeloTTS API 配置
-            molotts_config = {
-                'api_ip_port': self.config.get('melotts_api_url', 'http://127.0.0.1:8000'),
-                'speaker_id': int(self.config.get('molotts_speaker_id', 0)),
-                'sdp_ratio': float(self.config.get('molotts_sdp_ratio', 0.2)),
-                'noise_scale': float(self.config.get('molotts_noise_scale', 0.6)),
-                'noise_scale_w': float(self.config.get('molotts_noise_scale_w', 0.8)),
-                'speed': float(self.config.get('molotts_speed', 1.0))
+            # 生成唯一的音频文件名
+            timestamp = int(time.time() * 1000)
+            audio_path = os.path.join("uploads", f"melotts_{timestamp}.wav")
+            
+            # 确保上传目录存在
+            os.makedirs("uploads", exist_ok=True)
+            
+            # 设置请求头
+            headers = {
+                "accept": "application/json",
+            }
+            
+            # 添加API密钥（如果有的话）
+            if self.api_key:
+                headers["Authorization"] = f"Bearer {self.api_key}"
+            
+            # 准备请求数据
+            data = {
+                "text": text,
+                "language": "EN",  # 默认英文
+                "speaker_id": 0    # 默认说话人
             }
 
-            # 定义异步函数
-            async def call_melotts_api():
-                API_URL = urljoin(molotts_config['api_ip_port'], "/tts")
+            # 发送请求（同步方式）
+            response = requests.post(self.melotts_api_url, headers=headers, json=data)
 
-                data_json = {
-                    "text": text,
-                    "speaker_id": molotts_config['speaker_id'],
-                    "sdp_ratio": molotts_config['sdp_ratio'],
-                    "noise_scale": molotts_config['noise_scale'],
-                    "noise_scale_w": molotts_config['noise_scale_w'],
-                    "speed": molotts_config['speed'],
-                }
-
-                try:
-                    async with aiohttp.ClientSession() as session:
-                        async with session.post(API_URL, json=data_json) as response:
-                            if response.status == 200:
-                                content = await response.read()
-                                with open(audio_path, 'wb') as audio_file:
-                                    audio_file.write(content)
-                                return audio_path
-                            else:
-                                logging.error(f'MeloTTS API请求失败: {response.status}')
-                                return None
-                except Exception as e:
-                    logging.error(f'MeloTTS API请求异常: {e}')
-                    return None
-
-            # 为避免在已有事件循环的环境中出错，使用线程来运行异步函数
-            def run_async():
-                try:
-                    loop = asyncio.new_event_loop()
-                    asyncio.set_event_loop(loop)
-                    result = loop.run_until_complete(call_melotts_api())
-                    return result
-                except Exception as e:
-                    logging.error(f"Async execution error: {e}")
-                    return None
-
-            # 运行异步函数
-            result = run_async()
-
-            if result:
+            # 检查响应
+            if response.status_code == 200:
+                # 保存音频文件
+                with open(audio_path, 'wb') as f:
+                    f.write(response.content)
                 logging.info(f"Audio synthesized with MeloTTS API and saved to {audio_path}")
                 return audio_path
             else:
-                logging.error("MeloTTS API调用失败，使用备用方法")
-                return self._fallback_synthesize(text, audio_path)
-
-        except ImportError as e:
-            logging.error(f"Required modules not available: {e}, using fallback method")
-            return self._fallback_synthesize(text, audio_path)
+                logging.error(f"MeloTTS API request failed with status code: {response.status_code}")
+                logging.error(f"Response: {response.text}")
+                return None
+                
         except Exception as e:
             logging.error(f"Error synthesizing audio with MeloTTS API: {e}")
-            # 如果MeloTTS API不可用，尝试使用系统TTS或其他方法
-            return self._fallback_synthesize(text, audio_path)
+            return None
 
     def _fallback_synthesize(self, text: str, audio_path: str) -> Optional[str]:
         """备用语音合成方法"""
@@ -348,32 +328,27 @@ class VoiceOutputManager:
         try:
             # 按标点符号分割文本，每3句一段
             text_chunks = self._split_text_by_punctuation(text, max_sentences=3)
-
-            if not text_chunks:
-                logging.warning("No text chunks to speak")
-                return
-
-            logging.info(f"Split text into {len(text_chunks)} chunks for streaming TTS")
-
-            for i, chunk in enumerate(text_chunks):
-                logging.info(f"Speaking chunk {i+1}/{len(text_chunks)}: {chunk[:50]}...")
-
-                item = {
+            
+            for chunk in text_chunks:
+                if not chunk.strip():
+                    continue
+                    
+                # 将文本块添加到输出队列
+                self.output_queue.put({
                     'text': chunk,
                     'instruct': instruct
-                }
-                self.output_queue.put(item)
-
-                # 在段落之间加个小延迟，让语音更自然
-                time.sleep(0.1)
-
+                })
+                
+                logging.info(f"Added text chunk to output queue: {chunk[:50]}...")
+            
         except Exception as e:
-            logging.error(f"Error adding text to output queue: {e}")
+            logging.error(f"Error in speak method: {e}")
 
     def cleanup(self):
         """清理资源"""
         self.output_queue.put(None)  # 发送结束信号
-        self.synthesizer.cleanup()
-
         if self.output_thread.is_alive():
             self.output_thread.join(timeout=5)  # 最多等待5秒
+        
+        # 清理合成器资源
+        self.synthesizer.cleanup()

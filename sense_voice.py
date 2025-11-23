@@ -47,28 +47,6 @@ class SenseVoiceRecognizer:
                 logging.error(f"Error processing audio: {e}")
                 continue
 
-    def _process_audio_files(self):
-        """处理音频文件的后台线程"""
-        while True:
-            try:
-                task = self.task_queue.get(timeout=1)
-                if task is None:  # 结束信号
-                    break
-                    
-                result = self._recognize_audio(task['file_path'], task.get('lang', 'auto'))
-                self.result_queue.put({
-                    'task_id': task['task_id'],
-                    'result': result,
-                    'timestamp': time.time()
-                })
-                self.task_queue.task_done()
-                
-            except queue.Empty:
-                continue
-            except Exception as e:
-                logging.error(f"Error processing audio: {e}")
-                continue
-
     def _recognize_audio(self, file_path: str, lang: str = 'auto') -> Optional[str]:
         """识别音频文件"""
         try:
@@ -87,8 +65,9 @@ class SenseVoiceRecognizer:
                     ("files", (file_path.split('/')[-1], audio_file, "audio/wav")),
                 ]
                 
+                # 修正API参数，使用正确的参数名
                 data = {
-                    "keys": "string",
+                    "keys": "asr",  # 修改为更合适的值，表示ASR任务
                     "lang": lang
                 }
 

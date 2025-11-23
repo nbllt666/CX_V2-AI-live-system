@@ -224,9 +224,17 @@ class AudioRecorder:
     def start_manual_recording(self):
         """开始手动录音（通过按键触发）"""
         if self.config.get('enable_voice_recognition', True):
-            self._record_audio()
+            # 在单独的线程中执行录音，避免阻塞调用线程
+            import threading
+            record_thread = threading.Thread(target=self._record_audio, daemon=True)
+            record_thread.start()
         else:
             logging.warning("Voice recognition is disabled")
+    
+    def stop_manual_recording(self):
+        """停止手动录音"""
+        self.is_recording = False
+        logging.info("Manual recording stopped")
 
     def setup_key_listeners(self):
         """设置按键监听器"""
@@ -234,14 +242,21 @@ class AudioRecorder:
         stop_trigger_key = self.config.get('stop_trigger_key', 'F12')
         
         def on_key_press(event):
-            if event.name == trigger_key.lower():
-                logging.info(f"Trigger key {trigger_key} pressed, starting recording...")
-                self.start_manual_recording()
-            elif event.name == stop_trigger_key.lower():
-                logging.info(f"Stop trigger key {stop_trigger_key} pressed")
+            try:
+                if event.name == trigger_key.lower():
+                    logging.info(f"Trigger key {trigger_key} pressed, starting recording...")
+                    self.start_manual_recording()
+                elif event.name == stop_trigger_key.lower():
+                    logging.info(f"Stop trigger key {stop_trigger_key} pressed")
+            except Exception as e:
+                logging.error(f"Error in key press handler: {e}")
                 
         # 注册按键监听
-        keyboard.on_press(on_key_press)
+        try:
+            self.keyboard_hook = keyboard.on_press(on_key_press)
+        except Exception as e:
+            logging.error(f"Failed to setup keyboard listener: {e}")
+            self.keyboard_hook = None
 
     def cleanup(self):
         """清理资源"""
@@ -249,10 +264,31 @@ class AudioRecorder:
         self.recognition_queue.put(None)  # 发送结束信号
         
         if self.stream:
-            self.stream.stop_stream()
-            self.stream.close()
+            try:
+                self.stream.stop_stream()
+                self.stream.close()
+            except Exception as e:
+                logging.warning(f"Error closing audio stream: {e}")
         
-        self.audio.terminate()
+        try:
+            self.audio.terminate()
+        except Exception as e:
+            logging.warning(f"Error terminating audio: {e}")
         
-        if self.recognition_thread.is_alive():
-            self.recognition_thread.join(timeout=2)
+        # 取消特定的键盘监听器（更安全的方式）
+        try:
+            if hasattr(self, 'keyboard_hook') and self.keyboard_hook:
+                keyboard.unhook(self.keyboard_hook)
+                logging.info("Keyboard listener unhooked")
+            # 作为后备方案，取消所有键盘监听器
+            keyboard.unhook_all()
+            logging.info("All keyboard listeners unhooked")
+        except Exception as e:
+            logging.warning(f"Failed to unhook keyboard listeners: {e}")
+        
+        # 等待识别线程结束
+        try:
+            if self.recognition_thread and self.recognition_thread.is_alive():
+                self.recognition_thread.join(timeout=2)
+        except Exception as e:
+            logging.warning(f"Error joining recognition thread: {e}")

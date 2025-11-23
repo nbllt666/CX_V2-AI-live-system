@@ -18,5 +18,7 @@ python-socketio
 python-osc
 sseclient
 Flask
-python-socketio
 pygame
+pytest
+pytest-cov
+pytest-mock

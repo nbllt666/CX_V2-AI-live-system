@@ -1088,6 +1088,108 @@
             });
         });
 
+        // 添加按键监听功能
+        let isRecording = false;
+        
+        // 监听键盘按键事件
+        document.addEventListener('keydown', function(event) {
+            // 获取配置的触发键和停止键
+            const triggerKey = document.getElementById('trigger_key') ? 
+                document.getElementById('trigger_key').value.toLowerCase() : 'f11';
+            const stopKey = document.getElementById('stop_trigger_key') ? 
+                document.getElementById('stop_trigger_key').value.toLowerCase() : 'f12';
+            
+            // 检查是否按下触发键
+            if (event.key.toLowerCase() === triggerKey && !isRecording) {
+                isRecording = true;
+                console.log('开始录音键被按下');
+                
+                // 发送开始录音命令
+                fetch('/api/control', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'start_recording'
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log('开始录音命令发送成功');
+                        addLogEntry({
+                            level: 'info',
+                            message: '开始录音...',
+                            timestamp: new Date().toISOString()
+                        });
+                    } else {
+                        console.error('开始录音失败:', data.message);
+                        addLogEntry({
+                            level: 'error',
+                            message: '开始录音失败: ' + data.message,
+                            timestamp: new Date().toISOString()
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    addLogEntry({
+                        level: 'error',
+                        message: '开始录音命令发送失败',
+                        timestamp: new Date().toISOString()
+                    });
+                });
+                
+                event.preventDefault();
+            }
+            
+            // 检查是否按下停止键
+            if (event.key.toLowerCase() === stopKey && isRecording) {
+                isRecording = false;
+                console.log('停止录音键被按下');
+                
+                // 发送停止录音命令
+                fetch('/api/control', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'stop_recording'
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log('停止录音命令发送成功');
+                        addLogEntry({
+                            level: 'info',
+                            message: '录音已停止',
+                            timestamp: new Date().toISOString()
+                        });
+                    } else {
+                        console.error('停止录音失败:', data.message);
+                        addLogEntry({
+                            level: 'error',
+                            message: '停止录音失败: ' + data.message,
+                            timestamp: new Date().toISOString()
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    addLogEntry({
+                        level: 'error',
+                        message: '停止录音命令发送失败',
+                        timestamp: new Date().toISOString()
+                    });
+                });
+                
+                event.preventDefault();
+            }
+        });
+
         // 页面加载时请求初始数据
         window.onload = function() {
             // 请求当前配置

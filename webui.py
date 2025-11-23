@@ -17,6 +17,7 @@ import time
 import socketio
 from flask import Flask, render_template, request, jsonify, send_from_directory
 from werkzeug.utils import secure_filename
+from config_manager import ConfigManager
 
 # 配置日志
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -72,9 +73,10 @@ class SystemController:
             if self.ai_system_class:
                 # 加载配置
                 config_path = 'config/config.json'
+                local_config = {}
                 try:
                     with open(config_path, 'r', encoding='utf-8') as f:
-                        config = json.load(f)
+                        local_config = json.load(f)
                 except FileNotFoundError:
                     logger.error(f"配置文件未找到: {config_path}")
                     return False
@@ -83,7 +85,7 @@ class SystemController:
                     return False
                 
                 # 创建AI系统实例
-                self.ai_system_instance = self.ai_system_class(config)
+                self.ai_system_instance = self.ai_system_class(local_config)
                 
                 # 启动系统
                 self.ai_system_instance.start()
@@ -139,9 +141,10 @@ class SystemController:
         try:
             # 加载配置
             config_path = 'config/config.json'
+            local_config = {}
             try:
                 with open(config_path, 'r', encoding='utf-8') as f:
-                    config = json.load(f)
+                    local_config = json.load(f)
             except FileNotFoundError:
                 logger.error(f"配置文件未找到: {config_path}")
                 return False
@@ -152,7 +155,7 @@ class SystemController:
             # 预热SenseVoice模型
             try:
                 from audio_recorder import AudioRecorder
-                recorder = AudioRecorder(config)
+                recorder = AudioRecorder(local_config)
                 recorder.preheat_sense_voice()
                 logger.info("SenseVoice模型预热完成")
             except Exception as e:
@@ -160,8 +163,8 @@ class SystemController:
             
             # 预热Ollama模型
             try:
-                ollama_api_url = config.get('ollama_api_url', 'http://localhost:11434/api/chat')
-                ollama_model = config.get('ollama_model', 'llama3.2')
+                ollama_api_url = local_config.get('ollama_api_url', 'http://localhost:11434/api/chat')
+                ollama_model = local_config.get('ollama_model', 'llama3.2')
                 
                 # 发送一个简单的请求到Ollama API来预热模型
                 import requests
@@ -196,14 +199,16 @@ class WebUIController:
         # 使用与main.py一致的配置文件路径
         self.config_path = 'config/config.json'
         self.vdb_manager = vdb_manager
+        # 初始化配置管理器
+        self.config_manager = ConfigManager(self.config_path)
         # 如果vdb_manager未提供，则尝试初始化一个
         if self.vdb_manager is None:
             try:
                 from vdb_manager import VDBManager
                 # 加载配置
-                config = self._load_config()
-                if config:
-                    self.vdb_manager = VDBManager(config)
+                local_config = self._load_config()
+                if local_config:
+                    self.vdb_manager = VDBManager(local_config)
             except Exception as e:
                 logger.warning(f"无法初始化VDB管理器: {e}")
         self._load_config()
@@ -225,16 +230,16 @@ class WebUIController:
     def save_config(self, new_config):
         """保存配置"""
         try:
-            # 确保配置目录存在
-            os.makedirs(os.path.dirname(self.config_path), exist_ok=True)
-            with open(self.config_path, 'w', encoding='utf-8') as f:
-                json.dump(new_config, f, ensure_ascii=False, indent=2)
-            global config
-            config = new_config
-            logger.info(f"配置保存成功: {self.config_path}")
-            # 通知其他组件配置已更新
-            sio.emit('config_updated_broadcast', new_config)
-            return True
+            # 使用配置管理器保存配置
+            if self.config_manager.save_config(new_config):
+                global config
+                config = new_config
+                logger.info(f"配置保存成功: {self.config_path}")
+                # 通知其他组件配置已更新
+                sio.emit('config_updated_broadcast', new_config)
+                return True
+            else:
+                return False
         except Exception as e:
             logger.error(f"保存配置失败: {str(e)}")
             return False
@@ -267,46 +272,9 @@ class WebUIController:
         """初始化加载配置"""
         global config
         try:
-            with open(self.config_path, 'r', encoding='utf-8') as f:
-                config = json.load(f)
+            # 使用配置管理器加载和验证配置
+            config = self.config_manager.get_config_with_validation()
             logger.info(f"配置加载成功: {self.config_path}")
-            return config
-        except FileNotFoundError:
-            # 如果配置文件不存在，创建默认配置
-            config = {
-                "ollama_api_url": "http://localhost:11434",
-                "ollama_model": "llama3.2",
-                "system_prompt": "你是一个AI助手，帮助用户解决问题并提供有用的信息。",
-                "memory_enabled": True,
-                "summarizer_model": "gemma2:2b",
-                "embedding_model": "nomic-embed-text",
-                "qdrant_host": "localhost",
-                "qdrant_port": 6333,
-                "max_context_items": 50,
-                "context_summary_time_range": 24,
-                "context_summary_interval": 1440,
-                "context_summary_limit": 500,
-                "max_recent_memories_for_summary": 300,
-                "vdb_auto_run": True,
-                "vdb_startup_run": True,
-                "vdb_check_interval": 60,
-                "trigger_key": "t",
-                "stop_trigger_key": "s",
-                "use_molotts": False,
-                "molotts_speaker_id": 0,
-                "molotts_sdp_ratio": 0.2,
-                "molotts_noise_scale": 0.6,
-                "molotts_noise_scale_w": 0.8,
-                "molotts_speed": 1.0,
-                "audio_input_device": 0,
-                "context_file_path": "context_medium_term.json"
-            }
-            # 确保配置目录存在
-            os.makedirs(os.path.dirname(self.config_path), exist_ok=True)
-            # 保存默认配置
-            with open(self.config_path, 'w', encoding='utf-8') as f:
-                json.dump(config, f, ensure_ascii=False, indent=2)
-            logger.info(f"创建默认配置: {self.config_path}")
             return config
         except Exception as e:
             logger.error(f"配置加载失败: {str(e)}")
@@ -391,6 +359,20 @@ def restart_system():
         return jsonify({'success': True, 'message': '系统重启成功'})
     else:
         return jsonify({'success': False, 'message': '系统重启失败'}), 500
+
+@app.route('/api/config/reload', methods=['POST'])
+def reload_config():
+    """重新加载配置文件"""
+    try:
+        # 重新加载配置
+        global config
+        config = webui_controller.config_manager.get_config_with_validation()
+        # 通知前端配置已更新
+        sio.emit('config_updated_broadcast', config)
+        return jsonify({'success': True, 'message': '配置重新加载成功', 'config': config})
+    except Exception as e:
+        logger.error(f"重新加载配置失败: {str(e)}")
+        return jsonify({'success': False, 'message': f'配置重新加载失败: {str(e)}'}), 500
 
 @app.route('/api/send_message', methods=['POST'])
 def send_message():
@@ -479,8 +461,12 @@ def control_system():
                 if not melotts_action:
                     return jsonify({'success': False, 'message': '未指定MeloTTS操作'}), 400
                     
+                # 获取当前配置
+                global config
+                current_config = config
+                
                 # 获取MeloTTS API URL
-                api_url = config.get('melotts_api_url', 'http://127.0.0.1:8000')
+                api_url = current_config.get('melotts_api_url', 'http://127.0.0.1:8000')
                 
                 if melotts_action == 'start':
                     # 启动MeloTTS服务
@@ -489,8 +475,8 @@ def control_system():
                         start_url = f"{api_url}/start"
                         response = requests.post(start_url, timeout=10)
                         if response.status_code == 200:
-                            config['use_molotts'] = True
-                            webui_controller.save_config(config)
+                            current_config['use_molotts'] = True
+                            webui_controller.save_config(current_config)
                             logger.info("MeloTTS 服务已启用")
                             return jsonify({'success': True, 'message': 'MeloTTS 服务已启用'})
                         else:
@@ -507,8 +493,8 @@ def control_system():
                         stop_url = f"{api_url}/stop"
                         response = requests.post(stop_url, timeout=10)
                         if response.status_code == 200:
-                            config['use_molotts'] = False
-                            webui_controller.save_config(config)
+                            current_config['use_molotts'] = False
+                            webui_controller.save_config(current_config)
                             logger.info("MeloTTS 服务已禁用")
                             return jsonify({'success': True, 'message': 'MeloTTS 服务已禁用'})
                         else:
@@ -530,11 +516,11 @@ def control_system():
                         # 准备测试数据来预热模型
                         test_data = {
                             "text": "系统预热测试",
-                            "speaker_id": int(config.get('molotts_speaker_id', 0)),
-                            "sdp_ratio": float(config.get('molotts_sdp_ratio', 0.2)),
-                            "noise_scale": float(config.get('molotts_noise_scale', 0.6)),
-                            "noise_scale_w": float(config.get('molotts_noise_scale_w', 0.8)),
-                            "speed": float(config.get('molotts_speed', 1.0))
+                            "speaker_id": int(current_config.get('molotts_speaker_id', 0)),
+                            "sdp_ratio": float(current_config.get('molotts_sdp_ratio', 0.2)),
+                            "noise_scale": float(current_config.get('molotts_noise_scale', 0.6)),
+                            "noise_scale_w": float(current_config.get('molotts_noise_scale_w', 0.8)),
+                            "speed": float(current_config.get('molotts_speed', 1.0))
                         }
                         
                         # 发送预热请求
@@ -568,15 +554,81 @@ def control_system():
             logger.info(f"发送消息: {message}")
             webui_controller.add_log_message(f"[发送] {message}")
             
-            # 模拟回复
-            reply = f"收到消息: {message}"
-            webui_controller.add_log_message(f"[回复] {reply}")
+            # 将消息发送到AI系统
+            try:
+                if hasattr(system_controller, 'ai_system') and system_controller.ai_system:
+                    # 使用AI系统的process_message方法处理消息
+                    response = system_controller.ai_system.process_message(message)
+                    reply = response.get('response', f"收到消息: {message}")
+                    webui_controller.add_log_message(f"[回复] {reply}")
+                    
+                    return jsonify({
+                        'success': True, 
+                        'message': '消息发送成功', 
+                        'reply': reply
+                    })
+                else:
+                    # 如果AI系统未初始化，返回模拟回复
+                    reply = f"收到消息: {message}"
+                    webui_controller.add_log_message(f"[回复] {reply}")
+                    
+                    return jsonify({
+                        'success': True, 
+                        'message': '消息发送成功', 
+                        'reply': reply
+                    })
+            except Exception as e:
+                logger.error(f"处理消息失败: {e}")
+                reply = f"处理消息时出错: {str(e)}"
+                webui_controller.add_log_message(f"[错误] {reply}")
+                
+                return jsonify({
+                    'success': False, 
+                    'message': '消息处理失败', 
+                    'reply': reply
+                }), 500
+        elif action == 'start_recording':
+            # 处理开始录音命令
+            logger.info("收到开始录音命令")
+            webui_controller.add_log_message("[控制] 开始录音")
             
-            return jsonify({
-                'success': True, 
-                'message': '消息发送成功', 
-                'reply': reply
-            })
+            # 触发实际的录音功能
+            try:
+                if hasattr(system_controller, 'ai_system') and system_controller.ai_system:
+                    # 获取AI系统的音频录制器
+                    audio_recorder = getattr(system_controller.ai_system, 'audio_recorder', None)
+                    if audio_recorder:
+                        audio_recorder.start_manual_recording()
+                        return jsonify({'success': True, 'message': '开始录音'})
+                    else:
+                        return jsonify({'success': False, 'message': '音频录制器未初始化'}), 500
+                else:
+                    return jsonify({'success': False, 'message': 'AI系统未初始化'}), 500
+            except Exception as e:
+                logger.error(f"开始录音失败: {e}")
+                return jsonify({'success': False, 'message': f'开始录音失败: {str(e)}'}), 500
+        elif action == 'stop_recording':
+            # 处理停止录音命令
+            logger.info("收到停止录音命令")
+            webui_controller.add_log_message("[控制] 停止录音")
+            
+            # 停止录音功能
+            try:
+                if hasattr(system_controller, 'ai_system') and system_controller.ai_system:
+                    # 获取AI系统的音频录制器
+                    audio_recorder = getattr(system_controller.ai_system, 'audio_recorder', None)
+                    if audio_recorder:
+                        # 调用专门的停止录音方法
+                        audio_recorder.stop_manual_recording()
+                        logger.info("录音已停止")
+                        return jsonify({'success': True, 'message': '录音已停止'})
+                    else:
+                        return jsonify({'success': False, 'message': '音频录制器未初始化'}), 500
+                else:
+                    return jsonify({'success': False, 'message': 'AI系统未初始化'}), 500
+            except Exception as e:
+                logger.error(f"停止录音失败: {e}")
+                return jsonify({'success': False, 'message': f'停止录音失败: {str(e)}'}), 500
         else:
             return jsonify({'success': False, 'message': f'不支持的操作: {action}'}), 400
             
@@ -1622,4 +1674,4 @@ def run_webui(host='0.0.0.0', port=5000):
 
 # 启动服务器 - 仅当直接运行webui.py时执行
 if __name__ == "__main__":
-    run_webui(port=5003)  # 更改端口为5003以避免冲突
+    run_webui(port=5001)  # 使用5001端口以避免冲突

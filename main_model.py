@@ -14,6 +14,7 @@ import time
 from functools import wraps
 import os
 import urllib.error
+from config_manager import ConfigManager
 
 def retry_on_failure(max_retries=3, delay=1, backoff=2):
     """
@@ -1239,9 +1240,9 @@ class MainModel:
                 logging.error("No config file path provided for dynamic loading")
                 return False
             
-            # 读取配置文件
-            with open(path_to_use, 'r', encoding='utf-8') as f:
-                new_config = json.load(f)
+            # 使用配置管理器加载和验证配置
+            config_manager = ConfigManager(path_to_use)
+            new_config = config_manager.get_config_with_validation()
             
             # 更新配置
             old_config = self.config
@@ -1283,15 +1284,18 @@ class MainModel:
             # 如果有配置文件路径，也更新文件
             if self.config_file_path:
                 try:
-                    with open(self.config_file_path, 'r', encoding='utf-8') as f:
-                        file_config = json.load(f)
-                    
+                    # 使用配置管理器保存配置
+                    config_manager = ConfigManager(self.config_file_path)
+                    # 先加载现有配置
+                    file_config = config_manager.load_config()
+                    # 更新指定键值
                     file_config[key] = value
-                    
-                    with open(self.config_file_path, 'w', encoding='utf-8') as f:
-                        json.dump(file_config, f, ensure_ascii=False, indent=2)
-                    
-                    logging.info(f"Configuration updated: {key} = {value}")
+                    # 保存更新后的配置
+                    if config_manager.save_config(file_config):
+                        logging.info(f"Configuration updated: {key} = {value}")
+                    else:
+                        logging.error(f"Failed to save config file")
+                        return False
                 except Exception as file_error:
                     logging.error(f"Error updating config file: {file_error}")
                     # 即使文件更新失败，内存中的配置已更新，所以返回True

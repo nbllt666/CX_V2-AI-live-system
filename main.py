@@ -19,6 +19,7 @@ from screen_manager import ScreenManager, ScreenCapture
 from tool_manager import ToolExecutor
 from audio_recorder import AudioRecorder
 from utils import LoggingSetup, RobustManager, ErrorHandler
+from config_manager import ConfigManager, load_config
 
 
 class AILiveSystem:
@@ -30,6 +31,9 @@ class AILiveSystem:
     def __init__(self, config: Dict[str, Any]):
         self.config = config
         self.running = False
+        
+        # 初始化配置管理器
+        self.config_manager = ConfigManager()
         
         # 初始化日志
         LoggingSetup(log_dir=config.get('log_dir', './logs'))
@@ -495,73 +499,26 @@ class AILiveSystem:
         self.config['memo'] = memo
         logging.info(f"System memo updated: {memo}")
 
+    def reload_config(self):
+        """重新加载配置文件"""
+        try:
+            new_config = self.config_manager.get_config_with_validation()
+            self.config.update(new_config)
+            logging.info("Configuration reloaded successfully")
+            return True
+        except Exception as e:
+            logging.error(f"Failed to reload configuration: {e}")
+            return False
 
-def load_config(config_path: str = 'config/config.json') -> Dict[str, Any]:
-    """加载配置文件"""
-    import json
-    import os
-    
-    try:
-        with open(config_path, 'r', encoding='utf-8') as f:
-            config = json.load(f)
-        logging.info(f"Configuration loaded from {config_path}")
-        return config
-    except FileNotFoundError:
-        logging.warning(f"Config file not found at {config_path}, using default config")
-        # 返回默认配置
-        return {
-            'danmu_websocket_uri': 'ws://localhost:9898',
-            'danmu_task_ids': ['123456'],
-            'sense_voice_api_url': 'http://127.0.0.1:8877/api/v1/asr',
-            'cosy_voice_api_url': 'http://127.0.0.1:8888/api/tts',
-            'use_molotts': False,
-            'molotts_device': 'cpu',
-            'molotts_language': 'ZH',
-            'molotts_speaker': 'ZH',
-            'ollama_api_url': 'http://localhost:11434/api/chat',
-            'ollama_model': 'llama3.2',
-            'ollama_vision_model': 'llava',
-            'ollama_temperature': 0.7,
-            'ollama_top_p': 0.9,
-            'ollama_max_tokens': 2048,
-            'enable_sound_effects': True,
-            'enable_music': True,
-            'enable_ai_drawing': True,
-            'enable_screen_click': True,
-            'enable_continuous_mode': True,
-            'enable_voice_recognition': True,
-            'enable_continuous_talk': False,
-            'enable_wake_sleep': True,
-            'wake_word': '唤醒',
-            'sleep_word': '睡眠',
-            'volume_threshold': 800.0,
-            'silence_threshold': 15,
-            'trigger_key': 'F11',
-            'stop_trigger_key': 'F12',
-            'audio_output_dir': './output_audio',
-            'qwen2_5vl_mnn_path': 'qwen2_5vl_3b.mnn',
-            'qwen_vl_api_url': 'http://127.0.0.1:8899/api/moderate',
-            'qdrant_host': 'localhost',
-            'qdrant_port': 6333,
-            'system_prompt': '你是一个AI直播助手，正在直播中与观众互动。请友好、有趣地回应观众的弹幕和问题。今天是2024年12月14日，星期六。',
-            'voice_trigger_volume': 0.05,
-            'voice_trigger_enabled': True,
-            'key_trigger_enabled': True,
-            'output_audio_dir': './output_audio',
-            'sound_effects_dir': './sound_effects',
-            'songs_dir': './songs',
-            'screenshot_dir': './screenshots',
-            'images_dir': './images',
-            'log_dir': './logs',
-            'sensitive_keywords': ['敏感词1', '敏感词2'],
-            'memo': ''
-        }
+
+# 保留空行以维持原有结构
 
 
 def main():
     """主函数"""
-    # 加载配置
-    config = load_config()
+    # 使用配置管理器加载和验证配置
+    config_manager = ConfigManager()
+    config = config_manager.get_config_with_validation()
     
     # 创建AI直播系统
     ai_system = AILiveSystem(config)
