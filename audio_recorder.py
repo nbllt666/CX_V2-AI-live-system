@@ -60,54 +60,69 @@ class AudioRecorder:
 
     def _listen_for_speech(self):
         """监听语音输入的后台线程"""
-        # 打开音频流
-        self.stream = self.audio.open(
-            format=self.format,
-            channels=self.channels,
-            rate=self.rate,
-            input=True,
-            frames_per_buffer=self.chunk
-        )
+        try:
+            # 打开音频流
+            self.stream = self.audio.open(
+                format=self.format,
+                channels=self.channels,
+                rate=self.rate,
+                input=True,
+                frames_per_buffer=self.chunk
+            )
 
-        # 检查功能开关
-        enable_wake_sleep = self.config.get('enable_wake_sleep', True)
-        enable_voice_recognition = self.config.get('enable_voice_recognition', True)
-        enable_continuous_talk = self.config.get('enable_continuous_talk', False)
-        
-        if not enable_voice_recognition:
-            logging.info("Voice recognition is disabled, stopping listener")
-            return
+            # 检查功能开关
+            enable_wake_sleep = self.config.get('enable_wake_sleep', True)
+            enable_voice_recognition = self.config.get('enable_voice_recognition', True)
+            enable_continuous_talk = self.config.get('enable_continuous_talk', False)
 
-        logging.info("Audio listener started, waiting for speech...")
+            if not enable_voice_recognition:
+                logging.info("Voice recognition is disabled, stopping listener")
+                return
 
-        while self.is_listening:
-            try:
-                # 读取音频数据
-                data = self.stream.read(self.chunk, exception_on_overflow=False)
-                audio_data = np.frombuffer(data, dtype=np.int16)
-                max_dB = np.max(np.abs(audio_data))
+            logging.info("Audio listener started, waiting for speech...")
 
-                volume_threshold = self.config.get('volume_threshold', 800.0)
+            while self.is_listening:
+                try:
+                    # 读取音频数据
+                    data = self.stream.read(self.chunk, exception_on_overflow=False)
+                    audio_data = np.frombuffer(data, dtype=np.int16)
+                    max_dB = np.max(np.abs(audio_data))
 
-                # 如果音量超过阈值，开始录制
-                if max_dB > volume_threshold:
-                    if enable_wake_sleep and not self.is_awake:
-                        # 如果处于睡眠状态，检查是否需要唤醒
-                        logging.info("Listening for wake word...")
-                        # 这里应该使用语音识别检查唤醒词，但为了简化，暂时跳过
-                        continue
-                        
-                    logging.info("Speech detected, starting recording...")
-                    self._record_audio()
-                    
-            except Exception as e:
-                logging.error(f"Error in audio listening: {e}")
-                time.sleep(0.1)  # 短暂休眠后继续
+                    volume_threshold = self.config.get('volume_threshold', 800.0)
 
-        # 关闭音频流
-        if self.stream:
-            self.stream.stop_stream()
-            self.stream.close()
+                    # 如果音量超过阈值，开始录制
+                    if max_dB > volume_threshold:
+                        if enable_wake_sleep and not self.is_awake:
+                            # 如果处于睡眠状态，检查是否需要唤醒
+                            logging.info("Listening for wake word...")
+                            # 这里应该使用语音识别检查唤醒词，但为了简化，暂时跳过
+                            continue
+
+                        logging.info("Speech detected, starting recording...")
+                        self._record_audio()
+
+                except OSError as e:
+                    # 处理音频设备错误，这通常是由于程序关闭时流被中断导致的
+                    if self.is_listening:  # 只有在应该继续监听时才记录错误
+                        logging.warning(f"Audio stream error: {e}")
+                    break  # 退出循环
+                except Exception as e:
+                    logging.error(f"Error in audio listening: {e}")
+                    if "PortAudio" in str(e) or "Stream" in str(e).lower():
+                        # 如果是音频相关的错误，退出循环
+                        break
+                    time.sleep(0.1)  # 短暂休眠后继续
+
+        except Exception as e:
+            logging.error(f"Failed to initialize audio stream: {e}")
+        finally:
+            # 确保音频流被关闭
+            if self.stream:
+                try:
+                    self.stream.stop_stream()
+                    self.stream.close()
+                except Exception as e:
+                    logging.warning(f"Error closing audio stream in finally block: {e}")
 
     def _record_audio(self):
         """录制音频片段"""
@@ -260,32 +275,40 @@ class AudioRecorder:
 
     def cleanup(self):
         """清理资源"""
+        # 设置标志以停止正在运行的监听线程
         self.is_listening = False
-        self.recognition_queue.put(None)  # 发送结束信号
-        
+
+        # 等待监听线程结束
+        if hasattr(self, 'listening_thread') and self.listening_thread and self.listening_thread.is_alive():
+            self.listening_thread.join(timeout=3)  # 最多等待3秒
+
+        # 发送结束信号到识别队列
+        self.recognition_queue.put(None)
+
+        # 关闭音频流
         if self.stream:
             try:
-                self.stream.stop_stream()
+                if self.stream.is_active():
+                    self.stream.stop_stream()
                 self.stream.close()
+                self.stream = None  # 清空引用
             except Exception as e:
                 logging.warning(f"Error closing audio stream: {e}")
-        
+
+        # 关闭PyAudio
         try:
             self.audio.terminate()
         except Exception as e:
             logging.warning(f"Error terminating audio: {e}")
-        
-        # 取消特定的键盘监听器（更安全的方式）
+
+        # 取消键盘监听器
         try:
-            if hasattr(self, 'keyboard_hook') and self.keyboard_hook:
-                keyboard.unhook(self.keyboard_hook)
-                logging.info("Keyboard listener unhooked")
-            # 作为后备方案，取消所有键盘监听器
+            # 移除所有键盘监听器来确保彻底清理
             keyboard.unhook_all()
             logging.info("All keyboard listeners unhooked")
         except Exception as e:
             logging.warning(f"Failed to unhook keyboard listeners: {e}")
-        
+
         # 等待识别线程结束
         try:
             if self.recognition_thread and self.recognition_thread.is_alive():

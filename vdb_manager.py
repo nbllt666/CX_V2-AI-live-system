@@ -64,6 +64,10 @@ class VDBManager:
         else:
             logging.info("上下文摘要功能已禁用")
 
+        # 用于长期记忆管理的后台线程和停止事件
+        self._ltm_stop_event = threading.Event()
+        self._ltm_thread = None
+
         logging.info("VDB Manager with Qdrant initialized successfully")
 
     def _init_qdrant_client(self):
@@ -502,8 +506,18 @@ class VDBManager:
             else:
                 logging.info(f"LLM decided no summary needed for {len(recent_memories)} recent memories")
 
-            # 现在启动长期记忆管理循环
-            self._run_long_term_memory_management()
+            # 现在以后台线程的形式启动长期记忆管理（避免阻塞摘要线程）
+            try:
+                if self._ltm_thread and self._ltm_thread.is_alive():
+                    logging.info("Long-term memory management already running, skipping start")
+                else:
+                    # 清除停止事件并启动新线程
+                    self._ltm_stop_event.clear()
+                    self._ltm_thread = threading.Thread(target=self._run_long_term_memory_management, daemon=True)
+                    self._ltm_thread.start()
+                    logging.info("Started background long-term memory management thread")
+            except Exception as e:
+                logging.error(f"Failed to start long-term memory management thread: {e}")
 
         except Exception as e:
             logging.error(f"Error generating context summary: {e}")
@@ -511,6 +525,10 @@ class VDBManager:
     def _run_long_term_memory_management(self):
         """运行长期记忆管理循环，让副模型管理长期记忆"""
         try:
+            # 支持通过 self._ltm_stop_event 提前退出
+            if hasattr(self, '_ltm_stop_event') and self._ltm_stop_event.is_set():
+                logging.info("Long-term memory management stop event set before start, exiting")
+                return
             # 获取所有记忆用于管理
             all_points = self.qdrant_client.scroll(
                 collection_name=self.collection_name,
@@ -582,6 +600,10 @@ class VDBManager:
 """
 
                 try:
+                    # 如果停止事件已设置，则中断循环
+                    if hasattr(self, '_ltm_stop_event') and self._ltm_stop_event.is_set():
+                        logging.info("Long-term memory management stop event set, exiting loop")
+                        break
                     data = {
                         "model": self.summarizer_model,
                         "messages": [{"role": "user", "content": prompt}],
@@ -640,8 +662,15 @@ class VDBManager:
                     logging.error(f"Error in long-term memory management loop: {e}")
                     continue_loop = False
 
+                # 如果长时间运行或外部请求停止，观察停止事件以便尽快退出
+                if hasattr(self, '_ltm_stop_event') and self._ltm_stop_event.is_set():
+                    logging.info("Detected stop event after iteration, breaking long-term management")
+                    break
+
         except Exception as e:
             logging.error(f"Error in long-term memory management: {e}")
+        finally:
+            logging.info("Long-term memory management thread exiting")
 
     def _execute_memory_management_action(self, ai_response: str, memory_list: List[Dict]):
         """根据AI响应执行记忆管理动作"""
@@ -1449,6 +1478,15 @@ class VDBManager:
                 # 停止上下文摘要线程
                 # 注意：由于Python线程无法直接停止，我们只能依靠线程自行检查状态
                 logging.info("Disabled context summary thread (will stop on next cycle)")
+                # 请求长期记忆管理线程停止
+                try:
+                    if hasattr(self, '_ltm_stop_event'):
+                        self._ltm_stop_event.set()
+                        logging.info("Requested stop for long-term memory management thread")
+                    if hasattr(self, '_ltm_thread') and self._ltm_thread is not None:
+                        self._ltm_thread.join(timeout=2)
+                except Exception:
+                    pass
             elif self.vdb_auto_run:
                 # 如果自动运行保持启用且间隔发生变化，重新启动线程以应用新间隔
                 if hasattr(self, 'expiry_thread') and self.vdb_check_interval != old_check_interval:
@@ -1524,6 +1562,50 @@ class VDBManager:
             'qdrant_host': self.config.get('qdrant_host', 'localhost'),
             'qdrant_port': self.config.get('qdrant_port', 6333)
         }
+
+    def stop_vdb_management(self):
+        """
+        停止VDB的所有后台管理线程（过期清理、上下文摘要、长期记忆管理）
+        """
+        try:
+            # 停止过期清理线程
+            if hasattr(self, 'stop_expiry_event'):
+                try:
+                    self.stop_expiry_event.set()
+                except Exception:
+                    pass
+
+            # 请求长期记忆管理线程停止
+            try:
+                if hasattr(self, '_ltm_stop_event'):
+                    self._ltm_stop_event.set()
+            except Exception:
+                pass
+
+            # 尝试 join 相关线程以便清理
+            try:
+                if hasattr(self, 'expiry_thread') and self.expiry_thread is not None and self.expiry_thread.is_alive():
+                    self.expiry_thread.join(timeout=2)
+            except Exception:
+                pass
+
+            try:
+                if hasattr(self, 'summary_thread') and self.summary_thread is not None and self.summary_thread.is_alive():
+                    self.summary_thread.join(timeout=2)
+            except Exception:
+                pass
+
+            try:
+                if hasattr(self, '_ltm_thread') and self._ltm_thread is not None and self._ltm_thread.is_alive():
+                    self._ltm_thread.join(timeout=2)
+            except Exception:
+                pass
+
+            logging.info("Stopped VDB management background threads (best-effort)")
+            return True
+        except Exception as e:
+            logging.error(f"Error stopping VDB management threads: {e}")
+            return False
     
     def trigger_db_management(self) -> Dict[str, Any]:
         """
@@ -1586,6 +1668,16 @@ class VDBManager:
                 self.summary_thread = threading.Thread(target=self._context_summary_worker, daemon=True)
                 self.summary_thread.start()
                 logging.info("Started new context summary thread")
+
+            # 确保长期记忆管理线程处于停止状态，以便在需要时重新启动
+            try:
+                if hasattr(self, '_ltm_stop_event'):
+                    self._ltm_stop_event.clear()
+                if hasattr(self, '_ltm_thread') and self._ltm_thread is not None and self._ltm_thread.is_alive():
+                    # 如果已有线程在运行则不强制停止
+                    logging.info("Long-term memory management thread already running")
+            except Exception:
+                pass
             
             return {
                 'status': 'success',

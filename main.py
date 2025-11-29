@@ -65,6 +65,8 @@ class AILiveSystem:
         self.auto_restart = config.get('auto_restart', False)
         self.auto_restart_interval = config.get('auto_restart_interval', 3600)  # 默认1小时
         self.restart_timer = None
+        # 用于取消重启定时器的事件
+        self._restart_stop_event = threading.Event()
         
         # 消息队列
         self.message_queue = queue.Queue()
@@ -385,7 +387,11 @@ class AILiveSystem:
         """运行弹幕接收器的后台线程"""
         while self.running:
             try:
-                asyncio.run(self.danmu_receiver.start_receiving())
+                # 在独立事件循环中运行接收器，避免在已有事件循环中重复调用 asyncio.run()
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+                loop.run_until_complete(self.danmu_receiver.start_receiving())
+                loop.close()
             except Exception as e:
                 logging.error(f"Error in danmu receiver: {e}")
                 # 等待一段时间后重试
@@ -452,34 +458,67 @@ class AILiveSystem:
             self.image_moderator.cleanup()
         if self.audio_recorder:
             self.audio_recorder.cleanup()
+        # 清理工具执行器
+        if self.tool_executor:
+            try:
+                self.tool_executor.cleanup()
+            except Exception as e:
+                logging.warning(f"Error cleaning up tool executor: {e}")
+        # 停止VDB管理相关后台线程
+        if self.vdb_manager:
+            try:
+                if hasattr(self.vdb_manager, 'stop_vdb_management'):
+                    self.vdb_manager.stop_vdb_management()
+            except Exception as e:
+                logging.warning(f"Error stopping VDB management: {e}")
+        # 关闭WebUI控制器（如果支持）
+        if self.webui_controller:
+            try:
+                if hasattr(self.webui_controller, 'stop'):
+                    self.webui_controller.stop()
+            except Exception:
+                pass
         
         # 如果启用自动重启，启动定时器
         if self.auto_restart:
             self._start_restart_timer()
         
-        # 取消重启定时器
-        if self.restart_timer and self.restart_timer.is_alive():
-            try:
-                # 无法直接取消线程，但可以记录系统已停止
-                pass
-            except:
-                pass
+        # 取消重启定时器（如果存在）
+        try:
+            if self.restart_timer and self.restart_timer.is_alive():
+                # 设置停止事件以唤醒计时器线程并退出
+                self._restart_stop_event.set()
+                self.restart_timer.join(timeout=5)
+        except Exception:
+            pass
         
         logging.info("AI Live System stopped")
 
     def _start_restart_timer(self):
         """启动自动重启定时器"""
-        def restart_task():
-            import time
-            time.sleep(self.auto_restart_interval)
-            if self.running:  # 如果系统仍在运行，则执行重启
+        def restart_task(stop_event: threading.Event):
+            # 等待 auto_restart_interval 秒或者直到 stop_event 被设置
+            waited = stop_event.wait(timeout=self.auto_restart_interval)
+            # 如果 stop_event 未被设置（即 wait 返回 False）并且系统仍然运行，则重启
+            if not waited and self.running:
                 logging.info(f"Auto restart triggered after {self.auto_restart_interval} seconds")
-                self.restart()
-        
-        if self.restart_timer and self.restart_timer.is_alive():
-            self.restart_timer.join(timeout=1)  # 等待之前的定时器结束
-        
-        self.restart_timer = threading.Thread(target=restart_task, daemon=True)
+                try:
+                    self.restart()
+                except Exception as e:
+                    logging.error(f"Error during auto restart: {e}")
+
+        # 取消之前的定时器（如果有）
+        try:
+            if self.restart_timer and self.restart_timer.is_alive():
+                # 请求之前的线程退出
+                self._restart_stop_event.set()
+                self.restart_timer.join(timeout=1)
+        except Exception:
+            pass
+
+        # 重置停止事件并启动新定时器线程
+        self._restart_stop_event = threading.Event()
+        self.restart_timer = threading.Thread(target=restart_task, args=(self._restart_stop_event,), daemon=True)
         self.restart_timer.start()
         logging.info(f"Auto restart timer started: {self.auto_restart_interval} seconds")
 

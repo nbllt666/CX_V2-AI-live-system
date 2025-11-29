@@ -300,6 +300,19 @@ class ToolManager:
             logging.error(f"Error starting VDB management: {e}")
             return {'error': str(e), 'success': False}
 
+    def cleanup(self):
+        """
+        清理 ToolManager 后台线程和资源
+        """
+        try:
+            # 发送结束信号到任务队列
+            self.task_queue.put(None)
+            # 等待处理线程结束
+            if hasattr(self, 'processing_thread') and self.processing_thread.is_alive():
+                self.processing_thread.join(timeout=3)
+        except Exception as e:
+            logging.warning(f"Error cleaning up ToolManager: {e}")
+
 class AudioPlayer:
     """
     音频播放器 - 专门处理音频播放
@@ -395,3 +408,28 @@ class ToolExecutor:
             return self.tool_manager._execute_tool(tool_name, {}, config)
         else:
             return {'error': f'Unknown tool: {tool_name}', 'success': False}
+
+    def cleanup(self):
+        """清理 ToolExecutor 及其内部管理器的资源（可重复安全调用）。"""
+        try:
+            if hasattr(self, 'tool_manager') and self.tool_manager:
+                try:
+                    self.tool_manager.cleanup()
+                except Exception as e:
+                    logging.warning(f"ToolManager.cleanup() 失败: {e}")
+
+            # 如果音频播放器有清理方法则调用
+            if hasattr(self, 'audio_player') and hasattr(self.audio_player, 'cleanup'):
+                try:
+                    self.audio_player.cleanup()
+                except Exception:
+                    pass
+
+            # 如果图像生成器有清理方法则调用
+            if hasattr(self, 'image_generator') and hasattr(self.image_generator, 'cleanup'):
+                try:
+                    self.image_generator.cleanup()
+                except Exception:
+                    pass
+        except Exception as e:
+            logging.warning(f"ToolExecutor.cleanup 异常: {e}")

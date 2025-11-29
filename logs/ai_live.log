@@ -1214,3 +1214,706 @@ UnboundLocalError: cannot access local variable 'threading' where it is not asso
 2025-11-22 21:53:09,711 - root - INFO - System warmup completed
 2025-11-22 21:53:09,711 - root - INFO - Running in chat-only mode (danmu disabled)
 2025-11-22 21:53:09,862 - root - INFO - Audio listener started, waiting for speech...
+2025-11-28 22:05:29,732 - root - INFO - Logging setup completed
+2025-11-28 22:05:29,733 - root - INFO - AI Live System initializing...
+2025-11-28 22:05:29,733 - root - INFO - Initializing VDB Manager...
+2025-11-28 22:05:37,514 - root - ERROR - Error initializing Qdrant client: [Errno 10061] WSAECONNREFUSED
+2025-11-28 22:05:37,515 - root - INFO - Falling back to simulated embedding approach
+2025-11-28 22:05:37,515 - root - INFO - 上下文摘要功能已禁用
+2025-11-28 22:05:37,515 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-28 22:05:37,515 - root - INFO - Initializing Long Term Memory...
+2025-11-28 22:05:37,515 - root - INFO - Context summarizer initialized
+2025-11-28 22:05:37,515 - root - INFO - Long term memory system initialized
+2025-11-28 22:05:37,516 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-28 22:05:37,556 - root - ERROR - Failed to connect to Ollama
+2025-11-28 22:05:37,557 - root - INFO - Context loaded from context_short_term.json
+2025-11-28 22:05:37,557 - root - INFO - Context loaded from context_medium_term.json
+2025-11-28 22:05:37,558 - root - INFO - Context loaded from context_long_term.json
+2025-11-28 22:05:37,558 - root - INFO - Loaded 1 conversation entries from medium-term context file
+2025-11-28 22:05:37,558 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-28 22:05:37,558 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-28 22:05:37,558 - root - INFO - Initializing SenseVoice...
+2025-11-28 22:05:37,559 - root - INFO - SenseVoice recognizer initialized
+2025-11-28 22:05:37,559 - root - INFO - Voice trigger initialized
+2025-11-28 22:05:37,559 - root - INFO - Initializing Voice Output...
+2025-11-28 22:05:37,559 - root - INFO - CosyVoice synthesizer initialized
+2025-11-28 22:05:37,560 - root - INFO - Voice output manager initialized
+2025-11-28 22:05:37,560 - root - INFO - Initializing Content Moderation...
+2025-11-28 22:05:37,560 - root - INFO - Content moderation module initialized
+2025-11-28 22:05:37,560 - root - INFO - Content moderation module initialized
+2025-11-28 22:05:37,560 - root - INFO - Initializing Screen Manager...
+2025-11-28 22:05:37,561 - root - INFO - Screen manager initialized
+2025-11-28 22:05:37,561 - root - INFO - Initializing Tool Executor...
+2025-11-28 22:05:37,561 - root - INFO - Tool manager initialized
+2025-11-28 22:05:37,561 - root - INFO - Initializing WebUI Controller...
+2025-11-28 22:05:37,565 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:05:37,565 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:05:37,565 - config_manager - INFO - 自动填充配置项 sense_voice_api_url: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:05:37,565 - config_manager - INFO - 自动填充配置项 cosy_voice_api_url: http://127.0.0.1:8888/api/tts
+2025-11-28 22:05:37,566 - config_manager - INFO - 自动填充配置项 ollama_top_p: 0.9
+2025-11-28 22:05:37,566 - config_manager - INFO - 自动填充配置项 enable_screen_click: True
+2025-11-28 22:05:37,566 - config_manager - INFO - 自动填充配置项 audio_output_dir: ./output_audio
+2025-11-28 22:05:37,566 - config_manager - INFO - 自动填充配置项 qwen2_5vl_mnn_path: qwen2_5vl_3b.mnn
+2025-11-28 22:05:37,566 - config_manager - INFO - 自动填充配置项 qwen_vl_api_url: http://127.0.0.1:8899/api/moderate
+2025-11-28 22:05:37,566 - config_manager - INFO - 自动填充配置项 qdrant_host: localhost
+2025-11-28 22:05:37,566 - config_manager - INFO - 自动填充配置项 qdrant_port: 6333
+2025-11-28 22:05:37,567 - config_manager - INFO - 自动填充配置项 output_audio_dir: ./output_audio
+2025-11-28 22:05:37,567 - config_manager - INFO - 自动填充配置项 sound_effects_dir: ./sound_effects
+2025-11-28 22:05:37,567 - config_manager - INFO - 自动填充配置项 songs_dir: ./songs
+2025-11-28 22:05:37,567 - config_manager - INFO - 自动填充配置项 screenshot_dir: ./screenshots
+2025-11-28 22:05:37,567 - config_manager - INFO - 自动填充配置项 images_dir: ./images
+2025-11-28 22:05:37,567 - config_manager - INFO - 自动填充配置项 log_dir: ./logs
+2025-11-28 22:05:37,568 - config_manager - INFO - 自动填充配置项 sensitive_keywords: ['敏感词1', '敏感词2']
+2025-11-28 22:05:37,568 - config_manager - INFO - 自动填充配置项 memo: 
+2025-11-28 22:05:37,569 - webui - INFO - 配置加载成功: config/config.json
+2025-11-28 22:05:39,108 - httpx - INFO - HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2025-11-28 22:05:39,127 - httpx - INFO - HTTP Request: GET http://localhost:6333/collections/memory_collection "HTTP/1.1 200 OK"
+2025-11-28 22:05:39,127 - root - INFO - Connected to existing Qdrant collection: memory_collection
+2025-11-28 22:05:39,128 - root - INFO - 上下文摘要功能已禁用
+2025-11-28 22:05:39,128 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-28 22:05:39,128 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:05:39,129 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:05:39,129 - config_manager - INFO - 自动填充配置项 sense_voice_api_url: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:05:39,129 - config_manager - INFO - 自动填充配置项 cosy_voice_api_url: http://127.0.0.1:8888/api/tts
+2025-11-28 22:05:39,129 - config_manager - INFO - 自动填充配置项 ollama_top_p: 0.9
+2025-11-28 22:05:39,129 - config_manager - INFO - 自动填充配置项 enable_screen_click: True
+2025-11-28 22:05:39,130 - config_manager - INFO - 自动填充配置项 audio_output_dir: ./output_audio
+2025-11-28 22:05:39,130 - config_manager - INFO - 自动填充配置项 qwen2_5vl_mnn_path: qwen2_5vl_3b.mnn
+2025-11-28 22:05:39,130 - config_manager - INFO - 自动填充配置项 qwen_vl_api_url: http://127.0.0.1:8899/api/moderate
+2025-11-28 22:05:39,130 - config_manager - INFO - 自动填充配置项 qdrant_host: localhost
+2025-11-28 22:05:39,130 - config_manager - INFO - 自动填充配置项 qdrant_port: 6333
+2025-11-28 22:05:39,130 - config_manager - INFO - 自动填充配置项 output_audio_dir: ./output_audio
+2025-11-28 22:05:39,130 - config_manager - INFO - 自动填充配置项 sound_effects_dir: ./sound_effects
+2025-11-28 22:05:39,131 - config_manager - INFO - 自动填充配置项 songs_dir: ./songs
+2025-11-28 22:05:39,131 - config_manager - INFO - 自动填充配置项 screenshot_dir: ./screenshots
+2025-11-28 22:05:39,131 - config_manager - INFO - 自动填充配置项 images_dir: ./images
+2025-11-28 22:05:39,131 - config_manager - INFO - 自动填充配置项 log_dir: ./logs
+2025-11-28 22:05:39,131 - config_manager - INFO - 自动填充配置项 sensitive_keywords: ['敏感词1', '敏感词2']
+2025-11-28 22:05:39,131 - config_manager - INFO - 自动填充配置项 memo: 
+2025-11-28 22:05:39,132 - webui - INFO - 配置加载成功: config/config.json
+2025-11-28 22:05:39,138 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:05:39,138 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:05:39,138 - config_manager - INFO - 自动填充配置项 sense_voice_api_url: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:05:39,139 - config_manager - INFO - 自动填充配置项 cosy_voice_api_url: http://127.0.0.1:8888/api/tts
+2025-11-28 22:05:39,139 - config_manager - INFO - 自动填充配置项 ollama_top_p: 0.9
+2025-11-28 22:05:39,139 - config_manager - INFO - 自动填充配置项 enable_screen_click: True
+2025-11-28 22:05:39,139 - config_manager - INFO - 自动填充配置项 audio_output_dir: ./output_audio
+2025-11-28 22:05:39,139 - config_manager - INFO - 自动填充配置项 qwen2_5vl_mnn_path: qwen2_5vl_3b.mnn
+2025-11-28 22:05:39,139 - config_manager - INFO - 自动填充配置项 qwen_vl_api_url: http://127.0.0.1:8899/api/moderate
+2025-11-28 22:05:39,140 - config_manager - INFO - 自动填充配置项 qdrant_host: localhost
+2025-11-28 22:05:39,140 - config_manager - INFO - 自动填充配置项 qdrant_port: 6333
+2025-11-28 22:05:39,140 - config_manager - INFO - 自动填充配置项 output_audio_dir: ./output_audio
+2025-11-28 22:05:39,140 - config_manager - INFO - 自动填充配置项 sound_effects_dir: ./sound_effects
+2025-11-28 22:05:39,140 - config_manager - INFO - 自动填充配置项 songs_dir: ./songs
+2025-11-28 22:05:39,140 - config_manager - INFO - 自动填充配置项 screenshot_dir: ./screenshots
+2025-11-28 22:05:39,141 - config_manager - INFO - 自动填充配置项 images_dir: ./images
+2025-11-28 22:05:39,141 - config_manager - INFO - 自动填充配置项 log_dir: ./logs
+2025-11-28 22:05:39,141 - config_manager - INFO - 自动填充配置项 sensitive_keywords: ['敏感词1', '敏感词2']
+2025-11-28 22:05:39,141 - config_manager - INFO - 自动填充配置项 memo: 
+2025-11-28 22:05:39,142 - webui - INFO - 配置加载成功: config/config.json
+2025-11-28 22:05:39,142 - root - INFO - Initializing Audio Recorder...
+2025-11-28 22:05:39,565 - root - INFO - Audio recorder initialized
+2025-11-28 22:05:39,565 - root - INFO - All modules initialized successfully
+2025-11-28 22:05:39,566 - root - INFO - AI Live System initialized successfully
+2025-11-28 22:05:39,566 - root - INFO - Starting system warmup...
+2025-11-28 22:05:39,566 - root - INFO - Warming up Ollama models...
+2025-11-28 22:05:39,568 - root - INFO - SenseVoice recognizer initialized
+2025-11-28 22:05:39,589 - root - INFO - Loading text model: qwen2.5:0.5b
+2025-11-28 22:05:39,607 - root - WARNING - Text model load response: 404
+2025-11-28 22:05:39,607 - root - INFO - Loading vision model: qwen2.5vl
+2025-11-28 22:05:43,504 - __main__ - INFO - 发送消息: 你好
+2025-11-28 22:05:44,162 - root - INFO - Vision model loaded successfully
+2025-11-28 22:05:44,162 - root - INFO - Warming up SenseVoice...
+2025-11-28 22:05:44,162 - root - INFO - Checking SenseVoice API at: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:05:46,208 - root - ERROR - SenseVoice API service check failed: HTTPConnectionPool(host='127.0.0.1', port=8877): Max retries exceeded with url: /api/v1/asr (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001D6017BEC40>: Failed to establish a new connection: [Errno 10061] WSAECONNREFUSED'))
+2025-11-28 22:05:46,208 - root - WARNING - Starting SenseVoice service may be required
+2025-11-28 22:05:46,208 - root - INFO - SenseVoice initialized and ready for use
+2025-11-28 22:05:46,208 - root - INFO - System warmup completed
+2025-11-28 22:05:46,209 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-28 22:05:46,358 - root - INFO - Audio listener started, waiting for speech...
+2025-11-28 22:07:01,308 - root - INFO - Started listening for speech
+2025-11-28 22:09:12,197 - root - INFO - Logging setup completed
+2025-11-28 22:09:12,197 - root - INFO - AI Live System initializing...
+2025-11-28 22:09:12,197 - root - INFO - Initializing VDB Manager...
+2025-11-28 22:09:19,915 - root - ERROR - Error initializing Qdrant client: [Errno 10061] WSAECONNREFUSED
+2025-11-28 22:09:19,916 - root - INFO - Falling back to simulated embedding approach
+2025-11-28 22:09:19,916 - root - INFO - 上下文摘要功能已禁用
+2025-11-28 22:09:19,916 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-28 22:09:19,916 - root - INFO - Initializing Long Term Memory...
+2025-11-28 22:09:19,916 - root - INFO - Context summarizer initialized
+2025-11-28 22:09:19,916 - root - INFO - Long term memory system initialized
+2025-11-28 22:09:19,917 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-28 22:09:19,950 - root - ERROR - Failed to connect to Ollama
+2025-11-28 22:09:19,951 - root - INFO - Context loaded from context_short_term.json
+2025-11-28 22:09:19,952 - root - INFO - Context loaded from context_medium_term.json
+2025-11-28 22:09:19,952 - root - INFO - Context loaded from context_long_term.json
+2025-11-28 22:09:19,952 - root - INFO - Loaded 1 conversation entries from medium-term context file
+2025-11-28 22:09:19,952 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-28 22:09:19,953 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-28 22:09:19,953 - root - INFO - Initializing SenseVoice...
+2025-11-28 22:09:19,953 - root - INFO - SenseVoice recognizer initialized
+2025-11-28 22:09:19,953 - root - INFO - Voice trigger initialized
+2025-11-28 22:09:19,953 - root - INFO - Initializing Voice Output...
+2025-11-28 22:09:19,954 - root - INFO - CosyVoice synthesizer initialized
+2025-11-28 22:09:19,954 - root - INFO - Voice output manager initialized
+2025-11-28 22:09:19,954 - root - INFO - Initializing Content Moderation...
+2025-11-28 22:09:19,954 - root - INFO - Content moderation module initialized
+2025-11-28 22:09:19,954 - root - INFO - Content moderation module initialized
+2025-11-28 22:09:19,955 - root - INFO - Initializing Screen Manager...
+2025-11-28 22:09:19,955 - root - INFO - Screen manager initialized
+2025-11-28 22:09:19,955 - root - INFO - Initializing Tool Executor...
+2025-11-28 22:09:19,955 - root - INFO - Tool manager initialized
+2025-11-28 22:09:19,956 - root - INFO - Initializing WebUI Controller...
+2025-11-28 22:09:19,959 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:09:19,960 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:09:19,960 - config_manager - INFO - 自动填充配置项 sense_voice_api_url: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:09:19,960 - config_manager - INFO - 自动填充配置项 cosy_voice_api_url: http://127.0.0.1:8888/api/tts
+2025-11-28 22:09:19,960 - config_manager - INFO - 自动填充配置项 ollama_top_p: 0.9
+2025-11-28 22:09:19,960 - config_manager - INFO - 自动填充配置项 enable_screen_click: True
+2025-11-28 22:09:19,960 - config_manager - INFO - 自动填充配置项 audio_output_dir: ./output_audio
+2025-11-28 22:09:19,961 - config_manager - INFO - 自动填充配置项 qwen2_5vl_mnn_path: qwen2_5vl_3b.mnn
+2025-11-28 22:09:19,961 - config_manager - INFO - 自动填充配置项 qwen_vl_api_url: http://127.0.0.1:8899/api/moderate
+2025-11-28 22:09:19,961 - config_manager - INFO - 自动填充配置项 qdrant_host: localhost
+2025-11-28 22:09:19,961 - config_manager - INFO - 自动填充配置项 qdrant_port: 6333
+2025-11-28 22:09:19,961 - config_manager - INFO - 自动填充配置项 output_audio_dir: ./output_audio
+2025-11-28 22:09:19,961 - config_manager - INFO - 自动填充配置项 sound_effects_dir: ./sound_effects
+2025-11-28 22:09:19,961 - config_manager - INFO - 自动填充配置项 songs_dir: ./songs
+2025-11-28 22:09:19,962 - config_manager - INFO - 自动填充配置项 screenshot_dir: ./screenshots
+2025-11-28 22:09:19,962 - config_manager - INFO - 自动填充配置项 images_dir: ./images
+2025-11-28 22:09:19,962 - config_manager - INFO - 自动填充配置项 log_dir: ./logs
+2025-11-28 22:09:19,962 - config_manager - INFO - 自动填充配置项 sensitive_keywords: ['敏感词1', '敏感词2']
+2025-11-28 22:09:19,962 - config_manager - INFO - 自动填充配置项 memo: 
+2025-11-28 22:09:19,963 - webui - INFO - 配置加载成功: config/config.json
+2025-11-28 22:09:21,144 - httpx - INFO - HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2025-11-28 22:09:21,179 - httpx - INFO - HTTP Request: GET http://localhost:6333/collections/memory_collection "HTTP/1.1 200 OK"
+2025-11-28 22:09:21,180 - root - INFO - Connected to existing Qdrant collection: memory_collection
+2025-11-28 22:09:21,180 - root - INFO - 上下文摘要功能已禁用
+2025-11-28 22:09:21,180 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-28 22:09:21,181 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:09:21,181 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:09:21,181 - config_manager - INFO - 自动填充配置项 sense_voice_api_url: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:09:21,181 - config_manager - INFO - 自动填充配置项 cosy_voice_api_url: http://127.0.0.1:8888/api/tts
+2025-11-28 22:09:21,181 - config_manager - INFO - 自动填充配置项 ollama_top_p: 0.9
+2025-11-28 22:09:21,182 - config_manager - INFO - 自动填充配置项 enable_screen_click: True
+2025-11-28 22:09:21,182 - config_manager - INFO - 自动填充配置项 audio_output_dir: ./output_audio
+2025-11-28 22:09:21,182 - config_manager - INFO - 自动填充配置项 qwen2_5vl_mnn_path: qwen2_5vl_3b.mnn
+2025-11-28 22:09:21,182 - config_manager - INFO - 自动填充配置项 qwen_vl_api_url: http://127.0.0.1:8899/api/moderate
+2025-11-28 22:09:21,182 - config_manager - INFO - 自动填充配置项 qdrant_host: localhost
+2025-11-28 22:09:21,182 - config_manager - INFO - 自动填充配置项 qdrant_port: 6333
+2025-11-28 22:09:21,182 - config_manager - INFO - 自动填充配置项 output_audio_dir: ./output_audio
+2025-11-28 22:09:21,182 - config_manager - INFO - 自动填充配置项 sound_effects_dir: ./sound_effects
+2025-11-28 22:09:21,182 - config_manager - INFO - 自动填充配置项 songs_dir: ./songs
+2025-11-28 22:09:21,183 - config_manager - INFO - 自动填充配置项 screenshot_dir: ./screenshots
+2025-11-28 22:09:21,183 - config_manager - INFO - 自动填充配置项 images_dir: ./images
+2025-11-28 22:09:21,183 - config_manager - INFO - 自动填充配置项 log_dir: ./logs
+2025-11-28 22:09:21,183 - config_manager - INFO - 自动填充配置项 sensitive_keywords: ['敏感词1', '敏感词2']
+2025-11-28 22:09:21,183 - config_manager - INFO - 自动填充配置项 memo: 
+2025-11-28 22:09:21,183 - webui - INFO - 配置加载成功: config/config.json
+2025-11-28 22:09:21,187 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:09:21,187 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:09:21,187 - config_manager - INFO - 自动填充配置项 sense_voice_api_url: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:09:21,188 - config_manager - INFO - 自动填充配置项 cosy_voice_api_url: http://127.0.0.1:8888/api/tts
+2025-11-28 22:09:21,188 - config_manager - INFO - 自动填充配置项 ollama_top_p: 0.9
+2025-11-28 22:09:21,188 - config_manager - INFO - 自动填充配置项 enable_screen_click: True
+2025-11-28 22:09:21,188 - config_manager - INFO - 自动填充配置项 audio_output_dir: ./output_audio
+2025-11-28 22:09:21,188 - config_manager - INFO - 自动填充配置项 qwen2_5vl_mnn_path: qwen2_5vl_3b.mnn
+2025-11-28 22:09:21,188 - config_manager - INFO - 自动填充配置项 qwen_vl_api_url: http://127.0.0.1:8899/api/moderate
+2025-11-28 22:09:21,188 - config_manager - INFO - 自动填充配置项 qdrant_host: localhost
+2025-11-28 22:09:21,189 - config_manager - INFO - 自动填充配置项 qdrant_port: 6333
+2025-11-28 22:09:21,189 - config_manager - INFO - 自动填充配置项 output_audio_dir: ./output_audio
+2025-11-28 22:09:21,189 - config_manager - INFO - 自动填充配置项 sound_effects_dir: ./sound_effects
+2025-11-28 22:09:21,189 - config_manager - INFO - 自动填充配置项 songs_dir: ./songs
+2025-11-28 22:09:21,189 - config_manager - INFO - 自动填充配置项 screenshot_dir: ./screenshots
+2025-11-28 22:09:21,189 - config_manager - INFO - 自动填充配置项 images_dir: ./images
+2025-11-28 22:09:21,189 - config_manager - INFO - 自动填充配置项 log_dir: ./logs
+2025-11-28 22:09:21,189 - config_manager - INFO - 自动填充配置项 sensitive_keywords: ['敏感词1', '敏感词2']
+2025-11-28 22:09:21,190 - config_manager - INFO - 自动填充配置项 memo: 
+2025-11-28 22:09:21,190 - webui - INFO - 配置加载成功: config/config.json
+2025-11-28 22:09:21,190 - root - INFO - Initializing Audio Recorder...
+2025-11-28 22:09:21,578 - root - INFO - Audio recorder initialized
+2025-11-28 22:09:21,578 - root - INFO - All modules initialized successfully
+2025-11-28 22:09:21,578 - root - INFO - AI Live System initialized successfully
+2025-11-28 22:09:21,578 - root - INFO - Starting system warmup...
+2025-11-28 22:09:21,578 - root - INFO - Warming up Ollama models...
+2025-11-28 22:09:21,580 - root - INFO - SenseVoice recognizer initialized
+2025-11-28 22:09:21,617 - root - INFO - Loading text model: qwen2.5:0.5b
+2025-11-28 22:09:21,638 - root - WARNING - Text model load response: 404
+2025-11-28 22:09:21,638 - root - INFO - Loading vision model: qwen2.5vl
+2025-11-28 22:09:22,098 - root - INFO - Vision model loaded successfully
+2025-11-28 22:09:22,099 - root - INFO - Warming up SenseVoice...
+2025-11-28 22:09:22,100 - root - INFO - Checking SenseVoice API at: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:09:24,155 - root - ERROR - SenseVoice API service check failed: HTTPConnectionPool(host='127.0.0.1', port=8877): Max retries exceeded with url: /api/v1/asr (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A2F9C5E2C0>: Failed to establish a new connection: [Errno 10061] WSAECONNREFUSED'))
+2025-11-28 22:09:24,156 - root - WARNING - Starting SenseVoice service may be required
+2025-11-28 22:09:24,156 - root - INFO - SenseVoice initialized and ready for use
+2025-11-28 22:09:24,156 - root - INFO - System warmup completed
+2025-11-28 22:09:24,156 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-28 22:09:24,312 - root - INFO - Audio listener started, waiting for speech...
+2025-11-28 22:09:27,017 - root - INFO - Started listening for speech
+2025-11-28 22:12:12,363 - root - INFO - Logging setup completed
+2025-11-28 22:12:12,363 - root - INFO - AI Live System initializing...
+2025-11-28 22:12:12,363 - root - INFO - Initializing VDB Manager...
+2025-11-28 22:12:13,920 - __main__ - INFO - 客户端连接: XyggsCExzQzVSkVSAAAB
+2025-11-28 22:12:20,774 - root - ERROR - Error initializing Qdrant client: [Errno 10061] WSAECONNREFUSED
+2025-11-28 22:12:20,775 - root - INFO - Falling back to simulated embedding approach
+2025-11-28 22:12:20,775 - root - INFO - 上下文摘要功能已禁用
+2025-11-28 22:12:20,775 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-28 22:12:20,775 - root - INFO - Initializing Long Term Memory...
+2025-11-28 22:12:20,775 - root - INFO - Context summarizer initialized
+2025-11-28 22:12:20,775 - root - INFO - Long term memory system initialized
+2025-11-28 22:12:20,775 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-28 22:12:20,800 - root - ERROR - Failed to connect to Ollama
+2025-11-28 22:12:20,801 - root - INFO - Context loaded from context_short_term.json
+2025-11-28 22:12:20,801 - root - INFO - Context loaded from context_medium_term.json
+2025-11-28 22:12:20,802 - root - INFO - Context loaded from context_long_term.json
+2025-11-28 22:12:20,802 - root - INFO - Loaded 1 conversation entries from medium-term context file
+2025-11-28 22:12:20,802 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-28 22:12:20,802 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-28 22:12:20,802 - root - INFO - Initializing SenseVoice...
+2025-11-28 22:12:20,803 - root - INFO - SenseVoice recognizer initialized
+2025-11-28 22:12:20,803 - root - INFO - Voice trigger initialized
+2025-11-28 22:12:20,803 - root - INFO - Initializing Voice Output...
+2025-11-28 22:12:20,804 - root - INFO - CosyVoice synthesizer initialized
+2025-11-28 22:12:20,804 - root - INFO - Voice output manager initialized
+2025-11-28 22:12:20,804 - root - INFO - Initializing Content Moderation...
+2025-11-28 22:12:20,804 - root - INFO - Content moderation module initialized
+2025-11-28 22:12:20,805 - root - INFO - Content moderation module initialized
+2025-11-28 22:12:20,805 - root - INFO - Initializing Screen Manager...
+2025-11-28 22:12:20,805 - root - INFO - Screen manager initialized
+2025-11-28 22:12:20,805 - root - INFO - Initializing Tool Executor...
+2025-11-28 22:12:20,805 - root - INFO - Tool manager initialized
+2025-11-28 22:12:20,805 - root - INFO - Initializing WebUI Controller...
+2025-11-28 22:12:20,808 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:12:20,808 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:12:20,809 - config_manager - INFO - 自动填充配置项 sense_voice_api_url: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:12:20,809 - config_manager - INFO - 自动填充配置项 cosy_voice_api_url: http://127.0.0.1:8888/api/tts
+2025-11-28 22:12:20,809 - config_manager - INFO - 自动填充配置项 ollama_top_p: 0.9
+2025-11-28 22:12:20,809 - config_manager - INFO - 自动填充配置项 enable_screen_click: True
+2025-11-28 22:12:20,809 - config_manager - INFO - 自动填充配置项 audio_output_dir: ./output_audio
+2025-11-28 22:12:20,809 - config_manager - INFO - 自动填充配置项 qwen2_5vl_mnn_path: qwen2_5vl_3b.mnn
+2025-11-28 22:12:20,809 - config_manager - INFO - 自动填充配置项 qwen_vl_api_url: http://127.0.0.1:8899/api/moderate
+2025-11-28 22:12:20,810 - config_manager - INFO - 自动填充配置项 qdrant_host: localhost
+2025-11-28 22:12:20,810 - config_manager - INFO - 自动填充配置项 qdrant_port: 6333
+2025-11-28 22:12:20,810 - config_manager - INFO - 自动填充配置项 output_audio_dir: ./output_audio
+2025-11-28 22:12:20,810 - config_manager - INFO - 自动填充配置项 sound_effects_dir: ./sound_effects
+2025-11-28 22:12:20,810 - config_manager - INFO - 自动填充配置项 songs_dir: ./songs
+2025-11-28 22:12:20,810 - config_manager - INFO - 自动填充配置项 screenshot_dir: ./screenshots
+2025-11-28 22:12:20,810 - config_manager - INFO - 自动填充配置项 images_dir: ./images
+2025-11-28 22:12:20,811 - config_manager - INFO - 自动填充配置项 log_dir: ./logs
+2025-11-28 22:12:20,811 - config_manager - INFO - 自动填充配置项 sensitive_keywords: ['敏感词1', '敏感词2']
+2025-11-28 22:12:20,811 - config_manager - INFO - 自动填充配置项 memo: 
+2025-11-28 22:12:20,811 - webui - INFO - 配置加载成功: config/config.json
+2025-11-28 22:12:21,948 - httpx - INFO - HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2025-11-28 22:12:21,977 - httpx - INFO - HTTP Request: GET http://localhost:6333/collections/memory_collection "HTTP/1.1 200 OK"
+2025-11-28 22:12:21,978 - root - INFO - Connected to existing Qdrant collection: memory_collection
+2025-11-28 22:12:21,978 - root - INFO - 上下文摘要功能已禁用
+2025-11-28 22:12:21,978 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-28 22:12:21,979 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:12:21,979 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:12:21,979 - config_manager - INFO - 自动填充配置项 sense_voice_api_url: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:12:21,979 - config_manager - INFO - 自动填充配置项 cosy_voice_api_url: http://127.0.0.1:8888/api/tts
+2025-11-28 22:12:21,979 - config_manager - INFO - 自动填充配置项 ollama_top_p: 0.9
+2025-11-28 22:12:21,980 - config_manager - INFO - 自动填充配置项 enable_screen_click: True
+2025-11-28 22:12:21,980 - config_manager - INFO - 自动填充配置项 audio_output_dir: ./output_audio
+2025-11-28 22:12:21,980 - config_manager - INFO - 自动填充配置项 qwen2_5vl_mnn_path: qwen2_5vl_3b.mnn
+2025-11-28 22:12:21,980 - config_manager - INFO - 自动填充配置项 qwen_vl_api_url: http://127.0.0.1:8899/api/moderate
+2025-11-28 22:12:21,980 - config_manager - INFO - 自动填充配置项 qdrant_host: localhost
+2025-11-28 22:12:21,980 - config_manager - INFO - 自动填充配置项 qdrant_port: 6333
+2025-11-28 22:12:21,980 - config_manager - INFO - 自动填充配置项 output_audio_dir: ./output_audio
+2025-11-28 22:12:21,980 - config_manager - INFO - 自动填充配置项 sound_effects_dir: ./sound_effects
+2025-11-28 22:12:21,981 - config_manager - INFO - 自动填充配置项 songs_dir: ./songs
+2025-11-28 22:12:21,981 - config_manager - INFO - 自动填充配置项 screenshot_dir: ./screenshots
+2025-11-28 22:12:21,981 - config_manager - INFO - 自动填充配置项 images_dir: ./images
+2025-11-28 22:12:21,981 - config_manager - INFO - 自动填充配置项 log_dir: ./logs
+2025-11-28 22:12:21,981 - config_manager - INFO - 自动填充配置项 sensitive_keywords: ['敏感词1', '敏感词2']
+2025-11-28 22:12:21,981 - config_manager - INFO - 自动填充配置项 memo: 
+2025-11-28 22:12:21,982 - webui - INFO - 配置加载成功: config/config.json
+2025-11-28 22:12:21,986 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:12:21,986 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:12:21,986 - config_manager - INFO - 自动填充配置项 sense_voice_api_url: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:12:21,986 - config_manager - INFO - 自动填充配置项 cosy_voice_api_url: http://127.0.0.1:8888/api/tts
+2025-11-28 22:12:21,986 - config_manager - INFO - 自动填充配置项 ollama_top_p: 0.9
+2025-11-28 22:12:21,987 - config_manager - INFO - 自动填充配置项 enable_screen_click: True
+2025-11-28 22:12:21,987 - config_manager - INFO - 自动填充配置项 audio_output_dir: ./output_audio
+2025-11-28 22:12:21,987 - config_manager - INFO - 自动填充配置项 qwen2_5vl_mnn_path: qwen2_5vl_3b.mnn
+2025-11-28 22:12:21,987 - config_manager - INFO - 自动填充配置项 qwen_vl_api_url: http://127.0.0.1:8899/api/moderate
+2025-11-28 22:12:21,987 - config_manager - INFO - 自动填充配置项 qdrant_host: localhost
+2025-11-28 22:12:21,987 - config_manager - INFO - 自动填充配置项 qdrant_port: 6333
+2025-11-28 22:12:21,987 - config_manager - INFO - 自动填充配置项 output_audio_dir: ./output_audio
+2025-11-28 22:12:21,988 - config_manager - INFO - 自动填充配置项 sound_effects_dir: ./sound_effects
+2025-11-28 22:12:21,988 - config_manager - INFO - 自动填充配置项 songs_dir: ./songs
+2025-11-28 22:12:21,988 - config_manager - INFO - 自动填充配置项 screenshot_dir: ./screenshots
+2025-11-28 22:12:21,988 - config_manager - INFO - 自动填充配置项 images_dir: ./images
+2025-11-28 22:12:21,988 - config_manager - INFO - 自动填充配置项 log_dir: ./logs
+2025-11-28 22:12:21,988 - config_manager - INFO - 自动填充配置项 sensitive_keywords: ['敏感词1', '敏感词2']
+2025-11-28 22:12:21,988 - config_manager - INFO - 自动填充配置项 memo: 
+2025-11-28 22:12:21,989 - webui - INFO - 配置加载成功: config/config.json
+2025-11-28 22:12:21,989 - root - INFO - Initializing Audio Recorder...
+2025-11-28 22:12:22,363 - root - INFO - Audio recorder initialized
+2025-11-28 22:12:22,364 - root - INFO - All modules initialized successfully
+2025-11-28 22:12:22,364 - root - INFO - AI Live System initialized successfully
+2025-11-28 22:12:22,364 - root - INFO - Starting system warmup...
+2025-11-28 22:12:22,364 - root - INFO - Warming up Ollama models...
+2025-11-28 22:12:22,365 - root - INFO - SenseVoice recognizer initialized
+2025-11-28 22:12:22,779 - root - INFO - Loading text model: qwen2.5:0.5b
+2025-11-28 22:12:22,821 - root - WARNING - Text model load response: 404
+2025-11-28 22:12:22,821 - root - INFO - Loading vision model: qwen2.5vl
+2025-11-28 22:12:23,247 - root - INFO - Vision model loaded successfully
+2025-11-28 22:12:23,248 - root - INFO - Warming up SenseVoice...
+2025-11-28 22:12:23,248 - root - INFO - Checking SenseVoice API at: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:12:25,279 - root - ERROR - SenseVoice API service check failed: HTTPConnectionPool(host='127.0.0.1', port=8877): Max retries exceeded with url: /api/v1/asr (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001945BCDEFD0>: Failed to establish a new connection: [Errno 10061] WSAECONNREFUSED'))
+2025-11-28 22:12:25,280 - root - WARNING - Starting SenseVoice service may be required
+2025-11-28 22:12:25,280 - root - INFO - SenseVoice initialized and ready for use
+2025-11-28 22:12:25,280 - root - INFO - System warmup completed
+2025-11-28 22:12:25,280 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-28 22:12:25,426 - root - INFO - Audio listener started, waiting for speech...
+2025-11-28 22:12:28,448 - root - INFO - Started listening for speech
+2025-11-28 22:18:09,597 - root - INFO - Logging setup completed
+2025-11-28 22:18:09,597 - root - INFO - AI Live System initializing...
+2025-11-28 22:18:09,597 - root - INFO - Initializing VDB Manager...
+2025-11-28 22:18:17,294 - root - ERROR - Error initializing Qdrant client: [Errno 10061] WSAECONNREFUSED
+2025-11-28 22:18:17,294 - root - INFO - Falling back to simulated embedding approach
+2025-11-28 22:18:17,295 - root - INFO - 上下文摘要功能已禁用
+2025-11-28 22:18:17,295 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-28 22:18:17,295 - root - INFO - Initializing Long Term Memory...
+2025-11-28 22:18:17,295 - root - INFO - Context summarizer initialized
+2025-11-28 22:18:17,295 - root - INFO - Long term memory system initialized
+2025-11-28 22:18:17,295 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-28 22:18:17,324 - root - ERROR - Failed to connect to Ollama
+2025-11-28 22:18:17,325 - root - INFO - Context loaded from context_short_term.json
+2025-11-28 22:18:17,326 - root - INFO - Context loaded from context_medium_term.json
+2025-11-28 22:18:17,326 - root - INFO - Context loaded from context_long_term.json
+2025-11-28 22:18:17,326 - root - INFO - Loaded 1 conversation entries from medium-term context file
+2025-11-28 22:18:17,327 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-28 22:18:17,327 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-28 22:18:17,327 - root - INFO - Initializing SenseVoice...
+2025-11-28 22:18:17,327 - root - INFO - SenseVoice recognizer initialized
+2025-11-28 22:18:17,327 - root - INFO - Voice trigger initialized
+2025-11-28 22:18:17,328 - root - INFO - Initializing Voice Output...
+2025-11-28 22:18:17,328 - root - INFO - CosyVoice synthesizer initialized
+2025-11-28 22:18:17,328 - root - INFO - Voice output manager initialized
+2025-11-28 22:18:17,328 - root - INFO - Initializing Content Moderation...
+2025-11-28 22:18:17,329 - root - INFO - Content moderation module initialized
+2025-11-28 22:18:17,329 - root - INFO - Content moderation module initialized
+2025-11-28 22:18:17,329 - root - INFO - Initializing Screen Manager...
+2025-11-28 22:18:17,329 - root - INFO - Screen manager initialized
+2025-11-28 22:18:17,329 - root - INFO - Initializing Tool Executor...
+2025-11-28 22:18:17,330 - root - INFO - Tool manager initialized
+2025-11-28 22:18:17,330 - root - INFO - Initializing WebUI Controller...
+2025-11-28 22:18:17,350 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:18:17,350 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:18:17,350 - config_manager - INFO - 自动填充配置项 sense_voice_api_url: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:18:17,350 - config_manager - INFO - 自动填充配置项 cosy_voice_api_url: http://127.0.0.1:8888/api/tts
+2025-11-28 22:18:17,350 - config_manager - INFO - 自动填充配置项 ollama_top_p: 0.9
+2025-11-28 22:18:17,351 - config_manager - INFO - 自动填充配置项 enable_screen_click: True
+2025-11-28 22:18:17,351 - config_manager - INFO - 自动填充配置项 audio_output_dir: ./output_audio
+2025-11-28 22:18:17,351 - config_manager - INFO - 自动填充配置项 qwen2_5vl_mnn_path: qwen2_5vl_3b.mnn
+2025-11-28 22:18:17,351 - config_manager - INFO - 自动填充配置项 qwen_vl_api_url: http://127.0.0.1:8899/api/moderate
+2025-11-28 22:18:17,351 - config_manager - INFO - 自动填充配置项 qdrant_host: localhost
+2025-11-28 22:18:17,351 - config_manager - INFO - 自动填充配置项 qdrant_port: 6333
+2025-11-28 22:18:17,351 - config_manager - INFO - 自动填充配置项 output_audio_dir: ./output_audio
+2025-11-28 22:18:17,352 - config_manager - INFO - 自动填充配置项 sound_effects_dir: ./sound_effects
+2025-11-28 22:18:17,352 - config_manager - INFO - 自动填充配置项 songs_dir: ./songs
+2025-11-28 22:18:17,352 - config_manager - INFO - 自动填充配置项 screenshot_dir: ./screenshots
+2025-11-28 22:18:17,352 - config_manager - INFO - 自动填充配置项 images_dir: ./images
+2025-11-28 22:18:17,352 - config_manager - INFO - 自动填充配置项 log_dir: ./logs
+2025-11-28 22:18:17,352 - config_manager - INFO - 自动填充配置项 sensitive_keywords: ['敏感词1', '敏感词2']
+2025-11-28 22:18:17,352 - config_manager - INFO - 自动填充配置项 memo: 
+2025-11-28 22:18:17,353 - webui - INFO - 配置加载成功: config/config.json
+2025-11-28 22:18:18,887 - httpx - INFO - HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2025-11-28 22:18:18,912 - httpx - INFO - HTTP Request: GET http://localhost:6333/collections/memory_collection "HTTP/1.1 200 OK"
+2025-11-28 22:18:18,913 - root - INFO - Connected to existing Qdrant collection: memory_collection
+2025-11-28 22:18:18,913 - root - INFO - 上下文摘要功能已禁用
+2025-11-28 22:18:18,913 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-28 22:18:18,914 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:18:18,914 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:18:18,914 - config_manager - INFO - 自动填充配置项 sense_voice_api_url: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:18:18,914 - config_manager - INFO - 自动填充配置项 cosy_voice_api_url: http://127.0.0.1:8888/api/tts
+2025-11-28 22:18:18,914 - config_manager - INFO - 自动填充配置项 ollama_top_p: 0.9
+2025-11-28 22:18:18,915 - config_manager - INFO - 自动填充配置项 enable_screen_click: True
+2025-11-28 22:18:18,915 - config_manager - INFO - 自动填充配置项 audio_output_dir: ./output_audio
+2025-11-28 22:18:18,915 - config_manager - INFO - 自动填充配置项 qwen2_5vl_mnn_path: qwen2_5vl_3b.mnn
+2025-11-28 22:18:18,915 - config_manager - INFO - 自动填充配置项 qwen_vl_api_url: http://127.0.0.1:8899/api/moderate
+2025-11-28 22:18:18,915 - config_manager - INFO - 自动填充配置项 qdrant_host: localhost
+2025-11-28 22:18:18,915 - config_manager - INFO - 自动填充配置项 qdrant_port: 6333
+2025-11-28 22:18:18,915 - config_manager - INFO - 自动填充配置项 output_audio_dir: ./output_audio
+2025-11-28 22:18:18,916 - config_manager - INFO - 自动填充配置项 sound_effects_dir: ./sound_effects
+2025-11-28 22:18:18,916 - config_manager - INFO - 自动填充配置项 songs_dir: ./songs
+2025-11-28 22:18:18,916 - config_manager - INFO - 自动填充配置项 screenshot_dir: ./screenshots
+2025-11-28 22:18:18,916 - config_manager - INFO - 自动填充配置项 images_dir: ./images
+2025-11-28 22:18:18,916 - config_manager - INFO - 自动填充配置项 log_dir: ./logs
+2025-11-28 22:18:18,916 - config_manager - INFO - 自动填充配置项 sensitive_keywords: ['敏感词1', '敏感词2']
+2025-11-28 22:18:18,916 - config_manager - INFO - 自动填充配置项 memo: 
+2025-11-28 22:18:18,917 - webui - INFO - 配置加载成功: config/config.json
+2025-11-28 22:18:18,924 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:18:18,924 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:18:18,925 - config_manager - INFO - 自动填充配置项 sense_voice_api_url: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:18:18,925 - config_manager - INFO - 自动填充配置项 cosy_voice_api_url: http://127.0.0.1:8888/api/tts
+2025-11-28 22:18:18,925 - config_manager - INFO - 自动填充配置项 ollama_top_p: 0.9
+2025-11-28 22:18:18,925 - config_manager - INFO - 自动填充配置项 enable_screen_click: True
+2025-11-28 22:18:18,925 - config_manager - INFO - 自动填充配置项 audio_output_dir: ./output_audio
+2025-11-28 22:18:18,925 - config_manager - INFO - 自动填充配置项 qwen2_5vl_mnn_path: qwen2_5vl_3b.mnn
+2025-11-28 22:18:18,926 - config_manager - INFO - 自动填充配置项 qwen_vl_api_url: http://127.0.0.1:8899/api/moderate
+2025-11-28 22:18:18,926 - config_manager - INFO - 自动填充配置项 qdrant_host: localhost
+2025-11-28 22:18:18,926 - config_manager - INFO - 自动填充配置项 qdrant_port: 6333
+2025-11-28 22:18:18,926 - config_manager - INFO - 自动填充配置项 output_audio_dir: ./output_audio
+2025-11-28 22:18:18,926 - config_manager - INFO - 自动填充配置项 sound_effects_dir: ./sound_effects
+2025-11-28 22:18:18,926 - config_manager - INFO - 自动填充配置项 songs_dir: ./songs
+2025-11-28 22:18:18,926 - config_manager - INFO - 自动填充配置项 screenshot_dir: ./screenshots
+2025-11-28 22:18:18,927 - config_manager - INFO - 自动填充配置项 images_dir: ./images
+2025-11-28 22:18:18,927 - config_manager - INFO - 自动填充配置项 log_dir: ./logs
+2025-11-28 22:18:18,927 - config_manager - INFO - 自动填充配置项 sensitive_keywords: ['敏感词1', '敏感词2']
+2025-11-28 22:18:18,927 - config_manager - INFO - 自动填充配置项 memo: 
+2025-11-28 22:18:18,928 - webui - INFO - 配置加载成功: config/config.json
+2025-11-28 22:18:18,928 - root - INFO - Initializing Audio Recorder...
+2025-11-28 22:18:19,324 - root - INFO - Audio recorder initialized
+2025-11-28 22:18:19,324 - root - INFO - All modules initialized successfully
+2025-11-28 22:18:19,324 - root - INFO - AI Live System initialized successfully
+2025-11-28 22:18:19,324 - root - INFO - Starting system warmup...
+2025-11-28 22:18:19,324 - root - INFO - Warming up Ollama models...
+2025-11-28 22:18:19,327 - root - INFO - SenseVoice recognizer initialized
+2025-11-28 22:18:19,343 - root - INFO - Loading text model: qwen2.5:0.5b
+2025-11-28 22:18:19,365 - root - WARNING - Text model load response: 404
+2025-11-28 22:18:19,365 - root - INFO - Loading vision model: qwen2.5vl
+2025-11-28 22:18:21,258 - root - INFO - Vision model loaded successfully
+2025-11-28 22:18:21,259 - root - INFO - Warming up SenseVoice...
+2025-11-28 22:18:21,259 - root - INFO - Checking SenseVoice API at: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:18:23,300 - root - ERROR - SenseVoice API service check failed: HTTPConnectionPool(host='127.0.0.1', port=8877): Max retries exceeded with url: /api/v1/asr (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000018EC6015F30>: Failed to establish a new connection: [Errno 10061] WSAECONNREFUSED'))
+2025-11-28 22:18:23,301 - root - WARNING - Starting SenseVoice service may be required
+2025-11-28 22:18:23,301 - root - INFO - SenseVoice initialized and ready for use
+2025-11-28 22:18:23,301 - root - INFO - System warmup completed
+2025-11-28 22:18:23,301 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-28 22:18:23,500 - root - INFO - Audio listener started, waiting for speech...
+2025-11-28 22:23:46,052 - root - INFO - Logging setup completed
+2025-11-28 22:23:46,052 - root - INFO - AI Live System initializing...
+2025-11-28 22:23:46,053 - root - INFO - Initializing VDB Manager...
+2025-11-28 22:23:54,327 - root - ERROR - Error initializing Qdrant client: [Errno 10061] WSAECONNREFUSED
+2025-11-28 22:23:54,327 - root - INFO - Falling back to simulated embedding approach
+2025-11-28 22:23:54,328 - root - INFO - 上下文摘要功能已禁用
+2025-11-28 22:23:54,328 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-28 22:23:54,328 - root - INFO - Initializing Long Term Memory...
+2025-11-28 22:23:54,328 - root - INFO - Context summarizer initialized
+2025-11-28 22:23:54,328 - root - INFO - Long term memory system initialized
+2025-11-28 22:23:54,328 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-28 22:23:54,368 - root - ERROR - Failed to connect to Ollama
+2025-11-28 22:23:54,370 - root - INFO - Context loaded from context_short_term.json
+2025-11-28 22:23:54,370 - root - INFO - Context loaded from context_medium_term.json
+2025-11-28 22:23:54,370 - root - INFO - Context loaded from context_long_term.json
+2025-11-28 22:23:54,371 - root - INFO - Loaded 1 conversation entries from medium-term context file
+2025-11-28 22:23:54,371 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-28 22:23:54,371 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-28 22:23:54,371 - root - INFO - Initializing SenseVoice...
+2025-11-28 22:23:54,371 - root - INFO - SenseVoice recognizer initialized
+2025-11-28 22:23:54,372 - root - INFO - Voice trigger initialized
+2025-11-28 22:23:54,372 - root - INFO - Initializing Voice Output...
+2025-11-28 22:23:54,372 - root - INFO - CosyVoice synthesizer initialized
+2025-11-28 22:23:54,372 - root - INFO - Voice output manager initialized
+2025-11-28 22:23:54,372 - root - INFO - Initializing Content Moderation...
+2025-11-28 22:23:54,373 - root - INFO - Content moderation module initialized
+2025-11-28 22:23:54,373 - root - INFO - Content moderation module initialized
+2025-11-28 22:23:54,373 - root - INFO - Initializing Screen Manager...
+2025-11-28 22:23:54,373 - root - INFO - Screen manager initialized
+2025-11-28 22:23:54,373 - root - INFO - Initializing Tool Executor...
+2025-11-28 22:23:54,374 - root - INFO - Tool manager initialized
+2025-11-28 22:23:54,374 - root - INFO - Initializing WebUI Controller...
+2025-11-28 22:23:54,395 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:23:54,396 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:23:54,396 - config_manager - INFO - 自动填充配置项 sense_voice_api_url: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:23:54,396 - config_manager - INFO - 自动填充配置项 cosy_voice_api_url: http://127.0.0.1:8888/api/tts
+2025-11-28 22:23:54,396 - config_manager - INFO - 自动填充配置项 ollama_top_p: 0.9
+2025-11-28 22:23:54,396 - config_manager - INFO - 自动填充配置项 enable_screen_click: True
+2025-11-28 22:23:54,397 - config_manager - INFO - 自动填充配置项 audio_output_dir: ./output_audio
+2025-11-28 22:23:54,397 - config_manager - INFO - 自动填充配置项 qwen2_5vl_mnn_path: qwen2_5vl_3b.mnn
+2025-11-28 22:23:54,397 - config_manager - INFO - 自动填充配置项 qwen_vl_api_url: http://127.0.0.1:8899/api/moderate
+2025-11-28 22:23:54,397 - config_manager - INFO - 自动填充配置项 qdrant_host: localhost
+2025-11-28 22:23:54,397 - config_manager - INFO - 自动填充配置项 qdrant_port: 6333
+2025-11-28 22:23:54,397 - config_manager - INFO - 自动填充配置项 output_audio_dir: ./output_audio
+2025-11-28 22:23:54,397 - config_manager - INFO - 自动填充配置项 sound_effects_dir: ./sound_effects
+2025-11-28 22:23:54,398 - config_manager - INFO - 自动填充配置项 songs_dir: ./songs
+2025-11-28 22:23:54,398 - config_manager - INFO - 自动填充配置项 screenshot_dir: ./screenshots
+2025-11-28 22:23:54,398 - config_manager - INFO - 自动填充配置项 images_dir: ./images
+2025-11-28 22:23:54,398 - config_manager - INFO - 自动填充配置项 log_dir: ./logs
+2025-11-28 22:23:54,398 - config_manager - INFO - 自动填充配置项 sensitive_keywords: ['敏感词1', '敏感词2']
+2025-11-28 22:23:54,398 - config_manager - INFO - 自动填充配置项 memo: 
+2025-11-28 22:23:54,399 - webui - INFO - 配置加载成功: config/config.json
+2025-11-28 22:23:55,966 - httpx - INFO - HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2025-11-28 22:23:55,987 - httpx - INFO - HTTP Request: GET http://localhost:6333/collections/memory_collection "HTTP/1.1 200 OK"
+2025-11-28 22:23:55,988 - root - INFO - Connected to existing Qdrant collection: memory_collection
+2025-11-28 22:23:55,988 - root - INFO - 上下文摘要功能已禁用
+2025-11-28 22:23:55,988 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-28 22:23:55,989 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:23:55,989 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:23:55,990 - config_manager - INFO - 自动填充配置项 sense_voice_api_url: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:23:55,990 - config_manager - INFO - 自动填充配置项 cosy_voice_api_url: http://127.0.0.1:8888/api/tts
+2025-11-28 22:23:55,990 - config_manager - INFO - 自动填充配置项 ollama_top_p: 0.9
+2025-11-28 22:23:55,990 - config_manager - INFO - 自动填充配置项 enable_screen_click: True
+2025-11-28 22:23:55,990 - config_manager - INFO - 自动填充配置项 audio_output_dir: ./output_audio
+2025-11-28 22:23:55,990 - config_manager - INFO - 自动填充配置项 qwen2_5vl_mnn_path: qwen2_5vl_3b.mnn
+2025-11-28 22:23:55,990 - config_manager - INFO - 自动填充配置项 qwen_vl_api_url: http://127.0.0.1:8899/api/moderate
+2025-11-28 22:23:55,991 - config_manager - INFO - 自动填充配置项 qdrant_host: localhost
+2025-11-28 22:23:55,991 - config_manager - INFO - 自动填充配置项 qdrant_port: 6333
+2025-11-28 22:23:55,991 - config_manager - INFO - 自动填充配置项 output_audio_dir: ./output_audio
+2025-11-28 22:23:55,991 - config_manager - INFO - 自动填充配置项 sound_effects_dir: ./sound_effects
+2025-11-28 22:23:55,991 - config_manager - INFO - 自动填充配置项 songs_dir: ./songs
+2025-11-28 22:23:55,991 - config_manager - INFO - 自动填充配置项 screenshot_dir: ./screenshots
+2025-11-28 22:23:55,991 - config_manager - INFO - 自动填充配置项 images_dir: ./images
+2025-11-28 22:23:55,992 - config_manager - INFO - 自动填充配置项 log_dir: ./logs
+2025-11-28 22:23:55,992 - config_manager - INFO - 自动填充配置项 sensitive_keywords: ['敏感词1', '敏感词2']
+2025-11-28 22:23:55,992 - config_manager - INFO - 自动填充配置项 memo: 
+2025-11-28 22:23:55,992 - webui - INFO - 配置加载成功: config/config.json
+2025-11-28 22:23:56,000 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:23:56,000 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-28 22:23:56,000 - config_manager - INFO - 自动填充配置项 sense_voice_api_url: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:23:56,001 - config_manager - INFO - 自动填充配置项 cosy_voice_api_url: http://127.0.0.1:8888/api/tts
+2025-11-28 22:23:56,001 - config_manager - INFO - 自动填充配置项 ollama_top_p: 0.9
+2025-11-28 22:23:56,001 - config_manager - INFO - 自动填充配置项 enable_screen_click: True
+2025-11-28 22:23:56,001 - config_manager - INFO - 自动填充配置项 audio_output_dir: ./output_audio
+2025-11-28 22:23:56,001 - config_manager - INFO - 自动填充配置项 qwen2_5vl_mnn_path: qwen2_5vl_3b.mnn
+2025-11-28 22:23:56,002 - config_manager - INFO - 自动填充配置项 qwen_vl_api_url: http://127.0.0.1:8899/api/moderate
+2025-11-28 22:23:56,002 - config_manager - INFO - 自动填充配置项 qdrant_host: localhost
+2025-11-28 22:23:56,002 - config_manager - INFO - 自动填充配置项 qdrant_port: 6333
+2025-11-28 22:23:56,002 - config_manager - INFO - 自动填充配置项 output_audio_dir: ./output_audio
+2025-11-28 22:23:56,002 - config_manager - INFO - 自动填充配置项 sound_effects_dir: ./sound_effects
+2025-11-28 22:23:56,002 - config_manager - INFO - 自动填充配置项 songs_dir: ./songs
+2025-11-28 22:23:56,002 - config_manager - INFO - 自动填充配置项 screenshot_dir: ./screenshots
+2025-11-28 22:23:56,003 - config_manager - INFO - 自动填充配置项 images_dir: ./images
+2025-11-28 22:23:56,003 - config_manager - INFO - 自动填充配置项 log_dir: ./logs
+2025-11-28 22:23:56,003 - config_manager - INFO - 自动填充配置项 sensitive_keywords: ['敏感词1', '敏感词2']
+2025-11-28 22:23:56,003 - config_manager - INFO - 自动填充配置项 memo: 
+2025-11-28 22:23:56,004 - webui - INFO - 配置加载成功: config/config.json
+2025-11-28 22:23:56,004 - root - INFO - Initializing Audio Recorder...
+2025-11-28 22:23:56,412 - root - INFO - Audio recorder initialized
+2025-11-28 22:23:56,412 - root - INFO - All modules initialized successfully
+2025-11-28 22:23:56,412 - root - INFO - AI Live System initialized successfully
+2025-11-28 22:23:56,413 - root - INFO - Starting system warmup...
+2025-11-28 22:23:56,413 - root - INFO - Warming up Ollama models...
+2025-11-28 22:23:56,415 - root - INFO - SenseVoice recognizer initialized
+2025-11-28 22:23:56,440 - root - INFO - Loading text model: qwen2.5:0.5b
+2025-11-28 22:23:56,459 - root - WARNING - Text model load response: 404
+2025-11-28 22:23:56,460 - root - INFO - Loading vision model: qwen2.5vl
+2025-11-28 22:23:58,640 - root - INFO - Vision model loaded successfully
+2025-11-28 22:23:58,641 - root - INFO - Warming up SenseVoice...
+2025-11-28 22:23:58,641 - root - INFO - Checking SenseVoice API at: http://127.0.0.1:8877/api/v1/asr
+2025-11-28 22:24:00,684 - root - ERROR - SenseVoice API service check failed: HTTPConnectionPool(host='127.0.0.1', port=8877): Max retries exceeded with url: /api/v1/asr (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000023343A0AB10>: Failed to establish a new connection: [Errno 10061] WSAECONNREFUSED'))
+2025-11-28 22:24:00,684 - root - WARNING - Starting SenseVoice service may be required
+2025-11-28 22:24:00,684 - root - INFO - SenseVoice initialized and ready for use
+2025-11-28 22:24:00,685 - root - INFO - System warmup completed
+2025-11-28 22:24:00,685 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-28 22:24:00,882 - root - INFO - Audio listener started, waiting for speech...
+2025-11-29 12:59:19,375 - root - INFO - Logging setup completed
+2025-11-29 12:59:19,376 - root - INFO - AI Live System initializing...
+2025-11-29 12:59:19,376 - root - INFO - Initializing VDB Manager...
+2025-11-29 12:59:27,058 - root - ERROR - Error initializing Qdrant client: [Errno 10061] WSAECONNREFUSED
+2025-11-29 12:59:27,058 - root - INFO - Falling back to simulated embedding approach
+2025-11-29 12:59:27,058 - root - INFO - 上下文摘要功能已禁用
+2025-11-29 12:59:27,058 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-29 12:59:27,058 - root - INFO - Initializing Long Term Memory...
+2025-11-29 12:59:27,059 - root - INFO - Context summarizer initialized
+2025-11-29 12:59:27,059 - root - INFO - Long term memory system initialized
+2025-11-29 12:59:27,059 - root - INFO - Initializing Main Model (Qwen2.5VL:3b)...
+2025-11-29 12:59:29,253 - root - ERROR - Failed to connect to Ollama
+2025-11-29 12:59:29,254 - root - INFO - Context loaded from context_short_term.json
+2025-11-29 12:59:29,255 - root - INFO - Context loaded from context_medium_term.json
+2025-11-29 12:59:29,255 - root - INFO - Context loaded from context_long_term.json
+2025-11-29 12:59:29,256 - root - INFO - Loaded 1 conversation entries from medium-term context file
+2025-11-29 12:59:29,256 - root - INFO - Main model (Ollama) initialized successfully
+2025-11-29 12:59:29,256 - root - INFO - Danmu receiver disabled, running in chat-only mode
+2025-11-29 12:59:29,256 - root - INFO - Initializing SenseVoice...
+2025-11-29 12:59:29,256 - root - INFO - SenseVoice recognizer initialized
+2025-11-29 12:59:29,256 - root - INFO - Voice trigger initialized
+2025-11-29 12:59:29,257 - root - INFO - Initializing Voice Output...
+2025-11-29 12:59:29,257 - root - INFO - CosyVoice synthesizer initialized
+2025-11-29 12:59:29,257 - root - INFO - Voice output manager initialized
+2025-11-29 12:59:29,257 - root - INFO - Initializing Content Moderation...
+2025-11-29 12:59:29,257 - root - INFO - Content moderation module initialized
+2025-11-29 12:59:29,259 - root - INFO - Content moderation module initialized
+2025-11-29 12:59:29,259 - root - INFO - Initializing Screen Manager...
+2025-11-29 12:59:29,260 - root - INFO - Screen manager initialized
+2025-11-29 12:59:29,260 - root - INFO - Initializing Tool Executor...
+2025-11-29 12:59:29,260 - root - INFO - Tool manager initialized
+2025-11-29 12:59:29,260 - root - INFO - Initializing WebUI Controller...
+2025-11-29 12:59:29,281 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-29 12:59:29,281 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-29 12:59:29,281 - config_manager - INFO - 自动填充配置项 sense_voice_api_url: http://127.0.0.1:8877/api/v1/asr
+2025-11-29 12:59:29,281 - config_manager - INFO - 自动填充配置项 cosy_voice_api_url: http://127.0.0.1:8888/api/tts
+2025-11-29 12:59:29,282 - config_manager - INFO - 自动填充配置项 ollama_top_p: 0.9
+2025-11-29 12:59:29,282 - config_manager - INFO - 自动填充配置项 enable_screen_click: True
+2025-11-29 12:59:29,282 - config_manager - INFO - 自动填充配置项 audio_output_dir: ./output_audio
+2025-11-29 12:59:29,282 - config_manager - INFO - 自动填充配置项 qwen2_5vl_mnn_path: qwen2_5vl_3b.mnn
+2025-11-29 12:59:29,282 - config_manager - INFO - 自动填充配置项 qwen_vl_api_url: http://127.0.0.1:8899/api/moderate
+2025-11-29 12:59:29,282 - config_manager - INFO - 自动填充配置项 qdrant_host: localhost
+2025-11-29 12:59:29,282 - config_manager - INFO - 自动填充配置项 qdrant_port: 6333
+2025-11-29 12:59:29,283 - config_manager - INFO - 自动填充配置项 output_audio_dir: ./output_audio
+2025-11-29 12:59:29,283 - config_manager - INFO - 自动填充配置项 sound_effects_dir: ./sound_effects
+2025-11-29 12:59:29,283 - config_manager - INFO - 自动填充配置项 songs_dir: ./songs
+2025-11-29 12:59:29,283 - config_manager - INFO - 自动填充配置项 screenshot_dir: ./screenshots
+2025-11-29 12:59:29,283 - config_manager - INFO - 自动填充配置项 images_dir: ./images
+2025-11-29 12:59:29,283 - config_manager - INFO - 自动填充配置项 log_dir: ./logs
+2025-11-29 12:59:29,283 - config_manager - INFO - 自动填充配置项 sensitive_keywords: ['敏感词1', '敏感词2']
+2025-11-29 12:59:29,284 - config_manager - INFO - 自动填充配置项 memo: 
+2025-11-29 12:59:29,284 - webui - INFO - 配置加载成功: config/config.json
+2025-11-29 12:59:30,709 - httpx - INFO - HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2025-11-29 12:59:30,732 - httpx - INFO - HTTP Request: GET http://localhost:6333/collections/memory_collection "HTTP/1.1 200 OK"
+2025-11-29 12:59:30,733 - root - INFO - Connected to existing Qdrant collection: memory_collection
+2025-11-29 12:59:30,733 - root - INFO - 上下文摘要功能已禁用
+2025-11-29 12:59:30,733 - root - INFO - VDB Manager with Qdrant initialized successfully
+2025-11-29 12:59:30,735 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-29 12:59:30,737 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-29 12:59:30,737 - config_manager - INFO - 自动填充配置项 sense_voice_api_url: http://127.0.0.1:8877/api/v1/asr
+2025-11-29 12:59:30,738 - config_manager - INFO - 自动填充配置项 cosy_voice_api_url: http://127.0.0.1:8888/api/tts
+2025-11-29 12:59:30,738 - config_manager - INFO - 自动填充配置项 ollama_top_p: 0.9
+2025-11-29 12:59:30,738 - config_manager - INFO - 自动填充配置项 enable_screen_click: True
+2025-11-29 12:59:30,738 - config_manager - INFO - 自动填充配置项 audio_output_dir: ./output_audio
+2025-11-29 12:59:30,739 - config_manager - INFO - 自动填充配置项 qwen2_5vl_mnn_path: qwen2_5vl_3b.mnn
+2025-11-29 12:59:30,739 - config_manager - INFO - 自动填充配置项 qwen_vl_api_url: http://127.0.0.1:8899/api/moderate
+2025-11-29 12:59:30,739 - config_manager - INFO - 自动填充配置项 qdrant_host: localhost
+2025-11-29 12:59:30,740 - config_manager - INFO - 自动填充配置项 qdrant_port: 6333
+2025-11-29 12:59:30,740 - config_manager - INFO - 自动填充配置项 output_audio_dir: ./output_audio
+2025-11-29 12:59:30,740 - config_manager - INFO - 自动填充配置项 sound_effects_dir: ./sound_effects
+2025-11-29 12:59:30,740 - config_manager - INFO - 自动填充配置项 songs_dir: ./songs
+2025-11-29 12:59:30,740 - config_manager - INFO - 自动填充配置项 screenshot_dir: ./screenshots
+2025-11-29 12:59:30,740 - config_manager - INFO - 自动填充配置项 images_dir: ./images
+2025-11-29 12:59:30,741 - config_manager - INFO - 自动填充配置项 log_dir: ./logs
+2025-11-29 12:59:30,741 - config_manager - INFO - 自动填充配置项 sensitive_keywords: ['敏感词1', '敏感词2']
+2025-11-29 12:59:30,741 - config_manager - INFO - 自动填充配置项 memo: 
+2025-11-29 12:59:30,742 - webui - INFO - 配置加载成功: config/config.json
+2025-11-29 12:59:30,748 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-29 12:59:30,748 - config_manager - INFO - Configuration loaded from config/config.json
+2025-11-29 12:59:30,749 - config_manager - INFO - 自动填充配置项 sense_voice_api_url: http://127.0.0.1:8877/api/v1/asr
+2025-11-29 12:59:30,749 - config_manager - INFO - 自动填充配置项 cosy_voice_api_url: http://127.0.0.1:8888/api/tts
+2025-11-29 12:59:30,749 - config_manager - INFO - 自动填充配置项 ollama_top_p: 0.9
+2025-11-29 12:59:30,749 - config_manager - INFO - 自动填充配置项 enable_screen_click: True
+2025-11-29 12:59:30,749 - config_manager - INFO - 自动填充配置项 audio_output_dir: ./output_audio
+2025-11-29 12:59:30,750 - config_manager - INFO - 自动填充配置项 qwen2_5vl_mnn_path: qwen2_5vl_3b.mnn
+2025-11-29 12:59:30,750 - config_manager - INFO - 自动填充配置项 qwen_vl_api_url: http://127.0.0.1:8899/api/moderate
+2025-11-29 12:59:30,750 - config_manager - INFO - 自动填充配置项 qdrant_host: localhost
+2025-11-29 12:59:30,750 - config_manager - INFO - 自动填充配置项 qdrant_port: 6333
+2025-11-29 12:59:30,750 - config_manager - INFO - 自动填充配置项 output_audio_dir: ./output_audio
+2025-11-29 12:59:30,750 - config_manager - INFO - 自动填充配置项 sound_effects_dir: ./sound_effects
+2025-11-29 12:59:30,751 - config_manager - INFO - 自动填充配置项 songs_dir: ./songs
+2025-11-29 12:59:30,751 - config_manager - INFO - 自动填充配置项 screenshot_dir: ./screenshots
+2025-11-29 12:59:30,751 - config_manager - INFO - 自动填充配置项 images_dir: ./images
+2025-11-29 12:59:30,751 - config_manager - INFO - 自动填充配置项 log_dir: ./logs
+2025-11-29 12:59:30,751 - config_manager - INFO - 自动填充配置项 sensitive_keywords: ['敏感词1', '敏感词2']
+2025-11-29 12:59:30,751 - config_manager - INFO - 自动填充配置项 memo: 
+2025-11-29 12:59:30,752 - webui - INFO - 配置加载成功: config/config.json
+2025-11-29 12:59:30,753 - root - INFO - Initializing Audio Recorder...
+2025-11-29 12:59:31,169 - root - INFO - Audio recorder initialized
+2025-11-29 12:59:31,170 - root - INFO - All modules initialized successfully
+2025-11-29 12:59:31,170 - root - INFO - AI Live System initialized successfully
+2025-11-29 12:59:31,170 - root - INFO - Starting system warmup...
+2025-11-29 12:59:31,170 - root - INFO - Warming up Ollama models...
+2025-11-29 12:59:31,172 - root - INFO - SenseVoice recognizer initialized
+2025-11-29 12:59:31,192 - root - INFO - Loading text model: qwen2.5:0.5b
+2025-11-29 12:59:31,211 - root - WARNING - Text model load response: 404
+2025-11-29 12:59:31,211 - root - INFO - Loading vision model: qwen2.5vl
+2025-11-29 12:59:39,457 - root - INFO - Vision model loaded successfully
+2025-11-29 12:59:39,458 - root - INFO - Warming up SenseVoice...
+2025-11-29 12:59:39,458 - root - INFO - Checking SenseVoice API at: http://127.0.0.1:8877/api/v1/asr
+2025-11-29 12:59:41,502 - root - ERROR - SenseVoice API service check failed: HTTPConnectionPool(host='127.0.0.1', port=8877): Max retries exceeded with url: /api/v1/asr (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001B15C7E0640>: Failed to establish a new connection: [Errno 10061] WSAECONNREFUSED'))
+2025-11-29 12:59:41,503 - root - WARNING - Starting SenseVoice service may be required
+2025-11-29 12:59:41,503 - root - INFO - SenseVoice initialized and ready for use
+2025-11-29 12:59:41,503 - root - INFO - System warmup completed
+2025-11-29 12:59:41,504 - root - INFO - Running in chat-only mode (danmu disabled)
+2025-11-29 12:59:42,239 - root - INFO - Audio listener started, waiting for speech...
+2025-11-29 13:01:21,027 - webui - INFO - 接收到信号 2，正在关闭系统...
+2025-11-29 13:01:21,028 - webui - INFO - 系统已关闭

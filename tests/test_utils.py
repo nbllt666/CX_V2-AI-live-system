@@ -1,26 +1,26 @@
 import pytest
-from utils import TimedCache
+from utils import TTLFilter
 
-class TestTimedCache:
-    """Test cases for the TimedCache class."""
-    
+class TestTTLFilter:
+    """Test cases for the TTLFilter class."""
+
     def test_cache_set_and_get(self):
         """Test setting and getting values from cache."""
-        cache = TimedCache()
+        cache = TTLFilter()
         cache.add_item("key1", "value1", 10)
         result = cache.get_item("key1")
         assert result == "value1"
-    
+
     def test_cache_expiration(self):
         """Test that cache items expire correctly."""
-        cache = TimedCache()
+        cache = TTLFilter()
         cache.add_item("key1", "value1", -1)  # Already expired
         result = cache.get_item("key1")
         assert result is None
-    
+
     def test_cache_cleanup(self):
         """Test cleaning up expired items."""
-        cache = TimedCache()
+        cache = TTLFilter()
         cache.add_item("key1", "value1", -1)   # Expired
         cache.add_item("key2", "value2", 10)   # Not expired
         expired_count = cache.cleanup_expired()

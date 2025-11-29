@@ -118,20 +118,41 @@ class ContentModeration:
                 'content_type': 'text',
                 'task_id': task_id or str(int(time.time() * 1000))
             }
-            
+
             self.task_queue.put(task)
-            
-            # 等待结果（这里可以调整超时时间）
-            result_item = self.result_queue.get(timeout=30)  # 30秒超时
-            return result_item['result'].get('is_safe', False)
-            
+
+            # 等待特定 task_id 的结果（这里可以调整超时时间）
+            timeout = 30
+            start = time.time()
+            temp_buffer = []
+
+            while True:
+                remaining = max(0.0, timeout - (time.time() - start))
+                if remaining == 0.0:
+                    raise queue.Empty()
+
+                try:
+                    result_item = self.result_queue.get(timeout=remaining)
+                except queue.Empty:
+                    raise
+
+                # 如果是我们要的任务，则返回结果并把缓存的其它结果放回队列
+                if result_item.get('task_id') == task['task_id']:
+                    # 把缓存的其它结果重新放回队列，保持顺序
+                    for item in temp_buffer:
+                        self.result_queue.put(item)
+
+                    result = result_item.get('result', {})
+                    return result.get('is_safe', False)
+                else:
+                    # 非目标结果，暂存后继续等待
+                    temp_buffer.append(result_item)
+
         except queue.Empty:
             logging.error("Timeout waiting for moderation result")
-            # 超时情况下，保守地认为内容不安全
             return False
         except Exception as e:
             logging.error(f"Error in moderate_text method: {e}")
-            # 错误情况下，保守地认为内容不安全
             return False
 
     def moderate_image(self, image_path: str, task_id: Optional[str] = None) -> bool:
@@ -193,21 +214,49 @@ class ContentModeration:
             }
             
             response = requests.post(self.ollama_api_url, json=data, headers=headers, timeout=30)
-            
+
             if response.status_code == 200:
-                result = response.json()
-                moderation_result = result.get("response", "")
-                
                 try:
-                    # 解析AI返回的JSON结果
-                    parsed_result = json.loads(moderation_result)
-                    return parsed_result
-                except json.JSONDecodeError:
-                    logging.warning(f"Could not parse JSON from moderation result: {moderation_result}")
-                    # 如果无法解析JSON，保守地认为内容不安全
+                    result = response.json()
+                except ValueError:
+                    # 无法解析为 JSON
+                    logging.warning(f"Ollama returned non-JSON response: {response.text}")
                     return {
                         "is_safe": False,
-                        "reason": "Could not parse moderation response",
+                        "reason": "Non-JSON response from Ollama",
+                        "categories": ["parsing_error"]
+                    }
+
+                # Ollama 可能返回多种格式：
+                # 1) {"response": "{...json...}"}
+                # 2) {"response": {...}}
+                # 3) 直接就是 {...}
+                moderation_result = None
+
+                if isinstance(result, dict) and 'response' in result:
+                    moderation_result = result.get('response')
+                else:
+                    moderation_result = result
+
+                # 如果 moderation_result 本身是 dict，则直接使用；如果是字符串，尝试解析
+                if isinstance(moderation_result, dict):
+                    return moderation_result
+                elif isinstance(moderation_result, str):
+                    try:
+                        parsed_result = json.loads(moderation_result)
+                        return parsed_result
+                    except json.JSONDecodeError:
+                        logging.warning(f"Could not parse JSON from moderation result string: {moderation_result}")
+                        return {
+                            "is_safe": False,
+                            "reason": "Could not parse moderation response",
+                            "categories": ["parsing_error"]
+                        }
+                else:
+                    logging.warning(f"Unexpected moderation result type: {type(moderation_result)}")
+                    return {
+                        "is_safe": False,
+                        "reason": "Unexpected moderation response format",
                         "categories": ["parsing_error"]
                     }
             else:
@@ -325,25 +374,37 @@ class ImageModeration:
             response = requests.post(ollama_api_url, json=data, headers=headers, timeout=60)
             
             if response.status_code == 200:
-                result = response.json()
-                moderation_result = result.get("response", "")
-                
                 try:
-                    # 解析AI返回的JSON结果
-                    parsed_result = json.loads(moderation_result)
-                    is_safe = parsed_result.get('is_safe', False)
-                    
-                    if is_safe:
-                        logging.info(f"Image moderation for {image_path}: PASSED")
-                        return True
-                    else:
-                        reason = parsed_result.get('reason', 'Unknown reason')
-                        logging.info(f"Image moderation for {image_path}: FAILED - {reason}")
+                    result = response.json()
+                except ValueError:
+                    logging.warning(f"Ollama returned non-JSON response for image: {response.text}")
+                    return False
+
+                moderation_result = None
+                if isinstance(result, dict) and 'response' in result:
+                    moderation_result = result.get('response')
+                else:
+                    moderation_result = result
+
+                if isinstance(moderation_result, dict):
+                    parsed_result = moderation_result
+                elif isinstance(moderation_result, str):
+                    try:
+                        parsed_result = json.loads(moderation_result)
+                    except json.JSONDecodeError:
+                        logging.warning(f"Could not parse JSON from image moderation result string: {moderation_result}")
                         return False
-                        
-                except json.JSONDecodeError:
-                    logging.warning(f"Could not parse JSON from image moderation result: {moderation_result}")
-                    # 如果无法解析JSON，保守地认为图像不安全
+                else:
+                    logging.warning(f"Unexpected image moderation result type: {type(moderation_result)}")
+                    return False
+
+                is_safe = parsed_result.get('is_safe', False)
+                if is_safe:
+                    logging.info(f"Image moderation for {image_path}: PASSED")
+                    return True
+                else:
+                    reason = parsed_result.get('reason', 'Unknown reason')
+                    logging.info(f"Image moderation for {image_path}: FAILED - {reason}")
                     return False
             else:
                 logging.error(f"Ollama image moderation API error: {response.status_code} - {response.text}")

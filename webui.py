@@ -14,6 +14,7 @@ import json
 import logging
 import threading
 import time
+import signal
 import socketio
 from flask import Flask, render_template, request, jsonify, send_from_directory
 from werkzeug.utils import secure_filename
@@ -108,21 +109,28 @@ class SystemController:
         try:
             if self.ai_system_instance and hasattr(self.ai_system_instance, 'running') and self.ai_system_instance.running:
                 self.ai_system_instance.stop()
-            
+
             self.running = False
             system_status['status'] = 'stopped'
+            # 发送状态更新
             sio.emit('status_update', system_status)
             logger.info("系统停止成功")
             return True
         except Exception as e:
             logger.error(f"系统停止失败: {e}")
             return False
+        finally:
+            # 确保状态更新被发送
+            try:
+                sio.emit('status_update', system_status)
+            except:
+                pass  # 如果emit失败，不处理，因为系统已经在关闭过程中
     
     def restart(self):
         logger.info("系统重启中...")
         system_status['status'] = 'restarting'
         sio.emit('status_update', system_status)
-        
+
         # 先停止
         self.stop()
         # 等待一段时间确保完全停止
@@ -134,6 +142,27 @@ class SystemController:
         else:
             logger.error("系统重启失败")
         return success
+
+    def force_quit(self):
+        """强制退出系统，直接终止进程"""
+        logger.info("强制退出系统...")
+        try:
+            # 停止 AI 系统
+            if self.ai_system_instance and hasattr(self.ai_system_instance, 'running') and self.ai_system_instance.running:
+                self.ai_system_instance.stop()
+        except Exception as e:
+            logger.error(f"强制退出时停止AI系统失败: {e}")
+        finally:
+            # 更新状态
+            self.running = False
+            system_status['status'] = 'stopped'
+            try:
+                sio.emit('status_update', system_status)
+            except:
+                pass
+            # 强制退出进程
+            import os
+            os._exit(0)  # 强制退出，不执行清理
     
     def preheat_models(self):
         """预热模型功能"""
@@ -192,6 +221,73 @@ class SystemController:
 
 # 创建系统控制器实例
 system_controller = SystemController()
+
+def stop_webui(timeout: float = 3.0) -> bool:
+    """优雅停止 WebUI 服务及后台系统，尝试关闭监听器并停止 AI 系统。
+
+    如果在给定超时时间内无法停止线程，将强制退出进程。
+    """
+    global _webui_stop_event, _webui_listener, _webui_thread
+    try:
+        logger.info("正在停止 WebUI 服务...")
+        # 设置停止事件，供运行线程检测
+        try:
+            _webui_stop_event.set()
+        except Exception:
+            pass
+
+        # 先尝试停止 AI 系统
+        try:
+            if system_controller.running:
+                system_controller.stop()
+        except Exception as e:
+            logger.warning(f"停止 AI 系统时出错: {e}")
+
+        # 关闭 eventlet 监听器（如果存在）
+        if _webui_listener is not None:
+            try:
+                _webui_listener.close()
+                logger.info("已关闭 WebUI 监听器")
+            except Exception as e:
+                logger.warning(f"关闭监听器失败: {e}")
+
+        # 等待服务器线程结束
+        if _webui_thread is not None and _webui_thread.is_alive():
+            _webui_thread.join(timeout)
+
+            if _webui_thread.is_alive():
+                logger.error("WebUI 线程未在超时内结束，强制退出进程")
+                import os
+                os._exit(0)
+
+        logger.info("WebUI 已停止")
+        return True
+    except Exception as e:
+        logger.error(f"停止 WebUI 失败: {e}")
+        return False
+
+def signal_handler(signum, frame):
+    """信号处理函数，用于关闭系统"""
+    logger.info(f"接收到信号 {signum}，正在关闭系统...")
+    try:
+        # 调用统一的 webui 停止函数以保证资源释放
+        try:
+            stop_webui()
+        except NameError:
+            # 如果 stop_webui 尚未定义，退回到直接停止 system_controller
+            if system_controller.running:
+                system_controller.stop()
+        logger.info("系统已关闭")
+    except Exception as e:
+        logger.error(f"关闭系统时发生错误: {e}")
+    finally:
+        # 强制退出，确保进程结束
+        import os
+        os._exit(0)
+
+# 注册信号处理器
+signal.signal(signal.SIGINT, signal_handler)  # Ctrl+C
+signal.signal(signal.SIGTERM, signal_handler)  # 终止信号
 
 # WebUI控制器类
 class WebUIController:
@@ -286,6 +382,11 @@ class WebUIController:
 # 当从main.py运行时，会在main.py中重新初始化带vdb_manager的WebUIController
 webui_controller = WebUIController()
 
+# WebUI 服务管理句柄
+_webui_thread = None
+_webui_listener = None
+_webui_stop_event = threading.Event()
+
 # 日志处理程序，将日志发送到前端
 class SocketIOLogHandler(logging.Handler):
     def emit(self, record):
@@ -359,6 +460,17 @@ def restart_system():
         return jsonify({'success': True, 'message': '系统重启成功'})
     else:
         return jsonify({'success': False, 'message': '系统重启失败'}), 500
+
+@app.route('/api/system/force_quit', methods=['POST'])
+def force_quit_system():
+    # 异步执行强制退出，以便返回响应
+    import threading
+    def delayed_force_quit():
+        time.sleep(0.1)  # 给API响应一点时间
+        system_controller.force_quit()
+    quit_thread = threading.Thread(target=delayed_force_quit, daemon=True)
+    quit_thread.start()
+    return jsonify({'success': True, 'message': '系统即将强制退出'})
 
 @app.route('/api/config/reload', methods=['POST'])
 def reload_config():
@@ -454,6 +566,15 @@ def control_system():
                 return jsonify({'success': True, 'message': '系统重启成功'})
             else:
                 return jsonify({'success': False, 'message': '系统重启失败'}), 500
+        elif action == 'force_quit':
+            # 异步执行强制退出，以便返回响应
+            import threading
+            def delayed_force_quit():
+                time.sleep(0.1)  # 给API响应一点时间
+                system_controller.force_quit()
+            quit_thread = threading.Thread(target=delayed_force_quit, daemon=True)
+            quit_thread.start()
+            return jsonify({'success': True, 'message': '系统即将强制退出'})
         elif action == 'control_melotts':
             # 处理MeloTTS控制命令
             try:
@@ -765,6 +886,15 @@ def system_command(sid, data):
             result = {'success': True, 'message': '系统重启成功'}
         else:
             result = {'success': False, 'message': '系统重启失败'}
+    elif command == 'force_quit':
+        # 异步执行强制退出，以便返回响应
+        import threading
+        def delayed_force_quit():
+            time.sleep(0.1)  # 给API响应一点时间
+            system_controller.force_quit()
+        quit_thread = threading.Thread(target=delayed_force_quit, daemon=True)
+        quit_thread.start()
+        result = {'success': True, 'message': '系统即将强制退出'}
     
     sio.emit('system_command_result', result, room=sid)
 
@@ -1054,6 +1184,7 @@ if __name__ == '__main__':
                 <div>
                     <button id="start-btn" class="button">启动系统</button>
                     <button id="stop-btn" class="button danger">停止系统</button>
+                    <button id="force-quit-btn" class="button danger">强制退出</button>
                     <button id="restart-btn" class="button warning">重启系统</button>
                 </div>
             </div>
@@ -1526,7 +1657,13 @@ if __name__ == '__main__':
         document.getElementById('stop-btn').addEventListener('click', function() {
             socket.emit('system_command', { command: 'stop' });
         });
-        
+
+        document.getElementById('force-quit-btn').addEventListener('click', function() {
+            if (confirm('确定要强制退出系统吗？此操作将立即终止所有进程。')) {
+                socket.emit('system_command', { command: 'force_quit' });
+            }
+        });
+
         document.getElementById('restart-btn').addEventListener('click', function() {
             socket.emit('system_command', { command: 'restart' });
         });
@@ -1652,26 +1789,60 @@ if __name__ == '__main__':
 # 供外部调用的WebUI启动函数
 def run_webui(host='0.0.0.0', port=5000):
     """启动WebUI服务
-    
+
     Args:
         host: 主机地址，默认为'0.0.0.0'
         port: 端口号，默认为5000
     """
+    def _serve():
+        global _webui_listener
+        try:
+            logger.info(f"WebUI 服务线程启动，监听 http://{host}:{port}")
+            # 检查是否成功导入了eventlet
+            if 'eventlet' in sys.modules:
+                import eventlet
+                _webui_listener = eventlet.listen((host, port))
+                try:
+                    eventlet.wsgi.server(_webui_listener, app)
+                finally:
+                    logger.info("eventlet WSGI 服务器退出")
+            else:
+                # 使用内置Flask服务器在独立线程中运行
+                logger.warning("eventlet模块不可用，将在线程中使用标准Flask服务器启动，WebSocket功能可能受限")
+                app.run(host=host, port=port, debug=False, use_reloader=False)
+        except Exception as e:
+            logger.error(f"WebUI 服务线程异常: {e}")
+
+    # 启动服务器线程
+    global _webui_thread, _webui_stop_event
+    _webui_stop_event.clear()
+    _webui_thread = threading.Thread(target=_serve, daemon=True)
+    _webui_thread.start()
+
+    # 阻塞直到接收到停止事件
     try:
-        logger.info(f"WebUI服务启动在 http://{host}:{port}")
-        # 检查是否成功导入了eventlet
-        if 'eventlet' in sys.modules:
-            # 使用eventlet服务器启动Flask应用，这样才能正确支持WebSocket
-            import eventlet
-            eventlet.wsgi.server(eventlet.listen((host, port)), app)
-        else:
-            # 如果eventlet不可用，回退到标准的Flask服务器（可能无法正常使用WebSocket功能）
-            logger.warning("eventlet模块不可用，将使用标准Flask服务器启动，WebSocket功能可能无法正常工作")
-            app.run(host=host, port=port, debug=True, use_reloader=False)
+        while not _webui_stop_event.is_set():
+            time.sleep(0.2)
+    except KeyboardInterrupt:
+        logger.info("接收到键盘中断，正在停止 WebUI")
+        stop_webui()
     except Exception as e:
-        logger.error(f"启动WebUI服务失败: {e}")
-        sys.exit(1)
+        logger.error(f"运行 WebUI 时出错: {e}")
+        stop_webui()
 
 # 启动服务器 - 仅当直接运行webui.py时执行
 if __name__ == "__main__":
-    run_webui(port=5001)  # 使用5001端口以避免冲突
+    try:
+        run_webui(port=5001)  # 使用5001端口以避免冲突
+    except KeyboardInterrupt:
+        logger.info("接收到键盘中断信号，正在关闭WebUI服务...")
+        try:
+            # 停止 AI 系统
+            if system_controller.running:
+                system_controller.stop()
+        except Exception as e:
+            logger.error(f"关闭系统时发生错误: {e}")
+        finally:
+            logger.info("WebUI服务已关闭")
+            import os
+            os._exit(0)  # 强制退出

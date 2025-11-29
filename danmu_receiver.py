@@ -26,6 +26,9 @@ class DanmuReceiver:
         self.task_ids = config.get('danmu_task_ids', [])
         self.running = False
         self.client = None
+        # 在协程中创建的事件循环和停止事件，用于跨线程停止
+        self._loop = None
+        self._stop_event = None
         
         # 订阅载荷
         self.subscribe_payload_json = {
@@ -124,14 +127,18 @@ class DanmuReceiver:
     async def start_receiving(self):
         """开始接收弹幕"""
         self.running = True
+        # 记录当前事件循环，供 stop_receiving 从其它线程安全地唤醒
+        self._loop = asyncio.get_running_loop()
+        # 创建一个可用于唤醒生成器和等待的停止事件
+        self._stop_event = asyncio.Event()
         logging.info(f"Starting to receive danmu from {self.websocket_uri} with task IDs: {self.task_ids}")
         
-        while self.running:
+        while self.running and not (self._stop_event and self._stop_event.is_set()):
             try:
                 # 1 建立连接
                 async with self.connect() as client:
                     # 阻塞等待Channel关闭事件
-                    channel_completion_event = Event()
+                    channel_completion_event = asyncio.Event()
 
                     # 定义Client向Channel发送消息的Publisher
                     async def generator() -> AsyncGenerator[Tuple[Payload, bool], None]:
@@ -139,8 +146,11 @@ class DanmuReceiver:
                         yield Payload(
                             data=json.dumps(self.subscribe_payload_json["data"]).encode()
                         ), False
-                        # 发送了一条订阅消息后直接暂停发送即可
-                        await Event().wait()
+                        # 发送了一条订阅消息后直接暂停发送，直到 stop_event 被设置
+                        if self._stop_event:
+                            await self._stop_event.wait()
+                        else:
+                            await asyncio.Event().wait()
 
                     stream = StreamFromAsyncGenerator(generator)
                     
@@ -160,16 +170,39 @@ class DanmuReceiver:
             except Exception as e:
                 logging.error(f"Error in danmu receiving loop: {e}")
                 # 等待一段时间后重试
-                await asyncio.sleep(5)
+                # 如果在错误情况下需要退出，则可以被 stop_receiving 唤醒
+                try:
+                    if self._stop_event:
+                        await asyncio.wait_for(self._stop_event.wait(), timeout=5)
+                    else:
+                        await asyncio.sleep(5)
+                except asyncio.TimeoutError:
+                    pass
 
     def stop_receiving(self):
         """停止接收弹幕"""
         self.running = False
-        if self.client:
-            try:
-                self.client.close()
-            except:
-                pass
+        # 首先尝试设置协程内的停止事件，如果事件循环存在，使用线程安全的调用
+        try:
+            if self._loop and self._stop_event:
+                try:
+                    self._loop.call_soon_threadsafe(self._stop_event.set)
+                except Exception:
+                    # 如果不能通过 loop 唤醒，也尝试直接设置（在同一线程情况下）
+                    try:
+                        self._stop_event.set()
+                    except Exception:
+                        pass
+
+            if self.client:
+                try:
+                    self.client.close()
+                except Exception:
+                    pass
+        finally:
+            # 清理本地事件引用
+            self._stop_event = None
+            self._loop = None
 
 # 修正TransportAioHttpClient的导入问题
 try:
